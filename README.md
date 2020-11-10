@@ -1,9 +1,10 @@
-# video-search-frontend
+# Video Search Tool (frontend)
+
 A React App with Typescript
 
 The goal of this project is to develop an accessible web page with a video frame searching engine powered by object detection and scene detection machine learning models.
 
-# Getting Started with Create React App
+# Setup
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 

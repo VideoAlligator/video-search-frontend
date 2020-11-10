@@ -1,15 +1,16 @@
 import React from 'react'
-import Button from '@material-ui/core/Button'
+import { ThemeProvider as SCThemeProvider } from 'styled-components'
+import { ThemeProvider as MuiThemeProvider } from '@material-ui/core/styles'
 
-function App(): JSX.Element {
-  return (
-    <div>
-      <Button variant="contained" color="primary">
-        Hello World
-      </Button>
-      <p>Yes, I'm here.</p>
-    </div>
-  )
-}
+import { theme, muiTheme } from 'common/style/theme'
+import TopBar from 'common/components/TopBar'
+import { SearchInput } from 'common/components/SearchInput'
 
-export default App
+export const App = (): JSX.Element => (
+  <SCThemeProvider theme={theme}>
+    <MuiThemeProvider theme={muiTheme}>
+      <TopBar />
+      <SearchInput />
+    </MuiThemeProvider>
+  </SCThemeProvider>
+)
