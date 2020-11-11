@@ -31,3 +31,7 @@ This project was bootstrapped with [Create React App](https://github.com/faceboo
 3. [Material-UI](https://material-ui.com/)
 
 4. [styled-components](https://styled-components.com/docs)
+
+5. [Redux](https://redux.js.org/api/api-reference), [React Redux](https://react-redux.js.org/api/connect)
+
+6. [React Router](https://reactrouter.com/web/guides/quick-start)
