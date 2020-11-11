@@ -8,6 +8,8 @@ The goal of this project is to develop an accessible web page with a video frame
 
 Make sure `npm` (package manager) is installed.
 
+If you are using VS Code, please install `Prettier` and `ESLint` extenstions. It's necessary for automated lint and code style.
+
 # Setup
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
@@ -35,3 +37,5 @@ This project was bootstrapped with [Create React App](https://github.com/faceboo
 5. [Redux](https://redux.js.org/api/api-reference), [React Redux](https://react-redux.js.org/api/connect)
 
 6. [React Router](https://reactrouter.com/web/guides/quick-start)
+
+7. [ESLint and Prettier](https://medium.com/javascript-scene/streamline-code-reviews-with-eslint-prettier-6fb817a6b51d)

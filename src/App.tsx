@@ -5,15 +5,13 @@ import { ThemeProvider as MuiThemeProvider } from '@material-ui/core/styles'
 
 import { store } from 'common/store'
 import { theme, muiTheme } from 'common/style/theme'
-import TopBar from 'common/components/TopBar'
-import { SearchInput } from 'common/components/SearchInput'
+import { Router } from 'core/Router'
 
 export const App = (): JSX.Element => (
   <Provider store={store}>
     <SCThemeProvider theme={theme}>
       <MuiThemeProvider theme={muiTheme}>
-        <TopBar />
-        <SearchInput />
+        <Router />
       </MuiThemeProvider>
     </SCThemeProvider>
   </Provider>
