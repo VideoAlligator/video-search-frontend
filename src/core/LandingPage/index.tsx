@@ -5,8 +5,9 @@ import { State } from 'common/store/rootReducer'
 import { videosSelectors, getVideos } from 'common/store/videos'
 import { Video } from 'common/types/video'
 
-import TopBar from 'common/components/TopBar'
-import { SearchInput } from 'common/components/SearchInput'
+import { Text, TypographyStyles } from 'common/components/atoms/Typography'
+import TopBar from 'common/components/molecules/TopBar'
+import { VideoInfoCard } from 'common/components/molecules/VideoInfoCard'
 
 interface LandingPageProps {
   videos: Video[]
@@ -23,13 +24,10 @@ const LandingPage: FC<LandingPageProps> = ({ videos, getVideos }) => {
   return (
     <>
       <TopBar />
-      <SearchInput />
-      <h3>All videos</h3>
+      <Text type={TypographyStyles.primaryHeadline}>All videos</Text>
       {videos.map((video, index) => (
         <div key={index}>
-          <p>Name: {video.name}</p>
-          <p>Duration: {video.duration}</p>
-          <p>Labels: {video.labels}</p>
+          <VideoInfoCard video={video} />
         </div>
       ))}
     </>
