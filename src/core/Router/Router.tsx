@@ -1,7 +1,7 @@
 import React, { FC } from 'react'
 import { BrowserRouter, Route, Switch } from 'react-router-dom'
 
-import { LandingPage } from '../LandingPage'
+import LandingPage from '../LandingPage'
 
 export const Router: FC = () => {
   return (
