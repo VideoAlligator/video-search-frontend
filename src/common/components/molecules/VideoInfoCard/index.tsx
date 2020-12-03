@@ -18,10 +18,12 @@ export const VideoInfoCard: FC<VideoInfoCardProps> = ({ video }) => {
       <CardContent>
         <Box display="flex">
           <Text type={TypographyStyles.labelCopy}>Name: </Text>
+          <Box p={1} />
           <Text>{name}</Text>
         </Box>
         <Box display="flex">
           <Text type={TypographyStyles.labelCopy}>Duration: </Text>
+          <Box p={1} />
           <Text>{duration}</Text>
         </Box>
         {labels.length > 0 && (

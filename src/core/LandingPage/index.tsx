@@ -1,5 +1,6 @@
 import React, { FC, useEffect } from 'react'
 import { connect } from 'react-redux'
+import Box from '@material-ui/core/Box'
 
 import { State } from 'common/store/rootReducer'
 import { videosSelectors, getVideos } from 'common/store/videos'
@@ -24,12 +25,18 @@ const LandingPage: FC<LandingPageProps> = ({ videos, getVideos }) => {
   return (
     <>
       <TopBar />
-      <Text type={TypographyStyles.primaryHeadline}>All videos</Text>
-      {videos.map((video, index) => (
-        <div key={index}>
-          <VideoInfoCard video={video} />
-        </div>
-      ))}
+      <Box p={2}>
+        <Text type={TypographyStyles.primaryHeadline}>All videos</Text>
+      </Box>
+      <Box display="flex" alignContent="flex-start" flexWrap="wrap">
+        {videos.map((video, index) => (
+          <div key={index}>
+            <Box p={2}>
+              <VideoInfoCard video={video} />
+            </Box>
+          </div>
+        ))}
+      </Box>
     </>
   )
 }
