@@ -1,5 +1,9 @@
 import { combineReducers } from 'redux'
 
-export const rootReducer = combineReducers({})
+import { videos } from './videos'
+
+export const rootReducer = combineReducers({
+  videos: videos.reducer,
+})
 
 export type State = ReturnType<typeof rootReducer>
