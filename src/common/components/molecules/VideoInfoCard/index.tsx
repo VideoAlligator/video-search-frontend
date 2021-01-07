@@ -12,30 +12,45 @@ interface VideoInfoCardProps {
 }
 
 export const VideoInfoCard: FC<VideoInfoCardProps> = ({ video }) => {
-  const { name, duration, labels } = video
+  const { title, duration, keywords, genres, overview } = video
   return (
     <StyledCard>
       <CardContent>
         <Box display="flex">
-          <Text type={TypographyStyles.labelCopy}>Name: </Text>
+          <Text type={TypographyStyles.labelCopy}>Title: </Text>
           <Box p={1} />
-          <Text>{name}</Text>
+          <Text>{title}</Text>
         </Box>
         <Box display="flex">
           <Text type={TypographyStyles.labelCopy}>Duration: </Text>
           <Box p={1} />
           <Text>{duration}</Text>
         </Box>
-        {labels.length > 0 && (
+        {keywords.length > 0 && (
           <>
-            <Text type={TypographyStyles.labelCopy}>Labels: </Text>
-            {labels.map((label, index) => (
+            <Text type={TypographyStyles.labelCopy}>Keywords: </Text>
+            {keywords.map((keyword, index) => (
               <div key={index}>
-                <Text>{label}</Text>
+                <Text>{keyword}</Text>
               </div>
             ))}
           </>
         )}
+        {genres.length > 0 && (
+          <>
+            <Text type={TypographyStyles.labelCopy}>Genres: </Text>
+            {genres.map((genre, index) => (
+              <div key={index}>
+                <Text>{genre}</Text>
+              </div>
+            ))}
+          </>
+        )}
+        <Box display="flex">
+          <Text type={TypographyStyles.labelCopy}>Overview: </Text>
+          <Box p={1} />
+          <Text>{overview}</Text>
+        </Box>
       </CardContent>
     </StyledCard>
   )

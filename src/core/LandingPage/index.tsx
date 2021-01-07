@@ -6,6 +6,7 @@ import { State } from 'common/store/rootReducer'
 import { videosSelectors, getVideos } from 'common/store/videos'
 import { Video } from 'common/types/video'
 
+import { SearchField } from 'common/components/atoms/SearchField'
 import { Text, TypographyStyles } from 'common/components/atoms/Typography'
 import TopBar from 'common/components/molecules/TopBar'
 import { VideoInfoCard } from 'common/components/molecules/VideoInfoCard'
@@ -27,6 +28,9 @@ const LandingPage: FC<LandingPageProps> = ({ videos, getVideos }) => {
       <TopBar />
       <Box p={2}>
         <Text type={TypographyStyles.primaryHeadline}>All videos</Text>
+      </Box>
+      <Box p={2}>
+        <SearchField id="keyword-search" label="Search Keyword" width={600} />
       </Box>
       <Box display="flex" alignContent="flex-start" flexWrap="wrap">
         {videos.map((video, index) => (

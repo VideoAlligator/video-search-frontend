@@ -1,6 +1,8 @@
 export interface Video {
   //   id: number
-  name: string
+  title: string
   duration: number
-  labels: string[]
+  keywords: string[]
+  genres: string[]
+  overview: string
 }
