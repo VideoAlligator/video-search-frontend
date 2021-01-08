@@ -95,10 +95,10 @@ export const SearchForm: FC<SearchFormProps> = ({
         </Field>
       </Box>
       <>
-        <Box>
+        <Box mt={2}>
           <ButtonList buttonProps={keywords1} />
         </Box>
-        <Box>
+        <Box mt={2}>
           <ButtonList buttonProps={keywords2} />
         </Box>
       </>
