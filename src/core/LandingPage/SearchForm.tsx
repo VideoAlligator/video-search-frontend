@@ -5,8 +5,7 @@ import Box from '@material-ui/core/Box'
 import { Button } from 'common/components/atoms/Button'
 import { SearchField } from 'common/components/atoms/SearchField'
 import { FormikFieldRender } from 'common/types/FormikFieldRender'
-import { ButtonList1 } from 'common/components/molecules/ButtonList1'
-import { ButtonList2 } from 'common/components/molecules/ButtonList2'
+import { ButtonList } from 'common/components/molecules/ButtonList'
 
 interface SearchFormProps {
   setFieldValue: (
@@ -97,10 +96,10 @@ export const SearchForm: FC<SearchFormProps> = ({
       </Box>
       <>
         <Box>
-          <ButtonList1 buttonProps={keywords1} />
+          <ButtonList buttonProps={keywords1} />
         </Box>
         <Box>
-          <ButtonList2 buttonProps={keywords2} />
+          <ButtonList buttonProps={keywords2} />
         </Box>
       </>
     </Form>

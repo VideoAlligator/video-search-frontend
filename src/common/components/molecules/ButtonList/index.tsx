@@ -2,21 +2,10 @@ import React, { FC } from 'react'
 import { createStyles, makeStyles, Theme } from '@material-ui/core/styles'
 import Button from '@material-ui/core/Button'
 
-// const useStyles = makeStyles((theme) => ({
-//   root: {
-//     '& > *': {
-//       margin: theme.spacing(2),
-//       marginTop: 50,
-//     },
-//   },
-// }))
-
 interface ButtonListProps {
   buttonProps: { text: string; color: string }[]
 }
-export const ButtonList2: FC<ButtonListProps> = ({ buttonProps }) => {
-  // const classes = useStyles()
-
+export const ButtonList: FC<ButtonListProps> = ({ buttonProps }) => {
   return (
     <>
       {buttonProps.map((buttonProp) => (
