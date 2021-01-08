@@ -45,7 +45,7 @@ const LandingPage: FC<LandingPageProps> = ({ videos, getVideos }) => {
           <TopBar />
           <Box p={3}>
             <Box mb={3}>
-              <Text type={TypographyStyles.primaryHeadline}>All videos</Text>
+              <Text type={TypographyStyles.title}>Video Search Tool</Text>
             </Box>
             <SearchForm
               setFieldValue={setFieldValue}
