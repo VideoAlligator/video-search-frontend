@@ -37,24 +37,29 @@ const LandingPage: FC<LandingPageProps> = ({ videos, getVideos }) => {
   return (
     <Formik
       initialValues={initialValues}
-      onSubmit={(values) => console.log(values)}
+      onSubmit={(values) => console.log('submited', values)}
       validationSchema={validationSchema}
     >
       {({ errors, handleSubmit, setFieldValue, values }) => (
         <>
           <TopBar />
-          <Box p={2}>
-            <Text type={TypographyStyles.primaryHeadline}>All videos</Text>
-          </Box>
-          <SearchForm />
-          <Box display="flex" alignContent="flex-start" flexWrap="wrap">
-            {videos.map((video, index) => (
-              <div key={index}>
-                <Box p={2}>
-                  <VideoInfoCard video={video} />
-                </Box>
-              </div>
-            ))}
+          <Box p={3}>
+            <Box mb={3}>
+              <Text type={TypographyStyles.primaryHeadline}>All videos</Text>
+            </Box>
+            <SearchForm
+              setFieldValue={setFieldValue}
+              handleSubmit={handleSubmit}
+            />
+            <Box display="flex" alignContent="flex-start" flexWrap="wrap">
+              {videos.map((video, index) => (
+                <div key={index}>
+                  <Box mr={3} mt={3}>
+                    <VideoInfoCard video={video} />
+                  </Box>
+                </div>
+              ))}
+            </Box>
           </Box>
         </>
       )}
