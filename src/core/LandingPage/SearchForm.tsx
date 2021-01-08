@@ -5,7 +5,8 @@ import Box from '@material-ui/core/Box'
 import { Button } from 'common/components/atoms/Button'
 import { SearchField } from 'common/components/atoms/SearchField'
 import { FormikFieldRender } from 'common/types/FormikFieldRender'
-import { ButtonList } from 'common/components/molecules/ButtonList'
+import { ButtonList1 } from 'common/components/molecules/ButtonList1'
+import { ButtonList2 } from 'common/components/molecules/ButtonList2'
 
 interface SearchFormProps {
   setFieldValue: (
@@ -42,6 +43,32 @@ const keywords1 = [
     color: '#ebb99e',
   },
 ]
+const keywords2 = [
+  {
+    text: 'forest',
+    color: '#9db736',
+  },
+  {
+    text: 'glacier',
+    color: '#9eb3eb',
+  },
+  {
+    text: 'sea',
+    color: '#948bf6',
+  },
+  {
+    text: 'buildings',
+    color: '#ee72f1',
+  },
+  {
+    text: 'street',
+    color: '#fb6f88',
+  },
+  {
+    text: 'mountain',
+    color: '#fc8644',
+  },
+]
 export const SearchForm: FC<SearchFormProps> = ({
   setFieldValue,
   handleSubmit,
@@ -54,7 +81,7 @@ export const SearchForm: FC<SearchFormProps> = ({
             <SearchField
               name={field.name}
               label="Search Keyword"
-              width={600}
+              width={800}
               setFieldValue={setFieldValue}
             />
           )}
@@ -66,9 +93,16 @@ export const SearchForm: FC<SearchFormProps> = ({
               Search
             </Button>
           )}
-          <ButtonList buttonProps={keywords1} />
         </Field>
       </Box>
+      <>
+        <Box>
+          <ButtonList1 buttonProps={keywords1} />
+        </Box>
+        <Box>
+          <ButtonList2 buttonProps={keywords2} />
+        </Box>
+      </>
     </Form>
   )
 }

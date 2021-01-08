@@ -14,15 +14,19 @@ import Button from '@material-ui/core/Button'
 interface ButtonListProps {
   buttonProps: { text: string; color: string }[]
 }
-export const ButtonList: FC<ButtonListProps> = ({ buttonProps }) => {
+export const ButtonList2: FC<ButtonListProps> = ({ buttonProps }) => {
   // const classes = useStyles()
 
   return (
     <>
-      {buttonProps.forEach((buttonProp) => (
+      {buttonProps.map((buttonProp) => (
         <Button
           variant="contained"
-          // style={{ backgroundColor: buttonProp.color }}
+          style={{
+            backgroundColor: buttonProp.color,
+            marginTop: 30,
+            marginLeft: 20,
+          }}
         >
           {buttonProp.text}
         </Button>
