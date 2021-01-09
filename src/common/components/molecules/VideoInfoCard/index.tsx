@@ -20,19 +20,10 @@ export const VideoInfoCard: FC<VideoInfoCardProps> = ({ video }) => {
   return (
     <StyledCard>
       <CardActionArea>
-        <CardMedia
-          style={{
-            height: 250,
-            margin: 10,
-          }}
-          image={img}
-          title="test"
-        />
+        <CardMedia style={{ height: 250 }} image={img} title="test" />
         <CardContent>
           <Box display="flex">
-            <Text type={TypographyStyles.labelCopy}>Title: </Text>
-            <Box p={1} />
-            <Text>{title}</Text>
+            <Text type={TypographyStyles.movieName}>{title} </Text>
           </Box>
           <Box mt={1} display="flex">
             <Text type={TypographyStyles.labelCopy}>Duration: </Text>
@@ -46,7 +37,6 @@ export const VideoInfoCard: FC<VideoInfoCardProps> = ({ video }) => {
                 {keywords.map((keyword, index) => (
                   <div key={index}>
                     <Chip style={{ marginLeft: 10 }} label={keyword} />
-                    {/* <Text>{keyword}</Text> */}
                   </div>
                 ))}
               </>
@@ -63,7 +53,6 @@ export const VideoInfoCard: FC<VideoInfoCardProps> = ({ video }) => {
                       label={genre}
                       color="secondary"
                     />
-                    {/* <Text>{genre}</Text> */}
                   </div>
                 ))}
               </>
