@@ -5,8 +5,6 @@ import Box from '@material-ui/core/Box'
 import { Button } from 'common/components/atoms/Button'
 import { SearchField } from 'common/components/atoms/SearchField'
 import { FormikFieldRender } from 'common/types/FormikFieldRender'
-import { ButtonList } from 'common/components/molecules/ButtonList'
-import { Grid } from '@material-ui/core'
 
 interface SearchFormProps {
   setFieldValue: (
@@ -16,59 +14,6 @@ interface SearchFormProps {
   ) => void
   handleSubmit: (e?: React.FormEvent<HTMLFormElement> | undefined) => void
 }
-
-const keywords1 = [
-  {
-    text: 'dog',
-    color: '#ebe89e',
-  },
-  {
-    text: 'cat',
-    color: '#b2eb9e',
-  },
-  {
-    text: 'desk',
-    color: '#9eebe2',
-  },
-  {
-    text: 'ball',
-    color: '#d8befa',
-  },
-  {
-    text: 'bird',
-    color: '#fab7d3',
-  },
-  {
-    text: 'apple',
-    color: '#ebb99e',
-  },
-]
-const keywords2 = [
-  {
-    text: 'forest',
-    color: '#9db736',
-  },
-  {
-    text: 'glacier',
-    color: '#9eb3eb',
-  },
-  {
-    text: 'sea',
-    color: '#948bf6',
-  },
-  {
-    text: 'buildings',
-    color: '#ee72f1',
-  },
-  {
-    text: 'street',
-    color: '#fb6f88',
-  },
-  {
-    text: 'mountain',
-    color: '#fc8644',
-  },
-]
 export const SearchForm: FC<SearchFormProps> = ({
   setFieldValue,
   handleSubmit,
@@ -95,22 +40,6 @@ export const SearchForm: FC<SearchFormProps> = ({
           )}
         </Field>
       </Box>
-      <>
-        <Grid
-          container
-          spacing={3}
-          alignItems="center"
-          justify="center"
-          direction="column"
-        >
-          <Box mt={5}>
-            <ButtonList buttonProps={keywords1} />
-          </Box>
-          <Box mt={2}>
-            <ButtonList buttonProps={keywords2} />
-          </Box>
-        </Grid>
-      </>
     </Form>
   )
 }
