@@ -12,6 +12,7 @@ import { ScreenContainer } from 'common/components/templates/ScreenContainer'
 import { VideoInfoCard } from 'common/components/molecules/VideoInfoCard'
 
 import { SearchForm } from './SearchForm'
+import { Grid } from '@material-ui/core'
 
 interface ResultsPageProps {
   videos: Video[]
@@ -41,23 +42,25 @@ const ResultsPage: FC<ResultsPageProps> = ({ videos, getVideos }) => {
     >
       {({ errors, handleSubmit, setFieldValue, values }) => (
         <ScreenContainer center maxWidth={1200}>
-          <Box mt={6} ml={3}>
+          <Box mt={6} ml={1}>
             <SearchForm
               setFieldValue={setFieldValue}
               handleSubmit={handleSubmit}
             />
           </Box>
-          <Box p={3}>
-            <Box display="flex" alignContent="flex-start" flexWrap="wrap">
-              {videos.map((video, index) => (
-                <div key={index}>
-                  <Box mr={3} mt={3}>
-                    <VideoInfoCard video={video} />
-                  </Box>
-                </div>
-              ))}
+          <Grid container alignItems="center" justify="center" direction="row">
+            <Box p={3}>
+              <Box display="flex" alignContent="flex-start" flexWrap="wrap">
+                {videos.map((video, index) => (
+                  <div key={index}>
+                    <Box mr={3} mt={3}>
+                      <VideoInfoCard video={video} />
+                    </Box>
+                  </div>
+                ))}
+              </Box>
             </Box>
-          </Box>
+          </Grid>
         </ScreenContainer>
       )}
     </Formik>

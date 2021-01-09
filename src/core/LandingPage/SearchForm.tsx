@@ -6,6 +6,7 @@ import { Button } from 'common/components/atoms/Button'
 import { SearchField } from 'common/components/atoms/SearchField'
 import { FormikFieldRender } from 'common/types/FormikFieldRender'
 import { ButtonList } from 'common/components/molecules/ButtonList'
+import { Grid } from '@material-ui/core'
 
 interface SearchFormProps {
   setFieldValue: (
@@ -74,7 +75,7 @@ export const SearchForm: FC<SearchFormProps> = ({
 }) => {
   return (
     <Form>
-      <Box display="flex">
+      <Box mt={1} display="flex">
         <Field name="keywords">
           {({ field, form }: FormikFieldRender<string>) => (
             <SearchField
@@ -95,12 +96,20 @@ export const SearchForm: FC<SearchFormProps> = ({
         </Field>
       </Box>
       <>
-        <Box mt={2}>
-          <ButtonList buttonProps={keywords1} />
-        </Box>
-        <Box mt={2}>
-          <ButtonList buttonProps={keywords2} />
-        </Box>
+        <Grid
+          container
+          spacing={3}
+          alignItems="center"
+          justify="center"
+          direction="column"
+        >
+          <Box mt={5}>
+            <ButtonList buttonProps={keywords1} />
+          </Box>
+          <Box mt={2}>
+            <ButtonList buttonProps={keywords2} />
+          </Box>
+        </Grid>
       </>
     </Form>
   )

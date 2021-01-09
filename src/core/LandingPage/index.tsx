@@ -7,6 +7,7 @@ import { ScreenContainer } from 'common/components/templates/ScreenContainer'
 import { Text, TypographyStyles } from 'common/components/atoms/Typography'
 
 import { SearchForm } from './SearchForm'
+import { Grid } from '@material-ui/core'
 
 const validationSchema = yup.object().shape({
   keywords: yup.string().required('Please add some keywords'),
@@ -25,15 +26,21 @@ const LandingPage: FC = () => {
     >
       {({ errors, handleSubmit, setFieldValue, values }) => (
         <ScreenContainer center>
-          <Box p={3}>
-            <Box mb={3}>
+          <Grid
+            container
+            spacing={3}
+            alignItems="center"
+            justify="center"
+            direction="column"
+          >
+            <Box mt={25} mb={3}>
               <Text type={TypographyStyles.title}>Video Search Tool</Text>
             </Box>
             <SearchForm
               setFieldValue={setFieldValue}
               handleSubmit={handleSubmit}
             />
-          </Box>
+          </Grid>
         </ScreenContainer>
       )}
     </Formik>
