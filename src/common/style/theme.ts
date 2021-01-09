@@ -6,7 +6,7 @@ export const theme: any = {
     borderSeparator: '#ecebeb',
     mainColor: '#D63649',
     textPrimary: '#252525',
-    lightBody: 'rgba(0, 0, 0, 0.54)',
+    lightBody: '#b7e0f5',
     iconDefault: '#DADADA',
     lightBackground: '#f6f6f7',
     mainBackground: '#fafafa',
@@ -58,7 +58,11 @@ export const muiTheme = createMuiTheme({
       },
     },
     subtitle2: {
-      fontSize: '14px',
+      fontWeight: 'bold',
+      fontSize: '22px',
+      [breakpoints.down('sm')]: {
+        fontSize: '16px',
+      },
     },
     body1: {
       fontWeight: 'normal',

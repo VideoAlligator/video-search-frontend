@@ -8,6 +8,7 @@ export enum TypographyStyles {
   bodyCopy = 'BODY_COPY',
   labelCopy = 'LABEL_COPY',
   title = 'TITLE',
+  movieName = 'MOVE_NAME',
 }
 
 interface TextProps {
@@ -20,6 +21,12 @@ export const Text: FC<TextProps> = ({ type, className, children }) => {
     case TypographyStyles.primaryHeadline:
       return (
         <Typography className={className} variant="subtitle1">
+          {children}
+        </Typography>
+      )
+    case TypographyStyles.movieName:
+      return (
+        <Typography className={className} variant="subtitle2">
           {children}
         </Typography>
       )
