@@ -12,7 +12,6 @@ import { ScreenContainer } from 'common/components/templates/ScreenContainer'
 import { VideoInfoCard } from 'common/components/molecules/VideoInfoCard'
 
 import { SearchForm } from './SearchForm'
-import { Grid } from '@material-ui/core'
 
 interface ResultsPageProps {
   videos: Video[]
