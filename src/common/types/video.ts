@@ -5,4 +5,5 @@ export interface Video {
   keywords: string[]
   genres: string[]
   overview: string
+  posterUrl: string
 }
