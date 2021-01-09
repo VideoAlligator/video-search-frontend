@@ -3,8 +3,8 @@ import { Formik } from 'formik'
 import * as yup from 'yup'
 import Box from '@material-ui/core/Box'
 
+import { FocusedScreenContainer } from 'common/components/templates/ScreenContainer'
 import { Text, TypographyStyles } from 'common/components/atoms/Typography'
-import TopBar from 'common/components/molecules/TopBar'
 
 import { SearchForm } from './SearchForm'
 
@@ -24,8 +24,7 @@ const LandingPage: FC = () => {
       validationSchema={validationSchema}
     >
       {({ errors, handleSubmit, setFieldValue, values }) => (
-        <>
-          <TopBar />
+        <FocusedScreenContainer>
           <Box p={3}>
             <Box mb={3}>
               <Text type={TypographyStyles.title}>Video Search Tool</Text>
@@ -35,7 +34,7 @@ const LandingPage: FC = () => {
               handleSubmit={handleSubmit}
             />
           </Box>
-        </>
+        </FocusedScreenContainer>
       )}
     </Formik>
   )
