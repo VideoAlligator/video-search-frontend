@@ -42,25 +42,23 @@ const ResultsPage: FC<ResultsPageProps> = ({ videos, getVideos }) => {
     >
       {({ errors, handleSubmit, setFieldValue, values }) => (
         <ScreenContainer center maxWidth={1200}>
-          <Box mt={6} ml={1}>
+          <Box mt={3} ml={3}>
             <SearchForm
               setFieldValue={setFieldValue}
               handleSubmit={handleSubmit}
             />
           </Box>
-          <Grid container alignItems="center" justify="center" direction="row">
-            <Box p={3}>
-              <Box display="flex" alignContent="flex-start" flexWrap="wrap">
-                {videos.map((video, index) => (
-                  <div key={index}>
-                    <Box mr={3} mt={3}>
-                      <VideoInfoCard video={video} />
-                    </Box>
-                  </div>
-                ))}
-              </Box>
+          <Box p={3}>
+            <Box display="flex" alignContent="flex-start" flexWrap="wrap">
+              {videos.map((video, index) => (
+                <div key={index}>
+                  <Box mr={3} mt={3}>
+                    <VideoInfoCard video={video} />
+                  </Box>
+                </div>
+              ))}
             </Box>
-          </Grid>
+          </Box>
         </ScreenContainer>
       )}
     </Formik>

@@ -3,6 +3,6 @@ import Grid from '@material-ui/core/Grid'
 
 export const FullHeightGrid = styled(Grid)`
   && {
-    height: 100%;
+    height: 85%;
   }
 `
