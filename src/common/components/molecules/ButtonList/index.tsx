@@ -8,8 +8,9 @@ interface ButtonListProps {
 export const ButtonList: FC<ButtonListProps> = ({ buttonProps }) => {
   return (
     <>
-      {buttonProps.map((buttonProp) => (
+      {buttonProps.map((buttonProp, index) => (
         <Button
+          key={index}
           variant="contained"
           style={{
             backgroundColor: buttonProp.color,

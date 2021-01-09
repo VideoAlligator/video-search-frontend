@@ -4,7 +4,16 @@ import Box from '@material-ui/core/Box'
 import TopBar from 'common/components/molecules/TopBar'
 import { PageLayout } from '../PageLayout'
 
-export const FocusedScreenContainer: FC = ({ children }) => {
+interface ScreenContainerProps {
+  center?: boolean
+  maxWidth?: number
+}
+
+export const ScreenContainer: FC<ScreenContainerProps> = ({
+  children,
+  center,
+  maxWidth,
+}) => {
   return (
     <PageLayout
       topBar={
@@ -14,9 +23,13 @@ export const FocusedScreenContainer: FC = ({ children }) => {
       }
     >
       {/* set 100% width to remove size adjustments as async data loads */}
-      <Box maxWidth={900} mx="auto" pb={4} width="100%">
-        {children}
-      </Box>
+      {center ? (
+        <Box maxWidth={maxWidth || 900} mx="auto" pb={4} width="100%">
+          {children}
+        </Box>
+      ) : (
+        children
+      )}
     </PageLayout>
   )
 }

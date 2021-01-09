@@ -8,7 +8,7 @@ import { State } from 'common/store/rootReducer'
 import { videosSelectors, getVideos } from 'common/store/videos'
 import { Video } from 'common/types/video'
 
-import { FocusedScreenContainer } from 'common/components/templates/ScreenContainer'
+import { ScreenContainer } from 'common/components/templates/ScreenContainer'
 import { VideoInfoCard } from 'common/components/molecules/VideoInfoCard'
 
 import { SearchForm } from './SearchForm'
@@ -40,7 +40,7 @@ const ResultsPage: FC<ResultsPageProps> = ({ videos, getVideos }) => {
       validationSchema={validationSchema}
     >
       {({ errors, handleSubmit, setFieldValue, values }) => (
-        <FocusedScreenContainer>
+        <ScreenContainer center maxWidth={1200}>
           <Box mt={6} ml={3}>
             <SearchForm
               setFieldValue={setFieldValue}
@@ -58,7 +58,7 @@ const ResultsPage: FC<ResultsPageProps> = ({ videos, getVideos }) => {
               ))}
             </Box>
           </Box>
-        </FocusedScreenContainer>
+        </ScreenContainer>
       )}
     </Formik>
   )

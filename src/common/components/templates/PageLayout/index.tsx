@@ -18,7 +18,7 @@ export const PageLayout: FC<PageLayoutProps> = ({ children, topBar }) => {
       <Grid item>{topBar}</Grid>
       <PageGridItem>
         <StyledContentContainer>
-          <FullHeightGrid container direction="row" spacing={3}>
+          <FullHeightGrid container direction="row">
             {children}
           </FullHeightGrid>
         </StyledContentContainer>
