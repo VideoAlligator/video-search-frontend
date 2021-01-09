@@ -4,7 +4,7 @@ import createBreakpoints from '@material-ui/core/styles/createBreakpoints'
 export const theme: any = {
   colors: {
     borderSeparator: '#ecebeb',
-    mainColor: '#D63649',
+    mainColor: '#7095be',
     textPrimary: '#252525',
     lightBody: '#b7e0f5',
     iconDefault: '#DADADA',
@@ -74,8 +74,8 @@ export const muiTheme = createMuiTheme({
     },
     h1: {
       fontWeight: 'bold',
-      fontSize: '60px',
-      color: '#ff9839',
+      fontSize: '70px',
+      color: '#3d80b3',
       [breakpoints.down('sm')]: {
         fontSize: '28px',
       },

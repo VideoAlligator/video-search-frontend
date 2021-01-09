@@ -36,7 +36,11 @@ export const VideoInfoCard: FC<VideoInfoCardProps> = ({ video }) => {
                 <Text type={TypographyStyles.labelCopy}>Keywords: </Text>
                 {keywords.map((keyword, index) => (
                   <div key={index}>
-                    <Chip style={{ marginLeft: 10 }} label={keyword} />
+                    <Chip
+                      style={{ marginLeft: 10 }}
+                      label={keyword}
+                      color="secondary"
+                    />
                   </div>
                 ))}
               </>
@@ -48,11 +52,7 @@ export const VideoInfoCard: FC<VideoInfoCardProps> = ({ video }) => {
                 <Text type={TypographyStyles.labelCopy}>Genres: </Text>
                 {genres.map((genre, index) => (
                   <div key={index}>
-                    <Chip
-                      style={{ marginLeft: 10 }}
-                      label={genre}
-                      color="secondary"
-                    />
+                    <Chip style={{ marginLeft: 10 }} label={genre} />
                   </div>
                 ))}
               </>
