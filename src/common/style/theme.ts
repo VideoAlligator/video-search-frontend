@@ -76,7 +76,6 @@ export const muiTheme = createMuiTheme({
       fontWeight: 'bold',
       fontSize: '60px',
       color: '#ff9839',
-      align: 'center',
       [breakpoints.down('sm')]: {
         fontSize: '28px',
       },
