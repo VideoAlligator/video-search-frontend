@@ -23,7 +23,7 @@ export const VideoInfoCard: FC<VideoInfoCardProps> = ({ video }) => {
             style={{ height: 300, width: 200 }}
             component="img"
             src={posterUrl}
-            title="test"
+            alt={title}
           />
           <CardContent>
             <Box display="flex">
