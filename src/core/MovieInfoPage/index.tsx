@@ -13,6 +13,7 @@ import { MovieInfoCard } from 'common/components/molecules/MovieInfoCard'
 
 interface MovieInfoPageProps {
   videos: Video[]
+  ID: string
   getVideos: () => void
 }
 
@@ -20,7 +21,7 @@ const validationSchema = yup.object().shape({
   keywords: yup.string().required('Please add some keywords'),
 })
 
-const MovieInfoPage: FC<MovieInfoPageProps> = ({ videos, getVideos }) => {
+const MovieInfoPage: FC<MovieInfoPageProps> = ({ ID, videos, getVideos }) => {
   useEffect(() => {
     if (videos.length === 0) {
       getVideos()
@@ -43,7 +44,7 @@ const MovieInfoPage: FC<MovieInfoPageProps> = ({ videos, getVideos }) => {
             <Box display="flex" alignContent="flex-start" flexWrap="wrap">
               {videos.map((video, index) => (
                 <div key={index}>
-                  {index == 0 && (
+                  {video._id == ID && (
                     <Box mr={3} mt={3}>
                       <MovieInfoCard video={video} />
                     </Box>

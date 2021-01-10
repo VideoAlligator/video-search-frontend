@@ -7,17 +7,17 @@ import { Text, TypographyStyles } from 'common/components/atoms/Typography'
 
 import { StyledCard } from './styled'
 import Chip from '@material-ui/core/Chip'
-import { CardActionArea, CardMedia } from '@material-ui/core'
+import { CardActionArea, CardMedia, Link } from '@material-ui/core'
 
 interface VideoInfoCardProps {
   video: Video
 }
 
 export const VideoInfoCard: FC<VideoInfoCardProps> = ({ video }) => {
-  const { title, duration, keywords, genres, overview, posterUrl } = video
+  const { _id, title, duration, keywords, genres, overview, posterUrl } = video
   return (
     <StyledCard>
-      <CardActionArea href="/movie-info">
+      <CardActionArea href={'/movie-info/' + _id}>
         <Box display="flex">
           <CardMedia
             style={{ height: 150, width: 100 }}

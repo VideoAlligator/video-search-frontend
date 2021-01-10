@@ -1,5 +1,5 @@
 export interface Video {
-  //   id: number
+  _id: string
   title: string
   duration: number
   keywords: string[]

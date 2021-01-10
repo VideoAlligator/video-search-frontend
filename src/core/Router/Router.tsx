@@ -11,7 +11,13 @@ export const Router: FC = () => {
       <Switch>
         <Route exact path="/" component={LandingPage} />
         <Route exact path="/results" component={ResultsPage} />
-        <Route exact path="/movie-info" component={MovieInfoPage} />
+        {/* <Route exact path="/movie-info/:id" component={MovieInfoPage} /> */}
+        <Route
+          path="/movie-info/:id"
+          component={(props: { match: { params: { id: any } } }) => (
+            <MovieInfoPage ID={props.match.params.id} />
+          )}
+        />
         <Redirect to="/" />
       </Switch>
     </BrowserRouter>
