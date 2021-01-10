@@ -23,7 +23,7 @@ interface SearchFormProps {
 const keywords1 = [
   {
     text: 'dog',
-    color: lightBlue[50],
+    color: lightBlue[100],
   },
   {
     text: 'cat',
@@ -31,11 +31,11 @@ const keywords1 = [
   },
   {
     text: 'desk',
-    color: lightBlue[200],
+    color: lightBlue[100],
   },
   {
     text: 'ball',
-    color: lightBlue['A100'],
+    color: lightBlue[100],
   },
   {
     text: 'bird',
@@ -43,13 +43,13 @@ const keywords1 = [
   },
   {
     text: 'apple',
-    color: lightBlue[50],
+    color: lightBlue[100],
   },
 ]
 const keywords2 = [
   {
     text: 'forest',
-    color: blueGrey[50],
+    color: blueGrey[100],
   },
   {
     text: 'glacier',
@@ -57,11 +57,11 @@ const keywords2 = [
   },
   {
     text: 'sea',
-    color: blueGrey[300],
+    color: blueGrey[100],
   },
   {
     text: 'buildings',
-    color: blueGrey[200],
+    color: blueGrey[100],
   },
   {
     text: 'street',
@@ -69,7 +69,7 @@ const keywords2 = [
   },
   {
     text: 'mountain',
-    color: blueGrey[50],
+    color: blueGrey[100],
   },
 ]
 export const SearchForm: FC<SearchFormProps> = ({

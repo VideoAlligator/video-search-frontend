@@ -1,5 +1,7 @@
 import { createMuiTheme } from '@material-ui/core/styles'
 import createBreakpoints from '@material-ui/core/styles/createBreakpoints'
+import lightBlue from '@material-ui/core/colors/lightBlue'
+import blueGrey from '@material-ui/core/colors/blueGrey'
 
 export const theme: any = {
   colors: {
@@ -37,7 +39,7 @@ export const muiTheme = createMuiTheme({
       main: theme.colors.mainColor,
     },
     secondary: {
-      main: theme.colors.lightBody,
+      main: lightBlue[100],
     },
     text: {
       primary: theme.colors.textPrimary,
