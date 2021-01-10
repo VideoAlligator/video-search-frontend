@@ -1,9 +1,11 @@
 import React, { FC } from 'react'
+import { Link } from 'react-router-dom'
 import Box from '@material-ui/core/Box'
-
-import { Video } from 'common/types/video'
-import { Text, TypographyStyles } from 'common/components/atoms/Typography'
+import Button from '@material-ui/core/Button'
 import Chip from '@material-ui/core/Chip'
+
+import { Text, TypographyStyles } from 'common/components/atoms/Typography'
+import { Video } from 'common/types/video'
 
 interface VideoDetailsProps {
   video: Video
@@ -15,12 +17,17 @@ export const VideoDetails: FC<VideoDetailsProps> = ({ video }) => {
     <Box display="flex">
       <img height={300} width={200} src={posterUrl} alt={title} />
       <Box ml={5}>
-        <Box>
-          <a style={{ marginLeft: 850 }} href="/results">
-            back
-          </a>
+        <Box display="flex" justifyContent="space-between" alignItems="center">
+          <Text type={TypographyStyles.movieName}>{title}</Text>
+          <Button
+            component={Link}
+            to="/results"
+            variant="contained"
+            color="primary"
+          >
+            Back
+          </Button>
         </Box>
-        <Text type={TypographyStyles.movieName}>{title} </Text>
         <Box mt={1} display="flex">
           <Text type={TypographyStyles.labelCopy}>Duration: </Text>
           <Box p={1} />
