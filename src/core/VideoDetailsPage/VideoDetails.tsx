@@ -4,22 +4,16 @@ import Box from '@material-ui/core/Box'
 import { Video } from 'common/types/video'
 import { Text, TypographyStyles } from 'common/components/atoms/Typography'
 import Chip from '@material-ui/core/Chip'
-import { CardMedia } from '@material-ui/core'
 
-interface MovieInfoCardProps {
+interface VideoDetailsProps {
   video: Video
 }
 
-export const MovieInfoCard: FC<MovieInfoCardProps> = ({ video }) => {
+export const VideoDetails: FC<VideoDetailsProps> = ({ video }) => {
   const { title, duration, keywords, genres, overview, posterUrl } = video
   return (
     <Box display="flex">
-      <CardMedia
-        style={{ height: 300, width: 200 }}
-        component="img"
-        src={posterUrl}
-        alt={title}
-      />
+      <img height={300} width={200} src={posterUrl} alt={title} />
       <Box ml={5}>
         <Box>
           <a style={{ marginLeft: 850 }} href="/results">
