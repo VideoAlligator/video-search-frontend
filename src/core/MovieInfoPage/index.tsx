@@ -9,11 +9,11 @@ import { videosSelectors, getVideos } from 'common/store/videos'
 import { Video } from 'common/types/video'
 
 import { ScreenContainer } from 'common/components/templates/ScreenContainer'
-import { VideoInfoCard } from 'common/components/molecules/VideoInfoCard'
+import { MovieInfoCard } from 'common/components/molecules/MovieInfoCard'
 
 import { SearchForm } from './SearchForm'
 
-interface ResultsPageProps {
+interface MovieInfoPageProps {
   videos: Video[]
   getVideos: () => void
 }
@@ -22,7 +22,7 @@ const validationSchema = yup.object().shape({
   keywords: yup.string().required('Please add some keywords'),
 })
 
-const ResultsPage: FC<ResultsPageProps> = ({ videos, getVideos }) => {
+const MovieInfoPage: FC<MovieInfoPageProps> = ({ videos, getVideos }) => {
   useEffect(() => {
     if (videos.length === 0) {
       getVideos()
@@ -51,9 +51,11 @@ const ResultsPage: FC<ResultsPageProps> = ({ videos, getVideos }) => {
             <Box display="flex" alignContent="flex-start" flexWrap="wrap">
               {videos.map((video, index) => (
                 <div key={index}>
-                  <Box mr={3} mt={2}>
-                    <VideoInfoCard video={video} />
-                  </Box>
+                  {index == 0 && (
+                    <Box mr={3} mt={3}>
+                      <MovieInfoCard video={video} />
+                    </Box>
+                  )}
                 </div>
               ))}
             </Box>
@@ -68,4 +70,4 @@ const mapStateToProps = (state: State) => ({
   videos: videosSelectors.getVideos(state),
 })
 
-export default connect(mapStateToProps, { getVideos })(ResultsPage)
+export default connect(mapStateToProps, { getVideos })(MovieInfoPage)
