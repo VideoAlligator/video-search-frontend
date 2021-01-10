@@ -13,7 +13,6 @@ export const ButtonList: FC<ButtonListProps> = ({ buttonProps }) => {
           key={index}
           variant="contained"
           style={{
-            color: 'contrastText',
             backgroundColor: buttonProp.color,
             marginLeft: 20,
           }}
