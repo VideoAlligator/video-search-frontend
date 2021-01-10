@@ -6,18 +6,17 @@ import { Video } from 'common/types/video'
 import { Text, TypographyStyles } from 'common/components/atoms/Typography'
 
 import { StyledCard } from './styled'
-import Chip from '@material-ui/core/Chip'
-import { CardActionArea, CardMedia, Link } from '@material-ui/core'
+import { CardActionArea, CardMedia } from '@material-ui/core'
 
 interface VideoInfoCardProps {
   video: Video
 }
 
 export const VideoInfoCard: FC<VideoInfoCardProps> = ({ video }) => {
-  const { _id, title, duration, keywords, genres, overview, posterUrl } = video
+  const { _id, title, duration, posterUrl } = video
   return (
     <StyledCard>
-      <CardActionArea href={'/movie-info/' + _id}>
+      <CardActionArea href={'/video/' + _id}>
         <Box display="flex">
           <CardMedia
             style={{ height: 150, width: 100 }}
@@ -34,39 +33,6 @@ export const VideoInfoCard: FC<VideoInfoCardProps> = ({ video }) => {
               <Box p={1} />
               <Text>{duration}</Text>
             </Box>
-            {/* {keywords.length > 0 && (
-              <Box mt={1} display="flex">
-                <>
-                  <Text type={TypographyStyles.labelCopy}>Keywords: </Text>
-                  {keywords.map((keyword, index) => (
-                    <div key={index}>
-                      <Chip style={{ marginLeft: 10 }} label={keyword} />
-                    </div>
-                  ))}
-                </>
-              </Box>
-            )}
-            {genres.length > 0 && (
-              <Box mt={1} display="flex">
-                <>
-                  <Text type={TypographyStyles.labelCopy}>Genres: </Text>
-                  {genres.map((genre, index) => (
-                    <div key={index}>
-                      <Chip
-                        style={{ marginLeft: 10 }}
-                        label={genre}
-                        color="secondary"
-                      />
-                    </div>
-                  ))}
-                </>
-              </Box>
-            )}
-            <Box mt={1} display="flex">
-              <Text type={TypographyStyles.labelCopy}>Overview: </Text>
-              <Box p={1} />
-              <Text>{overview}</Text>
-            </Box> */}
           </CardContent>
         </Box>
       </CardActionArea>
