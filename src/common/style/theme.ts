@@ -1,7 +1,6 @@
 import { createMuiTheme } from '@material-ui/core/styles'
 import createBreakpoints from '@material-ui/core/styles/createBreakpoints'
 import lightBlue from '@material-ui/core/colors/lightBlue'
-import blueGrey from '@material-ui/core/colors/blueGrey'
 
 export const theme: any = {
   colors: {
