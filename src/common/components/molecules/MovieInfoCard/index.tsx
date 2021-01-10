@@ -21,6 +21,11 @@ export const MovieInfoCard: FC<MovieInfoCardProps> = ({ video }) => {
         alt={title}
       />
       <Box ml={5}>
+        <Box>
+          <a style={{ marginLeft: 850 }} href="/results">
+            back
+          </a>
+        </Box>
         <Text type={TypographyStyles.movieName}>{title} </Text>
         <Box mt={1} display="flex">
           <Text type={TypographyStyles.labelCopy}>Duration: </Text>
@@ -59,11 +64,6 @@ export const MovieInfoCard: FC<MovieInfoCardProps> = ({ video }) => {
           <Text type={TypographyStyles.labelCopy}>Overview: </Text>
           <Box p={1} />
           <Text>{overview}</Text>
-        </Box>
-        <Box mt={3} display="flex">
-          <a style={{ marginLeft: 800 }} href="/results">
-            back
-          </a>
         </Box>
       </Box>
     </Box>

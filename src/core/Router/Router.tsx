@@ -11,7 +11,7 @@ export const Router: FC = () => {
       <Switch>
         <Route exact path="/" component={LandingPage} />
         <Route exact path="/results" component={ResultsPage} />
-        <Route exact path="/movieinfo" component={MovieInfoPage} />
+        <Route exact path="/movie-info" component={MovieInfoPage} />
         <Redirect to="/" />
       </Switch>
     </BrowserRouter>

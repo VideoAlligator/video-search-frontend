@@ -17,7 +17,7 @@ export const VideoInfoCard: FC<VideoInfoCardProps> = ({ video }) => {
   const { title, duration, keywords, genres, overview, posterUrl } = video
   return (
     <StyledCard>
-      <CardActionArea href="/movieinfo">
+      <CardActionArea href="/movie-info">
         <Box display="flex">
           <CardMedia
             style={{ height: 150, width: 100 }}

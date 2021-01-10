@@ -11,8 +11,6 @@ import { Video } from 'common/types/video'
 import { ScreenContainer } from 'common/components/templates/ScreenContainer'
 import { MovieInfoCard } from 'common/components/molecules/MovieInfoCard'
 
-import { SearchForm } from './SearchForm'
-
 interface MovieInfoPageProps {
   videos: Video[]
   getVideos: () => void
@@ -41,12 +39,6 @@ const MovieInfoPage: FC<MovieInfoPageProps> = ({ videos, getVideos }) => {
     >
       {({ errors, handleSubmit, setFieldValue, values }) => (
         <ScreenContainer center maxWidth={1200}>
-          <Box mt={3} ml={3}>
-            <SearchForm
-              setFieldValue={setFieldValue}
-              handleSubmit={handleSubmit}
-            />
-          </Box>
           <Box p={3}>
             <Box display="flex" alignContent="flex-start" flexWrap="wrap">
               {videos.map((video, index) => (
