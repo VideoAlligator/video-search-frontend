@@ -1,10 +1,11 @@
 import { createMuiTheme } from '@material-ui/core/styles'
 import createBreakpoints from '@material-ui/core/styles/createBreakpoints'
+import lightBlue from '@material-ui/core/colors/lightBlue'
 
 export const theme: any = {
   colors: {
     borderSeparator: '#ecebeb',
-    mainColor: '#D63649',
+    mainColor: '#7095be',
     textPrimary: '#252525',
     lightBody: '#b7e0f5',
     iconDefault: '#DADADA',
@@ -37,7 +38,7 @@ export const muiTheme = createMuiTheme({
       main: theme.colors.mainColor,
     },
     secondary: {
-      main: theme.colors.lightBody,
+      main: lightBlue[100],
     },
     text: {
       primary: theme.colors.textPrimary,
@@ -74,8 +75,8 @@ export const muiTheme = createMuiTheme({
     },
     h1: {
       fontWeight: 'bold',
-      fontSize: '60px',
-      color: '#ff9839',
+      fontSize: '70px',
+      color: '#3d80b3',
       [breakpoints.down('sm')]: {
         fontSize: '28px',
       },

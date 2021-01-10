@@ -8,6 +8,9 @@ import { FormikFieldRender } from 'common/types/FormikFieldRender'
 import { ButtonList } from 'common/components/molecules/ButtonList'
 import { Grid } from '@material-ui/core'
 
+import lightBlue from '@material-ui/core/colors/lightBlue'
+import blueGrey from '@material-ui/core/colors/blueGrey'
+
 interface SearchFormProps {
   setFieldValue: (
     field: string,
@@ -20,53 +23,53 @@ interface SearchFormProps {
 const keywords1 = [
   {
     text: 'dog',
-    color: '#ebe89e',
+    color: lightBlue[100],
   },
   {
     text: 'cat',
-    color: '#b2eb9e',
+    color: lightBlue[100],
   },
   {
     text: 'desk',
-    color: '#9eebe2',
+    color: lightBlue[100],
   },
   {
     text: 'ball',
-    color: '#d8befa',
+    color: lightBlue[100],
   },
   {
     text: 'bird',
-    color: '#fab7d3',
+    color: lightBlue[100],
   },
   {
     text: 'apple',
-    color: '#ebb99e',
+    color: lightBlue[100],
   },
 ]
 const keywords2 = [
   {
     text: 'forest',
-    color: '#9db736',
+    color: blueGrey[100],
   },
   {
     text: 'glacier',
-    color: '#9eb3eb',
+    color: blueGrey[100],
   },
   {
     text: 'sea',
-    color: '#948bf6',
+    color: blueGrey[100],
   },
   {
     text: 'buildings',
-    color: '#ee72f1',
+    color: blueGrey[100],
   },
   {
     text: 'street',
-    color: '#fb6f88',
+    color: blueGrey[100],
   },
   {
     text: 'mountain',
-    color: '#fc8644',
+    color: blueGrey[100],
   },
 ]
 export const SearchForm: FC<SearchFormProps> = ({
