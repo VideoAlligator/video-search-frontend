@@ -16,7 +16,7 @@ interface VideoDetailsPageProps {
 }
 
 interface VideoParams {
-  id: string
+  videoId: string
 }
 
 const VideoDetailsPage: FC<VideoDetailsPageProps> = ({ videos, getVideos }) => {
@@ -34,7 +34,7 @@ const VideoDetailsPage: FC<VideoDetailsPageProps> = ({ videos, getVideos }) => {
         <Box display="flex" alignContent="flex-start" flexWrap="wrap">
           {videos.map((video, index) => (
             <div key={index}>
-              {video._id === params.id && (
+              {video._id === params.videoId && (
                 <Box mr={3} mt={3}>
                   <VideoDetails video={video} />
                 </Box>
