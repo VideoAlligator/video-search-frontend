@@ -14,6 +14,7 @@ interface SearchFormProps {
   ) => void
   handleSubmit: (e?: React.FormEvent<HTMLFormElement> | undefined) => void
 }
+
 export const SearchForm: FC<SearchFormProps> = ({
   setFieldValue,
   handleSubmit,
@@ -21,7 +22,7 @@ export const SearchForm: FC<SearchFormProps> = ({
   return (
     <Form>
       <Box display="flex">
-        <Field name="keywords">
+        <Field name="keyword">
           {({ field, form }: FormikFieldRender<string>) => (
             <SearchField
               name={field.name}

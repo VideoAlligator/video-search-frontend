@@ -79,7 +79,7 @@ export const SearchForm: FC<SearchFormProps> = ({
   return (
     <Form>
       <Box display="flex">
-        <Field name="keywords">
+        <Field name="keyword">
           {({ field, form }: FormikFieldRender<string>) => (
             <SearchField
               name={field.name}

@@ -34,4 +34,4 @@ export const SearchField: FC<SearchFieldProps> = ({
   )
 }
 
-const sampleKeywords = ['baby', 'midlife crisis', 'toy', 'boy', 'board game']
+const sampleKeywords = ['Cat', 'Dog', 'People']
