@@ -1,5 +1,6 @@
 import React, { FC } from 'react'
 import { connect } from 'react-redux'
+import { useHistory } from 'react-router-dom'
 import { Formik } from 'formik'
 import * as yup from 'yup'
 import Box from '@material-ui/core/Box'
@@ -28,10 +29,18 @@ const initialValues = {
 }
 
 const ResultsPage: FC<ResultsPageProps> = ({ results, queryVideos }) => {
+  const history = useHistory()
+
   return (
     <Formik
       initialValues={initialValues}
-      onSubmit={(values) => queryVideos(values.keyword)}
+      onSubmit={(values) => {
+        queryVideos(values.keyword)
+        history.replace({
+          pathname: '/search',
+          search: `?keyword=${values.keyword}`,
+        })
+      }}
       validationSchema={validationSchema}
     >
       {({ handleSubmit, setFieldValue }) => (
