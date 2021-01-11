@@ -20,8 +20,8 @@ export const VideoInfoCard: FC<VideoInfoCardProps> = ({ video }) => {
   return (
     <StyledCard>
       <CardActionArea
-        // href={'/video/' + _id}
-        onClick={() => {
+        onClick={(e) => {
+          e.preventDefault()
           history.push({
             pathname: `/video/${_id}`,
           })

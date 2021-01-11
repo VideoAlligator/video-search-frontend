@@ -1,6 +1,7 @@
-import React, { FC } from 'react'
+import React, { FC, useEffect } from 'react'
 import { connect } from 'react-redux'
-import { useHistory } from 'react-router-dom'
+import qs from 'query-string'
+import { useHistory, useLocation } from 'react-router-dom'
 import { Formik } from 'formik'
 import * as yup from 'yup'
 import Box from '@material-ui/core/Box'
@@ -30,6 +31,17 @@ const initialValues = {
 
 const ResultsPage: FC<ResultsPageProps> = ({ results, queryVideos }) => {
   const history = useHistory()
+  const location = useLocation()
+
+  useEffect(() => {
+    if (results.length === 0) {
+      const queryString = qs.parse(location.search, { arrayFormat: 'bracket' })
+      const keyword = queryString['keyword']
+      if (typeof keyword === 'string') {
+        queryVideos(keyword)
+      }
+    }
+  })
 
   return (
     <Formik

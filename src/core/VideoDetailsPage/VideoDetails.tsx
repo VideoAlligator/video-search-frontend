@@ -30,7 +30,8 @@ export const VideoDetails: FC<VideoDetailsProps> = ({ video }) => {
         <Box display="flex" justifyContent="space-between" alignItems="center">
           <Text type={TypographyStyles.primaryHeadline}>{title}</Text>
           <Button
-            onClick={() => {
+            onClick={(e) => {
+              e.preventDefault()
               history.goBack()
             }}
             variant="contained"
