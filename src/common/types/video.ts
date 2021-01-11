@@ -1,3 +1,8 @@
+export interface VideoDetail {
+  keyword: string
+  timestamp: string
+}
+
 export interface Video {
   _id: string
   title: string
@@ -6,4 +11,5 @@ export interface Video {
   genres: string[]
   overview: string
   posterUrl: string
+  details: VideoDetail[]
 }

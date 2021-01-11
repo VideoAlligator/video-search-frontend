@@ -12,13 +12,21 @@ interface VideoDetailsProps {
 }
 
 export const VideoDetails: FC<VideoDetailsProps> = ({ video }) => {
-  const { title, duration, keywords, genres, overview, posterUrl } = video
+  const {
+    title,
+    duration,
+    keywords,
+    genres,
+    overview,
+    posterUrl,
+    details,
+  } = video
   return (
     <Box display="flex">
       <img height={300} width={200} src={posterUrl} alt={title} />
       <Box ml={5}>
         <Box display="flex" justifyContent="space-between" alignItems="center">
-          <Text type={TypographyStyles.movieName}>{title}</Text>
+          <Text type={TypographyStyles.primaryHeadline}>{title}</Text>
           <Button
             component={Link}
             to="/results"
@@ -29,14 +37,14 @@ export const VideoDetails: FC<VideoDetailsProps> = ({ video }) => {
           </Button>
         </Box>
         <Box mt={1} display="flex">
-          <Text type={TypographyStyles.labelCopy}>Duration: </Text>
+          <Text type={TypographyStyles.labelCopy}>Duration:</Text>
           <Box p={1} />
           <Text>{duration}</Text>
         </Box>
         {keywords.length > 0 && (
-          <Box mt={1} display="flex">
+          <Box mt={1} display="flex" alignItems="center">
             <>
-              <Text type={TypographyStyles.labelCopy}>Keywords: </Text>
+              <Text type={TypographyStyles.labelCopy}>Keywords:</Text>
               {keywords.map((keyword, index) => (
                 <div key={index}>
                   <Chip style={{ marginLeft: 10 }} label={keyword} />
@@ -46,9 +54,9 @@ export const VideoDetails: FC<VideoDetailsProps> = ({ video }) => {
           </Box>
         )}
         {genres.length > 0 && (
-          <Box mt={1} display="flex">
+          <Box mt={1} display="flex" alignItems="center">
             <>
-              <Text type={TypographyStyles.labelCopy}>Genres: </Text>
+              <Text type={TypographyStyles.labelCopy}>Genres:</Text>
               {genres.map((genre, index) => (
                 <div key={index}>
                   <Chip
@@ -62,9 +70,21 @@ export const VideoDetails: FC<VideoDetailsProps> = ({ video }) => {
           </Box>
         )}
         <Box mt={1} display="flex">
-          <Text type={TypographyStyles.labelCopy}>Overview: </Text>
+          <Text type={TypographyStyles.labelCopy}>Overview:</Text>
           <Box p={1} />
           <Text>{overview}</Text>
+        </Box>
+
+        <Box mt={3} mb={1}>
+          <Text type={TypographyStyles.primaryHeadline}>Timestamps</Text>
+        </Box>
+        <Box display="flex" flexDirection="column">
+          {details.map((detail, index) => (
+            <Box key={index} mr={2} mb={2} display="flex" alignItems="center">
+              <Chip style={{ marginRight: 10 }} label={detail.keyword} />
+              <Text> {detail.timestamp} seconds</Text>
+            </Box>
+          ))}
         </Box>
       </Box>
     </Box>

@@ -52,7 +52,7 @@ export const muiTheme = createMuiTheme({
   typography: {
     fontFamily: 'Inter',
     subtitle1: {
-      fontWeight: 'normal',
+      fontWeight: 'bold',
       fontSize: '22px',
       [breakpoints.down('sm')]: {
         fontSize: '16px',
