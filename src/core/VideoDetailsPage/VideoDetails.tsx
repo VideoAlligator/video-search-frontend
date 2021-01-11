@@ -1,5 +1,5 @@
 import React, { FC } from 'react'
-import { Link } from 'react-router-dom'
+import { useHistory } from 'react-router-dom'
 import Box from '@material-ui/core/Box'
 import Button from '@material-ui/core/Button'
 import Chip from '@material-ui/core/Chip'
@@ -12,6 +12,7 @@ interface VideoDetailsProps {
 }
 
 export const VideoDetails: FC<VideoDetailsProps> = ({ video }) => {
+  const history = useHistory()
   const {
     title,
     duration,
@@ -21,6 +22,7 @@ export const VideoDetails: FC<VideoDetailsProps> = ({ video }) => {
     posterUrl,
     details,
   } = video
+
   return (
     <Box display="flex">
       <img height={300} width={200} src={posterUrl} alt={title} />
@@ -28,8 +30,9 @@ export const VideoDetails: FC<VideoDetailsProps> = ({ video }) => {
         <Box display="flex" justifyContent="space-between" alignItems="center">
           <Text type={TypographyStyles.primaryHeadline}>{title}</Text>
           <Button
-            component={Link}
-            to="/results"
+            onClick={() => {
+              history.goBack()
+            }}
             variant="contained"
             color="primary"
           >

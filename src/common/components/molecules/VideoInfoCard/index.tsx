@@ -1,4 +1,5 @@
 import React, { FC } from 'react'
+import { useHistory } from 'react-router-dom'
 import Box from '@material-ui/core/Box'
 import { CardContent, CardActionArea, CardMedia } from '@material-ui/core'
 import Chip from '@material-ui/core/Chip'
@@ -13,10 +14,19 @@ interface VideoInfoCardProps {
 }
 
 export const VideoInfoCard: FC<VideoInfoCardProps> = ({ video }) => {
+  const history = useHistory()
   const { _id, title, duration, posterUrl, details } = video
+
   return (
     <StyledCard>
-      <CardActionArea href={'/video/' + _id}>
+      <CardActionArea
+        // href={'/video/' + _id}
+        onClick={() => {
+          history.push({
+            pathname: `/video/${_id}`,
+          })
+        }}
+      >
         <Box display="flex">
           <CardMedia
             style={{ height: 150, width: 100 }}
