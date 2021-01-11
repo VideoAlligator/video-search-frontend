@@ -6,8 +6,9 @@ import Box from '@material-ui/core/Box'
 import { State } from 'common/store/rootReducer'
 import { videosSelectors, getVideos } from 'common/store/videos'
 import { Video } from 'common/types/video'
-
 import { ScreenContainer } from 'common/components/templates/ScreenContainer'
+import { Text, TypographyStyles } from 'common/components/atoms/Typography'
+
 import { VideoDetails } from './VideoDetails'
 
 interface VideoDetailsPageProps {
@@ -19,6 +20,9 @@ interface VideoParams {
   videoId: string
 }
 
+const getVideoById = (videos: Video[], videoId: string): Video[] =>
+  videos.filter((video: Video) => video._id === videoId)
+
 const VideoDetailsPage: FC<VideoDetailsPageProps> = ({ videos, getVideos }) => {
   useEffect(() => {
     if (videos.length === 0) {
@@ -27,21 +31,18 @@ const VideoDetailsPage: FC<VideoDetailsPageProps> = ({ videos, getVideos }) => {
   })
 
   const params = useParams<VideoParams>()
+  const resultVideo = getVideoById(videos, params.videoId)[0]
 
   return (
-    <ScreenContainer center maxWidth={1200}>
-      <Box p={3}>
-        <Box display="flex" alignContent="flex-start" flexWrap="wrap">
-          {videos.map((video, index) => (
-            <div key={index}>
-              {video._id === params.videoId && (
-                <Box mr={3} mt={3}>
-                  <VideoDetails video={video} />
-                </Box>
-              )}
-            </div>
-          ))}
-        </Box>
+    <ScreenContainer center maxWidth={1100}>
+      <Box my={6}>
+        {resultVideo ? (
+          <VideoDetails video={resultVideo} />
+        ) : (
+          <Text type={TypographyStyles.primaryHeadline}>
+            Cannot find such videos.
+          </Text>
+        )}
       </Box>
     </ScreenContainer>
   )
