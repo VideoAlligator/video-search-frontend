@@ -4,10 +4,12 @@ import { createSlice, PayloadAction } from '@reduxjs/toolkit'
 
 interface VideosState {
   videos: Video[]
+  queryResults: Video[]
 }
 
 const initialState: VideosState = {
   videos: [],
+  queryResults: [],
 }
 
 export const videos = createSlice({
@@ -18,9 +20,17 @@ export const videos = createSlice({
       ...state,
       videos: action.payload,
     }),
+    setResultedVideos: (
+      state: VideosState,
+      action: PayloadAction<Array<Video>>
+    ) => ({
+      ...state,
+      queryResults: action.payload,
+    }),
   },
 })
 
 export const videosSelectors = {
-  getVideos: (state: State): Video[] => state.videos.videos,
+  getAllVideos: (state: State): Video[] => state.videos.videos,
+  getQueryResults: (state: State): Video[] => state.videos.queryResults,
 }

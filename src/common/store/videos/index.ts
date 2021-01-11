@@ -1,3 +1,3 @@
 export { videos, videosSelectors } from './slice'
 
-export { getVideos } from './actions'
+export { getAllVideos, queryVideos } from './actions'
