@@ -10,21 +10,21 @@ import { SearchForm } from './SearchForm'
 import { FullHeightGrid } from './styled'
 
 const validationSchema = yup.object().shape({
-  keywords: yup.string().required('Please add some keywords'),
+  keyword: yup.string().required('Please add some keywords'),
 })
 
 const initialValues = {
-  keywords: '',
+  keyword: '',
 }
 
 const LandingPage: FC = () => {
   return (
     <Formik
       initialValues={initialValues}
-      onSubmit={(values) => console.log('submited', values)}
+      onSubmit={(values) => console.log(values)}
       validationSchema={validationSchema}
     >
-      {({ errors, handleSubmit, setFieldValue, values }) => (
+      {({ handleSubmit, setFieldValue }) => (
         <ScreenContainer center>
           <FullHeightGrid
             container

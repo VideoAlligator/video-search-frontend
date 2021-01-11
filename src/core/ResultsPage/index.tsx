@@ -20,27 +20,27 @@ interface ResultsPageProps {
 }
 
 const validationSchema = yup.object().shape({
-  keywords: yup.string().required('Please add some keywords'),
+  keyword: yup.string().required('Please add some keywords'),
 })
 
 const ResultsPage: FC<ResultsPageProps> = ({ results, queryVideos }) => {
   useEffect(() => {
     if (results.length === 0) {
-      queryVideos('People')
+      queryVideos('')
     }
   })
 
   const initialValues = {
-    keywords: '',
+    keyword: '',
   }
 
   return (
     <Formik
       initialValues={initialValues}
-      onSubmit={(values) => console.log('submited', values)}
+      onSubmit={(values) => queryVideos(values.keyword)}
       validationSchema={validationSchema}
     >
-      {({ errors, handleSubmit, setFieldValue, values }) => (
+      {({ handleSubmit, setFieldValue }) => (
         <ScreenContainer center maxWidth={1200}>
           <Box mt={3} ml={3}>
             <SearchForm
