@@ -1,4 +1,4 @@
-import React, { FC, useEffect } from 'react'
+import React, { FC } from 'react'
 import { connect } from 'react-redux'
 import { Formik } from 'formik'
 import * as yup from 'yup'
@@ -23,17 +23,11 @@ const validationSchema = yup.object().shape({
   keyword: yup.string().required('Please add some keywords'),
 })
 
+const initialValues = {
+  keyword: '',
+}
+
 const ResultsPage: FC<ResultsPageProps> = ({ results, queryVideos }) => {
-  useEffect(() => {
-    if (results.length === 0) {
-      queryVideos('')
-    }
-  })
-
-  const initialValues = {
-    keyword: '',
-  }
-
   return (
     <Formik
       initialValues={initialValues}

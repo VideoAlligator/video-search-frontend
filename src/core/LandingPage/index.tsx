@@ -1,8 +1,11 @@
 import React, { FC } from 'react'
 import { Formik } from 'formik'
 import * as yup from 'yup'
+import { connect } from 'react-redux'
+import { useHistory } from 'react-router-dom'
 import Box from '@material-ui/core/Box'
 
+import { queryVideos } from 'common/store/videos'
 import { ScreenContainer } from 'common/components/templates/ScreenContainer'
 import { Text, TypographyStyles } from 'common/components/atoms/Typography'
 
@@ -17,11 +20,23 @@ const initialValues = {
   keyword: '',
 }
 
-const LandingPage: FC = () => {
+interface LandingPageProps {
+  queryVideos: (keyword: string) => void
+}
+
+const LandingPage: FC<LandingPageProps> = ({ queryVideos }) => {
+  const history = useHistory()
+
   return (
     <Formik
       initialValues={initialValues}
-      onSubmit={(values) => console.log(values)}
+      onSubmit={(values) => {
+        queryVideos(values.keyword)
+        history.push({
+          pathname: '/search',
+          search: `?keyword=${values.keyword}`,
+        })
+      }}
       validationSchema={validationSchema}
     >
       {({ handleSubmit, setFieldValue }) => (
@@ -46,4 +61,4 @@ const LandingPage: FC = () => {
   )
 }
 
-export default LandingPage
+export default connect(null, { queryVideos })(LandingPage)
