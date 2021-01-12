@@ -4,6 +4,7 @@ import AppBar from '@material-ui/core/AppBar'
 import Toolbar from '@material-ui/core/Toolbar'
 import Typography from '@material-ui/core/Typography'
 import { Button } from 'common/components/atoms/Button'
+import styled from 'styled-components'
 
 const useStyles = makeStyles((theme: Theme) =>
   createStyles({
@@ -19,6 +20,14 @@ const useStyles = makeStyles((theme: Theme) =>
   })
 )
 
+export const TextLink = styled.a`
+  font-size: 20px;
+  text-decoration: none;
+  margin: 0;
+  :hover {
+    cursor: pointer;
+  }
+`
 const TopBar: FC = () => {
   const classes = useStyles()
 
@@ -26,11 +35,11 @@ const TopBar: FC = () => {
     <div className={classes.root}>
       <AppBar position="static">
         <Toolbar>
-          <Button href="/" color="inherit">
+          <TextLink href="/" style={{ color: '#ffffff' }}>
             <Typography variant="h6" className={classes.title}>
               Video Search Tool
             </Typography>
-          </Button>
+          </TextLink>
         </Toolbar>
       </AppBar>
     </div>
