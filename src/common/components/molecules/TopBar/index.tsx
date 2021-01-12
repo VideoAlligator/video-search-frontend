@@ -3,7 +3,6 @@ import { createStyles, makeStyles, Theme } from '@material-ui/core/styles'
 import AppBar from '@material-ui/core/AppBar'
 import Toolbar from '@material-ui/core/Toolbar'
 import Typography from '@material-ui/core/Typography'
-import { Button } from 'common/components/atoms/Button'
 import styled from 'styled-components'
 
 const useStyles = makeStyles((theme: Theme) =>
