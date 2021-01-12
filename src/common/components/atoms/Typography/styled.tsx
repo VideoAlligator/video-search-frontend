@@ -6,3 +6,14 @@ export const LabelText = styled.label`
   font-size: 16px;
   line-height: 1.5;
 `
+
+export const TextLink = styled.a`
+  font-family: ${({ theme }) => theme.fontFamily};
+  color: black;
+  font-size: 16px;
+  text-decoration: none;
+  margin: 0;
+  :hover {
+    cursor: pointer;
+  }
+`
