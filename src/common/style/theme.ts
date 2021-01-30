@@ -98,6 +98,7 @@ export const muiTheme = createMuiTheme({
     },
     h5: {
       fontSize: '15px',
+      color: '#3d80b3',
     },
   },
 })
