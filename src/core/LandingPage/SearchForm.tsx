@@ -1,15 +1,21 @@
-import React, { FC } from 'react'
+import React, { FC, useState } from 'react'
 import { Form, Field } from 'formik'
 import Box from '@material-ui/core/Box'
+import {
+  Accordion,
+  AccordionDetails,
+  AccordionSummary,
+  Grid,
+  Typography,
+} from '@material-ui/core'
+import { ArrowUpward, ArrowDownward } from '@material-ui/icons'
 
 import { Button } from 'common/components/atoms/Button'
 import { SearchField } from 'common/components/atoms/SearchField'
 import { FormikFieldRender } from 'common/types/FormikFieldRender'
 import { ButtonList } from 'common/components/molecules/ButtonList'
-import { Grid } from '@material-ui/core'
 
-import lightBlue from '@material-ui/core/colors/lightBlue'
-import blueGrey from '@material-ui/core/colors/blueGrey'
+import { keywordsList } from './constants'
 
 interface SearchFormProps {
   setFieldValue: (
@@ -20,62 +26,12 @@ interface SearchFormProps {
   handleSubmit: (e?: React.FormEvent<HTMLFormElement> | undefined) => void
 }
 
-const keywords1 = [
-  {
-    text: 'dog',
-    color: lightBlue[100],
-  },
-  {
-    text: 'cat',
-    color: lightBlue[100],
-  },
-  {
-    text: 'desk',
-    color: lightBlue[100],
-  },
-  {
-    text: 'ball',
-    color: lightBlue[100],
-  },
-  {
-    text: 'bird',
-    color: lightBlue[100],
-  },
-  {
-    text: 'apple',
-    color: lightBlue[100],
-  },
-]
-const keywords2 = [
-  {
-    text: 'forest',
-    color: blueGrey[100],
-  },
-  {
-    text: 'glacier',
-    color: blueGrey[100],
-  },
-  {
-    text: 'sea',
-    color: blueGrey[100],
-  },
-  {
-    text: 'buildings',
-    color: blueGrey[100],
-  },
-  {
-    text: 'street',
-    color: blueGrey[100],
-  },
-  {
-    text: 'mountain',
-    color: blueGrey[100],
-  },
-]
 export const SearchForm: FC<SearchFormProps> = ({
   setFieldValue,
   handleSubmit,
 }) => {
+  const [expanded, setExpanded] = useState(false)
+
   return (
     <Form>
       <Box display="flex">
@@ -99,20 +55,48 @@ export const SearchForm: FC<SearchFormProps> = ({
         </Field>
       </Box>
       <>
-        <Grid
-          container
-          spacing={3}
-          alignItems="center"
-          justify="center"
-          direction="column"
+        <Accordion
+          style={{
+            marginTop: 20,
+            backgroundColor: 'transparent',
+            boxShadow: 'none',
+          }}
+          expanded={expanded}
+          onChange={() => setExpanded(!expanded)}
         >
-          <Box mt={5}>
-            <ButtonList buttonProps={keywords1} />
-          </Box>
-          <Box mt={2}>
-            <ButtonList buttonProps={keywords2} />
-          </Box>
-        </Grid>
+          <AccordionSummary aria-controls="panel1a-content" id="panel1a-header">
+            <Grid
+              container
+              spacing={3}
+              alignItems="center"
+              justify="center"
+              direction="row"
+              style={{ color: '#3d80b3' }}
+            >
+              <Typography variant="h5">Most common search keyword</Typography>
+              {expanded ? (
+                <ArrowUpward fontSize="small" />
+              ) : (
+                <ArrowDownward fontSize="small" />
+              )}
+            </Grid>
+          </AccordionSummary>
+          <AccordionDetails>
+            <Grid
+              container
+              spacing={2}
+              alignItems="center"
+              justify="center"
+              direction="column"
+            >
+              {keywordsList.map((keywords, index) => (
+                <Box mt={2} key={index}>
+                  <ButtonList buttonProps={keywords} />
+                </Box>
+              ))}
+            </Grid>
+          </AccordionDetails>
+        </Accordion>
       </>
     </Form>
   )
