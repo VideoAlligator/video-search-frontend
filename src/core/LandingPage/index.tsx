@@ -33,8 +33,7 @@ const LandingPage: FC<LandingPageProps> = ({ queryVideos }) => {
       onSubmit={(values) => {
         queryVideos(values.keyword)
         history.push({
-          pathname: '/search',
-          search: `?keyword=${values.keyword}`,
+          pathname: `/search?keyword=${values.keyword}`,
         })
       }}
       validationSchema={validationSchema}

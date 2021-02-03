@@ -11,9 +11,13 @@ import { StyledCard } from './styled'
 
 interface VideoInfoCardProps {
   video: Video
+  searchword: string
 }
 
-export const VideoInfoCard: FC<VideoInfoCardProps> = ({ video }) => {
+export const VideoInfoCard: FC<VideoInfoCardProps> = ({
+  video,
+  searchword,
+}) => {
   const history = useHistory()
   const { _id, title, duration, posterUrl, details } = video
 
@@ -47,12 +51,23 @@ export const VideoInfoCard: FC<VideoInfoCardProps> = ({ video }) => {
               <Text type={TypographyStyles.labelCopy}>Timestamps:</Text>
               <Box p={1} />
               <Box display="flex">
-                {details.map((detail, index) => (
-                  <Box key={index} mr={2} display="flex" alignItems="center">
-                    <Chip style={{ marginRight: 10 }} label={detail.keyword} />
-                    <Text> {detail.timestamp} seconds</Text>
-                  </Box>
-                ))}
+                {details.map((detail, index) => {
+                  if (detail.keyword === searchword)
+                    return (
+                      <Box
+                        key={index}
+                        mr={2}
+                        display="flex"
+                        alignItems="center"
+                      >
+                        <Chip
+                          style={{ marginRight: 10 }}
+                          label={detail.keyword}
+                        />
+                        <Text> {detail.timestamp} seconds</Text>
+                      </Box>
+                    )
+                })}
               </Box>
             </Box>
           </CardContent>

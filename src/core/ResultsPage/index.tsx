@@ -1,7 +1,7 @@
 import React, { FC, useEffect } from 'react'
 import { connect } from 'react-redux'
 import qs from 'query-string'
-import { useHistory, useLocation } from 'react-router-dom'
+import { useHistory, useLocation, useParams } from 'react-router-dom'
 import { Formik } from 'formik'
 import * as yup from 'yup'
 import Box from '@material-ui/core/Box'
@@ -21,6 +21,10 @@ interface ResultsPageProps {
   queryVideos: (keyword: string) => void
 }
 
+interface ResultParams {
+  searchword: string
+}
+
 const validationSchema = yup.object().shape({
   keyword: yup.string().required('Please add some keywords'),
 })
@@ -32,7 +36,6 @@ const initialValues = {
 const ResultsPage: FC<ResultsPageProps> = ({ results, queryVideos }) => {
   const history = useHistory()
   const location = useLocation()
-
   useEffect(() => {
     if (results.length === 0) {
       const queryString = qs.parse(location.search, { arrayFormat: 'bracket' })
@@ -42,6 +45,8 @@ const ResultsPage: FC<ResultsPageProps> = ({ results, queryVideos }) => {
       }
     }
   })
+  const params = useParams<ResultParams>()
+  const searchword = params.searchword
 
   return (
     <Formik
@@ -49,8 +54,7 @@ const ResultsPage: FC<ResultsPageProps> = ({ results, queryVideos }) => {
       onSubmit={(values) => {
         queryVideos(values.keyword)
         history.replace({
-          pathname: '/search',
-          search: `?keyword=${values.keyword}`,
+          pathname: `/search?keyword=${values.keyword}`,
         })
       }}
       validationSchema={validationSchema}
@@ -69,7 +73,7 @@ const ResultsPage: FC<ResultsPageProps> = ({ results, queryVideos }) => {
                 {results.map((video, index) => (
                   <div key={index}>
                     <Box mr={3} mt={2}>
-                      <VideoInfoCard video={video} />
+                      <VideoInfoCard video={video} searchword={searchword} />
                     </Box>
                   </div>
                 ))}
