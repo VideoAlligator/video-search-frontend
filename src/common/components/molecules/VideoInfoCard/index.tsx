@@ -1,5 +1,6 @@
 import React, { FC } from 'react'
 import { useHistory } from 'react-router-dom'
+import qs from 'query-string'
 import Box from '@material-ui/core/Box'
 import { CardContent, CardActionArea, CardMedia } from '@material-ui/core'
 import Chip from '@material-ui/core/Chip'
@@ -16,6 +17,10 @@ interface VideoInfoCardProps {
 export const VideoInfoCard: FC<VideoInfoCardProps> = ({ video }) => {
   const history = useHistory()
   const { _id, title, duration, posterUrl, details } = video
+
+  const queryString = qs.parse(history.location.search, {
+    arrayFormat: 'bracket',
+  })
 
   return (
     <StyledCard>
@@ -47,12 +52,23 @@ export const VideoInfoCard: FC<VideoInfoCardProps> = ({ video }) => {
               <Text type={TypographyStyles.labelCopy}>Timestamps:</Text>
               <Box p={1} />
               <Box display="flex">
-                {details.map((detail, index) => (
-                  <Box key={index} mr={2} display="flex" alignItems="center">
-                    <Chip style={{ marginRight: 10 }} label={detail.keyword} />
-                    <Text> {detail.timestamp} seconds</Text>
-                  </Box>
-                ))}
+                {details.map(
+                  (detail, index) =>
+                    detail.keyword === queryString['keyword'] && (
+                      <Box
+                        key={index}
+                        mr={2}
+                        display="flex"
+                        alignItems="center"
+                      >
+                        <Chip
+                          style={{ marginRight: 10 }}
+                          label={detail.keyword}
+                        />
+                        <Text> {detail.timestamp} seconds</Text>
+                      </Box>
+                    )
+                )}
               </Box>
             </Box>
           </CardContent>
