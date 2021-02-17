@@ -1,9 +1,11 @@
-import React, { FC } from 'react'
+import React, { FC, useState } from 'react'
 import { useHistory } from 'react-router-dom'
 import Box from '@material-ui/core/Box'
 import Button from '@material-ui/core/Button'
+import Backdrop from '@material-ui/core/Backdrop'
 import Chip from '@material-ui/core/Chip'
-
+import Fade from '@material-ui/core/Fade'
+import Modal from '@material-ui/core/Modal'
 import { Text, TypographyStyles } from 'common/components/atoms/Typography'
 import { Video } from 'common/types/video'
 
@@ -22,6 +24,17 @@ export const VideoDetails: FC<VideoDetailsProps> = ({ video }) => {
     posterUrl,
     details,
   } = video
+
+  const [open, setOpen] = useState(false)
+  const [word, setIndex] = useState('')
+
+  const handleOpen = (word: string) => () => {
+    setOpen(true)
+    setIndex(word)
+  }
+  const handleClose = () => {
+    setOpen(false)
+  }
 
   return (
     <Box display="flex">
@@ -78,18 +91,61 @@ export const VideoDetails: FC<VideoDetailsProps> = ({ video }) => {
           <Box p={1} />
           <Text>{overview}</Text>
         </Box>
-
         <Box mt={3} mb={1}>
-          <Text type={TypographyStyles.primaryHeadline}>Timestamps</Text>
+          <Text type={TypographyStyles.primaryHeadline}>
+            Timestamps (click for details)
+          </Text>
         </Box>
-        <Box display="flex" flexDirection="column">
+        <Box display="flex">
           {details.map((detail, index) => (
             <Box key={index} mr={2} mb={2} display="flex" alignItems="center">
-              <Chip style={{ marginRight: 10 }} label={detail.keyword} />
-              <Text> {detail.timestamp} seconds</Text>
+              <Chip
+                style={{ marginRight: 10 }}
+                label={detail.keyword}
+                onClick={handleOpen(detail.keyword)}
+              ></Chip>
             </Box>
           ))}
         </Box>
+        <Modal
+          aria-labelledby="title"
+          aria-describedby="timestamp"
+          open={open}
+          onClose={handleClose}
+          closeAfterTransition
+          BackdropComponent={Backdrop}
+          style={{
+            display: 'flex',
+            alignItems: 'center',
+            justifyContent: 'center',
+          }}
+          BackdropProps={{
+            timeout: 500,
+          }}
+        >
+          <Fade
+            in={open}
+            style={{
+              backgroundColor: '#ffffff',
+              border: 'none',
+              boxShadow: 'none',
+            }}
+          >
+            <div
+              style={{
+                padding: 20,
+              }}
+            >
+              <h2 id="title">{word}</h2>
+              {details.map(
+                (detail, index) =>
+                  detail.keyword === word && (
+                    <p id="timestamp">{detail.timestamp} seconds</p>
+                  )
+              )}
+            </div>
+          </Fade>
+        </Modal>
       </Box>
     </Box>
   )
