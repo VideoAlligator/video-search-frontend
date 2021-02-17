@@ -33,13 +33,13 @@ const ResultsPage: FC<ResultsPageProps> = ({ results, queryVideos }) => {
   const history = useHistory()
   const location = useLocation()
 
+  const queryString = qs.parse(location.search, { arrayFormat: 'bracket' })
+  const keyword =
+    typeof queryString['keyword'] === 'string' ? queryString['keyword'] : ''
+
   useEffect(() => {
     if (results.length === 0) {
-      const queryString = qs.parse(location.search, { arrayFormat: 'bracket' })
-      const keyword = queryString['keyword']
-      if (typeof keyword === 'string') {
-        queryVideos(keyword)
-      }
+      queryVideos(keyword)
     }
   })
 
@@ -69,7 +69,7 @@ const ResultsPage: FC<ResultsPageProps> = ({ results, queryVideos }) => {
                 {results.map((video, index) => (
                   <div key={index}>
                     <Box mr={3} mt={2}>
-                      <VideoInfoCard video={video} />
+                      <VideoInfoCard video={video} keyword={keyword} />
                     </Box>
                   </div>
                 ))}
