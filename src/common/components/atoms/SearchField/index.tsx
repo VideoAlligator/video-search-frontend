@@ -2,6 +2,8 @@ import React, { FC } from 'react'
 import TextField from '@material-ui/core/TextField'
 import Autocomplete from '@material-ui/lab/Autocomplete'
 
+import { sampleKeywords } from './constants'
+
 interface SearchFieldProps {
   name: string
   label: string
@@ -33,5 +35,3 @@ export const SearchField: FC<SearchFieldProps> = ({
     />
   )
 }
-
-const sampleKeywords = ['Cat', 'Dog', 'People']

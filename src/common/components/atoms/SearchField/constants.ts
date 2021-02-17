@@ -1,0 +1,18 @@
+export const sampleKeywords = [
+  'Cat',
+  'Dog',
+  'People',
+  'Glacier',
+  'Forest',
+  'Sea',
+  'Buildings',
+  'Street',
+  'Mountain',
+  'Car',
+  'Bicycle',
+  'Bottle',
+  'Cup',
+  'Teddy bear',
+  'Apple',
+  'Banana',
+]
