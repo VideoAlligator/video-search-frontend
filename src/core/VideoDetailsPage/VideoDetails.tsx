@@ -133,10 +133,24 @@ export const VideoDetails: FC<VideoDetailsProps> = ({ video }) => {
           >
             <div
               style={{
-                padding: 20,
+                padding: 15,
               }}
             >
-              <h2 id="title">{word}</h2>
+              <Box
+                display="flex"
+                justifyContent="space-between"
+                alignItems="center"
+              >
+                <h2 id="title">{word}</h2>
+                <Button
+                  size="small"
+                  onClick={handleClose}
+                  variant="contained"
+                  color="primary"
+                >
+                  close
+                </Button>
+              </Box>
               {details.map(
                 (detail, index) =>
                   detail.keyword === word && (
