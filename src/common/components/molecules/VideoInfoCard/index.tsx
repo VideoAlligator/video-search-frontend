@@ -47,20 +47,15 @@ export const VideoInfoCard: FC<VideoInfoCardProps> = ({ video, keyword }) => {
             <Box mt={1} display="flex" alignItems="center">
               <Text type={TypographyStyles.labelCopy}>Timestamps:</Text>
               <Box p={1} />
-              <Box display="flex">
+              <Box display="flex" alignItems="center">
+                <Chip
+                  style={{ marginRight: 10 }}
+                  label={keyword.toUpperCase()}
+                />
                 {segments.map(
                   (segment, index) =>
                     segment.keyword === keyword && (
-                      <Box
-                        key={index}
-                        mr={2}
-                        display="flex"
-                        alignItems="center"
-                      >
-                        <Chip
-                          style={{ marginRight: 10 }}
-                          label={segment.keyword.toUpperCase()}
-                        />
+                      <Box key={index} mr={2}>
                         <Text>
                           {segment.start} - {segment.end} seconds
                         </Text>
