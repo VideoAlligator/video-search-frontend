@@ -16,11 +16,11 @@ export const VideoDetails: FC<VideoDetailsProps> = ({ video }) => {
   const {
     title,
     duration,
-    keywords,
     genres,
     overview,
     posterUrl,
-    details,
+    annotations,
+    segments,
   } = video
 
   return (
@@ -45,13 +45,16 @@ export const VideoDetails: FC<VideoDetailsProps> = ({ video }) => {
           <Box p={1} />
           <Text>{duration}</Text>
         </Box>
-        {keywords.length > 0 && (
+        {annotations.length > 0 && (
           <Box mt={1} display="flex" alignItems="center">
             <>
               <Text type={TypographyStyles.labelCopy}>Keywords:</Text>
-              {keywords.map((keyword, index) => (
+              {annotations.map((annotation, index) => (
                 <div key={index}>
-                  <Chip style={{ marginLeft: 10 }} label={keyword} />
+                  <Chip
+                    style={{ marginLeft: 10 }}
+                    label={annotation.keyword.toUpperCase()}
+                  />
                 </div>
               ))}
             </>
@@ -83,10 +86,15 @@ export const VideoDetails: FC<VideoDetailsProps> = ({ video }) => {
           <Text type={TypographyStyles.primaryHeadline}>Timestamps</Text>
         </Box>
         <Box display="flex" flexDirection="column">
-          {details.map((detail, index) => (
+          {segments.map((segment, index) => (
             <Box key={index} mr={2} mb={2} display="flex" alignItems="center">
-              <Chip style={{ marginRight: 10 }} label={detail.keyword} />
-              <Text> {detail.timestamp} seconds</Text>
+              <Chip
+                style={{ marginRight: 10 }}
+                label={segment.keyword.toUpperCase()}
+              />
+              <Text>
+                {segment.start} - {segment.end} seconds
+              </Text>
             </Box>
           ))}
         </Box>

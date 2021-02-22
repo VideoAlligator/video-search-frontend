@@ -24,7 +24,7 @@ export const queryVideos = (keyword: string) => async (
 ): Promise<void> => {
   try {
     const query = {
-      keyword,
+      keyword: keyword.toLowerCase(),
     }
     const res: VideosResponse = await api.client.get(
       `${api.paths.URL_VIDEO}?${qs.stringify(query, {

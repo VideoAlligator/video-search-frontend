@@ -1,15 +1,21 @@
-export interface VideoDetail {
+export interface Annotation {
   keyword: string
-  timestamp: string
+  score: number
+}
+
+export interface Segment {
+  keyword: string
+  start: number
+  end: number
 }
 
 export interface Video {
   _id: string
   title: string
   duration: number
-  keywords: string[]
   genres: string[]
   overview: string
   posterUrl: string
-  details: VideoDetail[]
+  annotations: Annotation[]
+  segments: Segment[]
 }
