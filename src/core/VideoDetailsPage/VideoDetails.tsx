@@ -25,16 +25,8 @@ export const VideoDetails: FC<VideoDetailsProps> = ({ video }) => {
     segments,
   } = video
 
-  const [open, setOpen] = useState(false)
-  const [word, setIndex] = useState('')
-
-  const handleOpen = (word: string) => () => {
-    setOpen(true)
-    setIndex(word)
-  }
-  const handleClose = () => {
-    setOpen(false)
-  }
+  const [isModalOpen, setIsModalOpen] = useState(false)
+  const [selectedKeyword, setSelectedKeyword] = useState('')
 
   return (
     <Box display="flex">
@@ -105,7 +97,10 @@ export const VideoDetails: FC<VideoDetailsProps> = ({ video }) => {
               <Chip
                 style={{ marginRight: 10 }}
                 label={segment.keyword.toUpperCase()}
-                onClick={handleOpen(segment.keyword)}
+                onClick={() => {
+                  setIsModalOpen(true)
+                  setSelectedKeyword(segment.keyword)
+                }}
               ></Chip>
             </Box>
           ))}
@@ -113,8 +108,8 @@ export const VideoDetails: FC<VideoDetailsProps> = ({ video }) => {
         <Modal
           aria-labelledby="title"
           aria-describedby="timestamp"
-          open={open}
-          onClose={handleClose}
+          open={isModalOpen}
+          onClose={() => setIsModalOpen(false)}
           closeAfterTransition
           BackdropComponent={Backdrop}
           style={{
@@ -127,7 +122,7 @@ export const VideoDetails: FC<VideoDetailsProps> = ({ video }) => {
           }}
         >
           <Fade
-            in={open}
+            in={isModalOpen}
             style={{
               backgroundColor: '#ffffff',
               border: 'none',
@@ -144,10 +139,10 @@ export const VideoDetails: FC<VideoDetailsProps> = ({ video }) => {
                 justifyContent="space-between"
                 alignItems="center"
               >
-                <h2 id="title">{word.toUpperCase()}</h2>
+                <h2 id="title">{selectedKeyword.toUpperCase()}</h2>
                 <Button
                   size="small"
-                  onClick={handleClose}
+                  onClick={() => setIsModalOpen(false)}
                   variant="contained"
                   color="primary"
                 >
@@ -156,7 +151,7 @@ export const VideoDetails: FC<VideoDetailsProps> = ({ video }) => {
               </Box>
               {segments.map(
                 (segment, index) =>
-                  segment.keyword === word && (
+                  segment.keyword === selectedKeyword && (
                     <Text key={index}>
                       {segment.start} - {segment.end} seconds
                     </Text>
