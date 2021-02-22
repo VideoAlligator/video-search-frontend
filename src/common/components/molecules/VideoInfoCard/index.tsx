@@ -16,7 +16,7 @@ interface VideoInfoCardProps {
 
 export const VideoInfoCard: FC<VideoInfoCardProps> = ({ video, keyword }) => {
   const history = useHistory()
-  const { _id, title, duration, posterUrl, details } = video
+  const { _id, title, duration, posterUrl, segments } = video
 
   return (
     <StyledCard>
@@ -48,9 +48,9 @@ export const VideoInfoCard: FC<VideoInfoCardProps> = ({ video, keyword }) => {
               <Text type={TypographyStyles.labelCopy}>Timestamps:</Text>
               <Box p={1} />
               <Box display="flex">
-                {details.map(
-                  (detail, index) =>
-                    detail.keyword === keyword && (
+                {segments.map(
+                  (segment, index) =>
+                    segment.keyword === keyword && (
                       <Box
                         key={index}
                         mr={2}
@@ -59,9 +59,11 @@ export const VideoInfoCard: FC<VideoInfoCardProps> = ({ video, keyword }) => {
                       >
                         <Chip
                           style={{ marginRight: 10 }}
-                          label={detail.keyword}
+                          label={segment.keyword.toUpperCase()}
                         />
-                        <Text> {detail.timestamp} seconds</Text>
+                        <Text>
+                          {segment.start} - {segment.end} seconds
+                        </Text>
                       </Box>
                     )
                 )}

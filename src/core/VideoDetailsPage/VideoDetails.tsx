@@ -18,11 +18,11 @@ export const VideoDetails: FC<VideoDetailsProps> = ({ video }) => {
   const {
     title,
     duration,
-    keywords,
     genres,
     overview,
     posterUrl,
-    details,
+    annotations,
+    segments,
   } = video
 
   const [open, setOpen] = useState(false)
@@ -58,13 +58,16 @@ export const VideoDetails: FC<VideoDetailsProps> = ({ video }) => {
           <Box p={1} />
           <Text>{duration}</Text>
         </Box>
-        {keywords.length > 0 && (
+        {annotations.length > 0 && (
           <Box mt={1} display="flex" alignItems="center">
             <>
               <Text type={TypographyStyles.labelCopy}>Keywords:</Text>
-              {keywords.map((keyword, index) => (
+              {annotations.map((annotation, index) => (
                 <div key={index}>
-                  <Chip style={{ marginLeft: 10 }} label={keyword} />
+                  <Chip
+                    style={{ marginLeft: 10 }}
+                    label={annotation.keyword.toUpperCase()}
+                  />
                 </div>
               ))}
             </>
@@ -97,12 +100,12 @@ export const VideoDetails: FC<VideoDetailsProps> = ({ video }) => {
           </Text>
         </Box>
         <Box display="flex">
-          {details.map((detail, index) => (
+          {segments.map((segment, index) => (
             <Box key={index} mr={2} mb={2} display="flex" alignItems="center">
               <Chip
                 style={{ marginRight: 10 }}
-                label={detail.keyword}
-                onClick={handleOpen(detail.keyword)}
+                label={segment.keyword.toUpperCase()}
+                onClick={handleOpen(segment.keyword)}
               ></Chip>
             </Box>
           ))}
@@ -141,7 +144,7 @@ export const VideoDetails: FC<VideoDetailsProps> = ({ video }) => {
                 justifyContent="space-between"
                 alignItems="center"
               >
-                <h2 id="title">{word}</h2>
+                <h2 id="title">{word.toUpperCase()}</h2>
                 <Button
                   size="small"
                   onClick={handleClose}
@@ -151,10 +154,12 @@ export const VideoDetails: FC<VideoDetailsProps> = ({ video }) => {
                   close
                 </Button>
               </Box>
-              {details.map(
-                (detail, index) =>
-                  detail.keyword === word && (
-                    <p id="timestamp">{detail.timestamp} seconds</p>
+              {segments.map(
+                (segment, index) =>
+                  segment.keyword === word && (
+                    <Text key={index}>
+                      {segment.start} - {segment.end} seconds
+                    </Text>
                   )
               )}
             </div>
