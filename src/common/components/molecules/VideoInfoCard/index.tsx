@@ -16,7 +16,13 @@ interface VideoInfoCardProps {
 
 export const VideoInfoCard: FC<VideoInfoCardProps> = ({ video, keyword }) => {
   const history = useHistory()
-  const { _id, title, duration, posterUrl, segments } = video
+  const { _id, title, runtime, posterUrl, segments } = video
+
+  const relatedSegments = segments.filter(
+    (segment) => segment.keyword === keyword
+  )
+
+  console.log(relatedSegments)
 
   return (
     <StyledCard>
@@ -40,9 +46,9 @@ export const VideoInfoCard: FC<VideoInfoCardProps> = ({ video, keyword }) => {
               <Text type={TypographyStyles.primaryHeadline}>{title}</Text>
             </Box>
             <Box mt={1} display="flex">
-              <Text type={TypographyStyles.labelCopy}>Duration:</Text>
+              <Text type={TypographyStyles.labelCopy}>Runtime:</Text>
               <Box p={1} />
-              <Text>{duration}</Text>
+              <Text>{runtime} minutes</Text>
             </Box>
             <Box mt={1} display="flex" alignItems="center">
               <Text type={TypographyStyles.labelCopy}>Timestamps:</Text>
@@ -52,9 +58,9 @@ export const VideoInfoCard: FC<VideoInfoCardProps> = ({ video, keyword }) => {
                   style={{ marginRight: 10 }}
                   label={keyword.toUpperCase()}
                 />
-                {segments.map(
+                {relatedSegments.map(
                   (segment, index) =>
-                    segment.keyword === keyword && (
+                    index < 3 && (
                       <Box key={index} mr={2}>
                         <Text>
                           {segment.start} - {segment.end} seconds
@@ -62,6 +68,7 @@ export const VideoInfoCard: FC<VideoInfoCardProps> = ({ video, keyword }) => {
                       </Box>
                     )
                 )}
+                {relatedSegments.length > 3 && <Text>... and more</Text>}
               </Box>
             </Box>
           </CardContent>

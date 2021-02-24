@@ -12,10 +12,11 @@ export interface Segment {
 export interface Video {
   _id: string
   title: string
-  duration: number
+  runtime: number
   genres: string[]
   overview: string
   posterUrl: string
+  releaseDate: string
   annotations: Annotation[]
   segments: Segment[]
 }

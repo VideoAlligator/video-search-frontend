@@ -17,10 +17,11 @@ export const VideoDetails: FC<VideoDetailsProps> = ({ video }) => {
   const history = useHistory()
   const {
     title,
-    duration,
+    runtime,
     genres,
     overview,
     posterUrl,
+    releaseDate,
     annotations,
     segments,
   } = video
@@ -57,9 +58,14 @@ export const VideoDetails: FC<VideoDetailsProps> = ({ video }) => {
             </Button>
           </Box>
           <Box mt={1} display="flex">
-            <Text type={TypographyStyles.labelCopy}>Duration:</Text>
+            <Text type={TypographyStyles.labelCopy}>Runtime:</Text>
             <Box p={1} />
-            <Text>{duration}</Text>
+            <Text>{runtime} minutes</Text>
+          </Box>
+          <Box mt={1} display="flex">
+            <Text type={TypographyStyles.labelCopy}>Release Date:</Text>
+            <Box p={1} />
+            <Text>{releaseDate}</Text>
           </Box>
           {annotations.length > 0 && (
             <Box mt={1} display="flex" alignItems="center">
