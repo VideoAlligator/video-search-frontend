@@ -68,7 +68,7 @@ export const VideoInfoCard: FC<VideoInfoCardProps> = ({ video, keyword }) => {
                       </Box>
                     )
                 )}
-                {relatedSegments.length > 3 && <Text>... and more</Text>}
+                {relatedSegments.length > 3 && <Text>AND MORE</Text>}
               </Box>
             </Box>
           </CardContent>
