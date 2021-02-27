@@ -4,6 +4,7 @@ import AppBar from '@material-ui/core/AppBar'
 import Toolbar from '@material-ui/core/Toolbar'
 
 import { StyledTextLink } from './styled'
+import img from 'common/components/molecules/TopBar/movieLogo.jpg'
 
 const useStyles = makeStyles((theme: Theme) =>
   createStyles({
@@ -26,6 +27,11 @@ const TopBar: FC = () => {
     <div className={classes.root}>
       <AppBar position="static">
         <Toolbar>
+          <img
+            style={{ height: 35, width: 50, marginRight: 7 }}
+            src={img}
+            alt="logo"
+          />
           <StyledTextLink href="/">Video Search Tool</StyledTextLink>
         </Toolbar>
       </AppBar>
