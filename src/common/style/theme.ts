@@ -94,7 +94,7 @@ export const muiTheme = createMuiTheme({
       lineHeight: '1.36',
     },
     h4: {
-      fontSize: '20px',
+      fontSize: '13px',
     },
     h5: {
       fontSize: '15px',
