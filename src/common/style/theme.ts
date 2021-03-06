@@ -82,19 +82,17 @@ export const muiTheme = createMuiTheme({
       },
     },
     h2: {
-      fontSize: '40px',
-      fontWeight: 'normal',
-      [breakpoints.down('sm')]: {
-        fontSize: '24px',
-      },
+      fontSize: '50px',
+      fontWeight: 'bold',
     },
     h3: {
-      fontWeight: 'bold',
-      fontSize: '28px',
+      fontWeight: 'normal',
+      fontSize: '20px',
       lineHeight: '1.36',
     },
     h4: {
-      fontSize: '13px',
+      fontSize: '15px',
+      lineHeight: '1.36',
     },
     h5: {
       fontSize: '15px',

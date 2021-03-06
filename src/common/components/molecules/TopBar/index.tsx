@@ -49,7 +49,7 @@ const TopBar: FC = () => {
             </Box>
             <Typography variant="h5">|</Typography>
             <Box m={1}>
-              <StyledTextLink href="/">
+              <StyledTextLink href="/contactus">
                 <Typography variant="h5">Contact Us</Typography>
               </StyledTextLink>
             </Box>
