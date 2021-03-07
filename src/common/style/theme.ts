@@ -60,10 +60,8 @@ export const muiTheme = createMuiTheme({
     },
     subtitle2: {
       fontWeight: 'bold',
-      fontSize: '22px',
-      [breakpoints.down('sm')]: {
-        fontSize: '16px',
-      },
+      fontSize: '34px',
+      color: '#748BBD',
     },
     body1: {
       fontWeight: 'normal',
@@ -87,7 +85,7 @@ export const muiTheme = createMuiTheme({
     },
     h3: {
       fontWeight: 'normal',
-      fontSize: '20px',
+      fontSize: '18px',
       lineHeight: '1.36',
     },
     h4: {
