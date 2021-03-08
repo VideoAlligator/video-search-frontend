@@ -1,14 +1,16 @@
-import React, { FC, useState } from 'react'
+import React, { FC } from 'react'
 import Box from '@material-ui/core/Box'
-import { ScreenContainer } from 'common/components/templates/ScreenContainer'
 import { Divider, Typography } from '@material-ui/core'
-import imghello from 'core/IntroPage/hello2.jpg'
-import img1 from 'core/IntroPage/1.jpg'
-import imgpeople from 'core/IntroPage/people.jpg'
-import img2 from 'core/IntroPage/2.jpg'
-import imgflow from 'core/IntroPage/flow.jpg'
-import img3 from 'core/IntroPage/3.jpg'
-import img4 from 'core/IntroPage/4.jpg'
+
+import { ScreenContainer } from 'common/components/templates/ScreenContainer'
+
+import imghello from './assets/hello.jpg'
+import img1 from './assets/1.jpg'
+import imgpeople from './assets/people.jpg'
+import img2 from './assets/2.jpg'
+import imgflow from './assets/flow.jpg'
+import img3 from './assets/3.jpg'
+import img4 from './assets/4.jpg'
 
 const IntroPage: FC = () => {
   return (

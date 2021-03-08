@@ -7,7 +7,7 @@ import Box from '@material-ui/core/Box'
 
 import { queryVideos } from 'common/store/videos'
 import { ScreenContainer } from 'common/components/templates/ScreenContainer'
-import { Text, TypographyStyles } from 'common/components/atoms/Typography'
+// import { Text, TypographyStyles } from 'common/components/atoms/Typography'
 
 import { SearchForm } from './SearchForm'
 import { FullHeightGrid } from './styled'

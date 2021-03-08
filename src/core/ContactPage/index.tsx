@@ -1,6 +1,8 @@
 import React, { FC, useState } from 'react'
 import Box from '@material-ui/core/Box'
-import { ScreenContainer } from 'common/components/templates/ScreenContainer'
+import EmailIcon from '@material-ui/icons/Email'
+import PhoneIcon from '@material-ui/icons/Phone'
+import { ExpandLess, ExpandMore } from '@material-ui/icons'
 import {
   Collapse,
   Divider,
@@ -11,10 +13,10 @@ import {
   ListItemText,
   Typography,
 } from '@material-ui/core'
-import img from 'core/ContactPage/contact.jpg'
-import EmailIcon from '@material-ui/icons/Email'
-import PhoneIcon from '@material-ui/icons/Phone'
-import { ExpandLess, ExpandMore } from '@material-ui/icons'
+
+import { ScreenContainer } from 'common/components/templates/ScreenContainer'
+
+import img from './assets/contact.jpg'
 import { contactInfo } from './constants'
 
 const ContactPage: FC = () => {
