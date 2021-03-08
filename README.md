@@ -10,6 +10,8 @@ Make sure `npm` (package manager) is installed.
 
 If you are using VS Code, please install `Prettier` and `ESLint` extenstions. It's necessary for automated lint and code style.
 
+Change the local env variable in `.env` file to local/cloud database. Copy `.env.example` to your own `.env`. To test with local API, `REACT_APP_API_BASE` is `http://localhost:8080`. To use the production environment API, just change it to `https://video-segment-search-api.herokuapp.com/`.
+
 # Setup
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
@@ -23,6 +25,10 @@ This project was bootstrapped with [Create React App](https://github.com/faceboo
 `npm test`: Launches the test runner in the interactive watch mode.
 
 `npm run build`: Builds the app for production to the `build` folder. It correctly bundles React in production mode and optimizes the build for the best performance. The build is minified and the filenames include the hashes.
+
+## Deployment
+
+Use the `main` branch to deploy: `git push heroku main`, deploy to [Heroku](https://dashboard.heroku.com/apps).
 
 ## Learn More
 
