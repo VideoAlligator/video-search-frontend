@@ -26,7 +26,7 @@ const IntroPage: FC = () => {
         }}
       >
         <img height={290} width={220} src={img1} alt="motivation" />
-        <Box ml={5} mt={2}>
+        <Box p={3}>
           <Text type={TypographyStyles.sectionHeadline}>1. Motivation</Text>
           <Text>
             This project is about a video segment searching website. The idea
@@ -54,7 +54,7 @@ const IntroPage: FC = () => {
           boxShadow: 'none',
         }}
       >
-        <Box my={2} ml={2}>
+        <Box p={3}>
           <Text type={TypographyStyles.sectionHeadline}>2. Our Goal</Text>
           <Text>
             After searching on the current solutions to video search engines, we
@@ -93,7 +93,7 @@ const IntroPage: FC = () => {
         }}
       >
         <img height={290} width={220} src={img3} alt="user manual" />
-        <Box ml={5} my={2}>
+        <Box p={3}>
           <Text type={TypographyStyles.sectionHeadline}>3. User Manual</Text>
           <Text>
             This project is about a video segment searching website. The idea
@@ -118,7 +118,7 @@ const IntroPage: FC = () => {
           boxShadow: 'none',
         }}
       >
-        <Box my={2} ml={2}>
+        <Box p={3}>
           <Text type={TypographyStyles.sectionHeadline}>
             4. Background Techonology
           </Text>

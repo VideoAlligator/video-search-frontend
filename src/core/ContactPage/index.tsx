@@ -5,13 +5,11 @@ import PhoneIcon from '@material-ui/icons/Phone'
 import { ExpandLess, ExpandMore } from '@material-ui/icons'
 import {
   Collapse,
-  Divider,
   Grid,
   List,
   ListItem,
   ListItemIcon,
   ListItemText,
-  Typography,
 } from '@material-ui/core'
 
 import { ScreenContainer } from 'common/components/templates/ScreenContainer'
@@ -21,14 +19,9 @@ import img from './assets/contact.jpg'
 import { contactInfo } from './constants'
 
 const ContactPage: FC = () => {
-  const [openE, setOpenE] = useState(false)
-  const [openP, setOpenP] = useState(false)
-  const handleClickE = () => {
-    setOpenE(!openE)
-  }
-  const handleClickP = () => {
-    setOpenP(!openP)
-  }
+  const [expandEmail, setExpandEmail] = useState(false)
+  const [expandPhone, setExpandPhone] = useState(false)
+
   return (
     <ScreenContainer center maxWidth={1100}>
       <Grid container alignItems="center" justify="center" direction="column">
@@ -52,21 +45,21 @@ const ContactPage: FC = () => {
         <img height={750} width={750} src={img} alt="Contact Us" />
         <Box ml={8}>
           <Box>
-            <ListItem button onClick={handleClickE}>
+            <ListItem button onClick={() => setExpandEmail(!expandEmail)}>
               <ListItemIcon>
                 <EmailIcon color="primary" fontSize="large" />
               </ListItemIcon>
               <ListItemText primary="Email" />
-              {openE ? <ExpandLess /> : <ExpandMore />}
+              {expandEmail ? <ExpandLess /> : <ExpandMore />}
             </ListItem>
-            <Collapse in={openE} timeout="auto" unmountOnExit>
+            <Collapse in={expandEmail} timeout="auto" unmountOnExit>
               <List component="div" disablePadding>
                 <ListItem>
                   <ListItemText>
                     {contactInfo.map((contactinfo, index) => (
-                      <Text>
+                      <Text key={index}>
                         {contactinfo.email}
-                        <Divider />
+                        <Box pb={1} />
                       </Text>
                     ))}
                   </ListItemText>
@@ -75,21 +68,21 @@ const ContactPage: FC = () => {
             </Collapse>
           </Box>
           <Box mt={5}>
-            <ListItem button onClick={handleClickP}>
+            <ListItem button onClick={() => setExpandPhone(!expandPhone)}>
               <ListItemIcon>
                 <PhoneIcon color="primary" fontSize="large" />
               </ListItemIcon>
               <ListItemText primary="Phone" />
-              {openP ? <ExpandLess /> : <ExpandMore />}
+              {expandPhone ? <ExpandLess /> : <ExpandMore />}
             </ListItem>
-            <Collapse in={openP} timeout="auto" unmountOnExit>
+            <Collapse in={expandPhone} timeout="auto" unmountOnExit>
               <List component="div" disablePadding>
                 <ListItem>
                   <ListItemText>
                     {contactInfo.map((contactinfo, index) => (
-                      <Text>
+                      <Text key={index}>
                         {contactinfo.phone}
-                        <Divider />
+                        <Box pb={1} />
                       </Text>
                     ))}
                   </ListItemText>
