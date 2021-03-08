@@ -11,7 +11,7 @@ import { ScreenContainer } from 'common/components/templates/ScreenContainer'
 
 import { SearchForm } from './SearchForm'
 import { FullHeightGrid } from './styled'
-import img from 'core/LandingPage/name.jpg'
+import img from './name.jpg'
 
 const validationSchema = yup.object().shape({
   keyword: yup.string().required('Please add some keywords'),

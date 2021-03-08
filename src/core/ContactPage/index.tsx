@@ -15,6 +15,7 @@ import {
 } from '@material-ui/core'
 
 import { ScreenContainer } from 'common/components/templates/ScreenContainer'
+import { Text, TypographyStyles } from 'common/components/atoms/Typography'
 
 import img from './assets/contact.jpg'
 import { contactInfo } from './constants'
@@ -32,13 +33,13 @@ const ContactPage: FC = () => {
     <ScreenContainer center maxWidth={1100}>
       <Grid container alignItems="center" justify="center" direction="column">
         <Box mt={5}>
-          <Typography variant="h2"> Contact Us</Typography>
+          <Text type={TypographyStyles.sectionHeadline}>Contact Us</Text>
         </Box>
         <Box mt={3}>
-          <Typography variant="h3">
+          <Text type={TypographyStyles.bodyCopyLarge}>
             Have any questions? We'd love to hear from you and we will be in
             touch within one business day!
-          </Typography>
+          </Text>
         </Box>
       </Grid>
       <Box
@@ -63,10 +64,10 @@ const ContactPage: FC = () => {
                 <ListItem>
                   <ListItemText>
                     {contactInfo.map((contactinfo, index) => (
-                      <Typography variant="h4">
+                      <Text>
                         {contactinfo.email}
                         <Divider />
-                      </Typography>
+                      </Text>
                     ))}
                   </ListItemText>
                 </ListItem>
@@ -86,10 +87,10 @@ const ContactPage: FC = () => {
                 <ListItem>
                   <ListItemText>
                     {contactInfo.map((contactinfo, index) => (
-                      <Typography variant="h4">
+                      <Text>
                         {contactinfo.phone}
                         <Divider />
-                      </Typography>
+                      </Text>
                     ))}
                   </ListItemText>
                 </ListItem>

@@ -69,7 +69,7 @@ export const muiTheme = createMuiTheme({
     },
     body2: {
       fontWeight: 'normal',
-      fontSize: '14px',
+      fontSize: '18px',
     },
     h1: {
       fontWeight: 'bold',
@@ -84,13 +84,12 @@ export const muiTheme = createMuiTheme({
       fontWeight: 'bold',
     },
     h3: {
-      fontWeight: 'normal',
-      fontSize: '18px',
+      fontWeight: 'bold',
+      fontSize: '28px',
       lineHeight: '1.36',
     },
     h4: {
-      fontSize: '15px',
-      lineHeight: '1.36',
+      fontSize: '20px',
     },
     h5: {
       fontSize: '15px',
