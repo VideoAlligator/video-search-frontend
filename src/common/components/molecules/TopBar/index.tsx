@@ -43,7 +43,7 @@ const TopBar: FC = () => {
             alignItems="center"
           >
             <Box m={1}>
-              <StyledTextLink href="/">
+              <StyledTextLink href="/aboutus">
                 <Typography variant="h5">About This Tool</Typography>
               </StyledTextLink>
             </Box>
