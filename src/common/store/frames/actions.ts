@@ -10,12 +10,12 @@ interface FrameResponse extends AxiosResponse {
   frames?: Frame[]
 }
 
-export const getFrameByVideoId = (videoId: string) => async (
+export const getFrameByVideoName = (videoName: string) => async (
   dispatch: Dispatch
 ): Promise<void> => {
   try {
     const query = {
-      //   frameId: videoId,
+      videoName: videoName,
     }
     const res: FrameResponse = await api.client.get(
       `${api.paths.URL_FRAME}?${qs.stringify(query, {

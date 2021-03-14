@@ -1,3 +1,3 @@
 export { frames, framesSelectors } from './slice'
 
-export { getFrameByVideoId } from './actions'
+export { getFrameByVideoName } from './actions'
