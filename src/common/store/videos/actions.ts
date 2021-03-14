@@ -16,7 +16,7 @@ export const getAllVideos = () => async (dispatch: Dispatch): Promise<void> => {
 }
 
 interface VideosResponse extends AxiosResponse {
-  video?: Video
+  videos?: Video[]
 }
 
 export const queryVideos = (keyword: string) => async (

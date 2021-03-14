@@ -6,14 +6,16 @@ import Chip from '@material-ui/core/Chip'
 
 import { Text, TypographyStyles } from 'common/components/atoms/Typography'
 import { Video } from 'common/types/video'
+import { Frame } from 'common/types/frame'
 
 import { SegmentModal } from './SegmentModal'
 
 interface VideoDetailsProps {
   video: Video
+  frames: Frame[]
 }
 
-export const VideoDetails: FC<VideoDetailsProps> = ({ video }) => {
+export const VideoDetails: FC<VideoDetailsProps> = ({ video, frames }) => {
   const history = useHistory()
   const {
     title,
@@ -122,6 +124,17 @@ export const VideoDetails: FC<VideoDetailsProps> = ({ video }) => {
               </Box>
             ))}
           </Box>
+          {frames &&
+            frames.length > 0 &&
+            frames.map((frame, index) => (
+              <img
+                src={`data:${frame.img.contentType};base64,${Buffer.from(
+                  frame.img.data
+                ).toString('base64')}`}
+                alt="sample"
+                key={index}
+              />
+            ))}
         </Box>
       </Box>
     </>
