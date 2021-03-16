@@ -41,7 +41,7 @@ const LandingPage: FC<LandingPageProps> = ({ queryVideos }) => {
       validationSchema={validationSchema}
     >
       {({ handleSubmit, setFieldValue }) => (
-        <ScreenContainer center>
+        <ScreenContainer center maxWidth={1000}>
           <FullHeightGrid
             container
             alignItems="center"
