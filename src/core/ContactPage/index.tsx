@@ -44,7 +44,7 @@ const ContactPage: FC = () => {
       >
         <img height={750} width={750} src={img} alt="Contact Us" />
         <Box ml={8}>
-          <Box>
+          <Box width={280}>
             <ListItem button onClick={() => setExpandEmail(!expandEmail)}>
               <ListItemIcon>
                 <EmailIcon color="primary" fontSize="large" />
