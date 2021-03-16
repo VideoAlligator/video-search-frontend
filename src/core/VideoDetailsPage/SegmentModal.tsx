@@ -9,12 +9,15 @@ import { Text, TypographyStyles } from 'common/components/atoms/Typography'
 import { Segment } from 'common/types/video'
 
 import { CloseButton } from './styled'
+import { FrameImg } from './styled'
+import { Frame } from 'common/types/frame'
 
 interface SegmentModalProps {
   isModalOpen: boolean
   onClose: () => void
   selectedKeyword: string
   segments: Segment[]
+  frames: Frame[]
 }
 
 export const SegmentModal: FC<SegmentModalProps> = ({
@@ -22,7 +25,23 @@ export const SegmentModal: FC<SegmentModalProps> = ({
   onClose,
   selectedKeyword,
   segments,
+  frames,
 }) => {
+  const showFrames = () => {
+    if (!frames || frames.length === 0) return
+    return frames.map(
+      (frame, index) =>
+        frame.keyword === selectedKeyword && (
+          <FrameImg
+            src={`data:${frame.img.contentType};base64,${Buffer.from(
+              frame.img.data
+            ).toString('base64')}`}
+            alt={frame.keyword}
+            key={index}
+          />
+        )
+    )
+  }
   return (
     <Modal
       aria-labelledby="title"
@@ -50,15 +69,14 @@ export const SegmentModal: FC<SegmentModalProps> = ({
       >
         <div
           style={{
-            width: 300,
-            height: 200,
-            padding: 30,
+            padding: 20,
           }}
         >
           <Box
             display="flex"
             justifyContent="space-between"
             alignItems="center"
+            mb={1}
           >
             <Text type={TypographyStyles.primaryHeadline}>
               {selectedKeyword.toUpperCase()}
@@ -67,6 +85,7 @@ export const SegmentModal: FC<SegmentModalProps> = ({
               <CloseIcon />
             </CloseButton>
           </Box>
+          {showFrames()}
           <Box pt={2} pb={2}>
             {segments.map(
               (segment, index) =>
