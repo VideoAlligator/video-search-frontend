@@ -4,8 +4,10 @@ import { connect } from 'react-redux'
 import Box from '@material-ui/core/Box'
 
 import { State } from 'common/store/rootReducer'
-import { videosSelectors, getAllVideos } from 'common/store/videos'
+import { videosSelectors, getVideoById } from 'common/store/videos'
+import { framesSelectors, getFrameByVideoName } from 'common/store/frames'
 import { Video } from 'common/types/video'
+import { Frame } from 'common/types/frame'
 
 import { ScreenContainer } from 'common/components/templates/ScreenContainer'
 import { Text, TypographyStyles } from 'common/components/atoms/Typography'
@@ -13,35 +15,39 @@ import { Text, TypographyStyles } from 'common/components/atoms/Typography'
 import { VideoDetails } from './VideoDetails'
 
 interface VideoDetailsPageProps {
-  videos: Video[]
-  getAllVideos: () => void
+  currVideo?: Video
+  getVideoById: (videoId: string) => void
+  frames: Frame[]
+  getFrameByVideoName: (videoName: string) => void
 }
 
 interface VideoParams {
   videoId: string
 }
 
-const getVideoById = (videos: Video[], videoId: string): Video[] =>
-  videos.filter((video: Video) => video._id === videoId)
-
 const VideoDetailsPage: FC<VideoDetailsPageProps> = ({
-  videos,
-  getAllVideos,
+  currVideo,
+  getVideoById,
+  frames,
+  getFrameByVideoName,
 }) => {
-  useEffect(() => {
-    if (videos.length === 0) {
-      getAllVideos()
-    }
-  })
-
   const params = useParams<VideoParams>()
-  const resultVideo = getVideoById(videos, params.videoId)[0]
+
+  useEffect(() => {
+    getVideoById(params.videoId)
+  }, [params.videoId, getVideoById])
+
+  useEffect(() => {
+    if (currVideo) {
+      getFrameByVideoName(currVideo.title)
+    }
+  }, [currVideo, getFrameByVideoName])
 
   return (
     <ScreenContainer center maxWidth={1100}>
       <Box my={6}>
-        {resultVideo ? (
-          <VideoDetails video={resultVideo} />
+        {currVideo ? (
+          <VideoDetails video={currVideo} frames={frames} />
         ) : (
           <Text type={TypographyStyles.primaryHeadline}>
             Cannot find such videos.
@@ -53,7 +59,10 @@ const VideoDetailsPage: FC<VideoDetailsPageProps> = ({
 }
 
 const mapStateToProps = (state: State) => ({
-  videos: videosSelectors.getAllVideos(state),
+  currVideo: videosSelectors.getCurrVideo(state),
+  frames: framesSelectors.getCurrVideoFrames(state),
 })
 
-export default connect(mapStateToProps, { getAllVideos })(VideoDetailsPage)
+export default connect(mapStateToProps, { getVideoById, getFrameByVideoName })(
+  VideoDetailsPage
+)

@@ -5,11 +5,13 @@ import { createSlice, PayloadAction } from '@reduxjs/toolkit'
 interface VideosState {
   videos: Video[]
   queryResults: Video[]
+  currVideo?: Video
 }
 
 const initialState: VideosState = {
   videos: [],
   queryResults: [],
+  currVideo: undefined,
 }
 
 export const videos = createSlice({
@@ -27,10 +29,15 @@ export const videos = createSlice({
       ...state,
       queryResults: action.payload,
     }),
+    setCurrVideo: (state: VideosState, action: PayloadAction<Video>) => ({
+      ...state,
+      currVideo: action.payload,
+    }),
   },
 })
 
 export const videosSelectors = {
   getAllVideos: (state: State): Video[] => state.videos.videos,
   getQueryResults: (state: State): Video[] => state.videos.queryResults,
+  getCurrVideo: (state: State): Video | undefined => state.videos.currVideo,
 }
