@@ -42,7 +42,7 @@ export const VideoDetails: FC<VideoDetailsProps> = ({ video, frames }) => {
         frames={frame}
       />
       <Box display="flex">
-        <img height={300} width={200} src={posterUrl} alt={title} />
+        <img height={350} width={250} src={posterUrl} alt={title} />
         <Box ml={5}>
           <Box
             display="flex"
