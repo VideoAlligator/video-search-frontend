@@ -6,14 +6,17 @@ import Chip from '@material-ui/core/Chip'
 
 import { Text, TypographyStyles } from 'common/components/atoms/Typography'
 import { Video } from 'common/types/video'
+import { Frame } from 'common/types/frame'
 
 import { SegmentModal } from './SegmentModal'
+import { FrameImg } from './styled'
 
 interface VideoDetailsProps {
   video: Video
+  frames: Frame[]
 }
 
-export const VideoDetails: FC<VideoDetailsProps> = ({ video }) => {
+export const VideoDetails: FC<VideoDetailsProps> = ({ video, frames }) => {
   const history = useHistory()
   const {
     title,
@@ -28,6 +31,19 @@ export const VideoDetails: FC<VideoDetailsProps> = ({ video }) => {
 
   const [isModalOpen, setIsModalOpen] = useState(false)
   const [selectedKeyword, setSelectedKeyword] = useState('')
+
+  const showFrames = () => {
+    if (!frames || frames.length === 0) return
+    return frames.map((frame, index) => (
+      <FrameImg
+        src={`data:${frame.img.contentType};base64,${Buffer.from(
+          frame.img.data
+        ).toString('base64')}`}
+        alt={frame.keyword}
+        key={index}
+      />
+    ))
+  }
 
   return (
     <>
@@ -122,6 +138,7 @@ export const VideoDetails: FC<VideoDetailsProps> = ({ video }) => {
               </Box>
             ))}
           </Box>
+          {showFrames()}
         </Box>
       </Box>
     </>

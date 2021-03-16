@@ -22,8 +22,6 @@ export const VideoInfoCard: FC<VideoInfoCardProps> = ({ video, keyword }) => {
     (segment) => segment.keyword === keyword
   )
 
-  console.log(relatedSegments)
-
   return (
     <StyledCard>
       <CardActionArea
