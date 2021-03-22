@@ -4,9 +4,10 @@ import Backdrop from '@material-ui/core/Backdrop'
 import Fade from '@material-ui/core/Fade'
 import Modal from '@material-ui/core/Modal'
 import CloseIcon from '@material-ui/icons/Close'
-import CircularProgress from '@material-ui/core/CircularProgress'
 
+import { LoadingIcon } from 'common/components/atoms/LoadingIcon'
 import { Text, TypographyStyles } from 'common/components/atoms/Typography'
+
 import { Segment } from 'common/types/video'
 import { Frame } from 'common/types/frame'
 
@@ -31,7 +32,7 @@ export const SegmentModal: FC<SegmentModalProps> = ({
 }) => {
   const showFrames = () => {
     if (isFrameLoading) {
-      return <CircularProgress />
+      return <LoadingIcon />
     }
     if (!frames || frames.length === 0) return
     const filteredFrames = frames.filter(

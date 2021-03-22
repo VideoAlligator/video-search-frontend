@@ -5,12 +5,12 @@ import { useHistory, useLocation } from 'react-router-dom'
 import { Formik } from 'formik'
 import * as yup from 'yup'
 import Box from '@material-ui/core/Box'
-import CircularProgress from '@material-ui/core/CircularProgress'
 
 import { State } from 'common/store/rootReducer'
 import { videosSelectors, queryVideos } from 'common/store/videos'
 import { Video } from 'common/types/video'
 
+import { LoadingIcon } from 'common/components/atoms/LoadingIcon'
 import { ScreenContainer } from 'common/components/templates/ScreenContainer'
 import { Text, TypographyStyles } from 'common/components/atoms/Typography'
 import { VideoInfoCard } from 'common/components/molecules/VideoInfoCard'
@@ -63,14 +63,21 @@ const ResultsPage: FC<ResultsPageProps> = ({
     >
       {({ handleSubmit, setFieldValue }) => (
         <ScreenContainer center maxWidth={1200}>
-          <Box mt={3} ml={3}>
+          <Box mt={5} ml={3}>
             <SearchForm
               setFieldValue={setFieldValue}
               handleSubmit={handleSubmit}
             />
           </Box>
           {loading ? (
-            <CircularProgress />
+            <Box
+              style={{ height: '80%' }}
+              display="flex"
+              justifyContent="center"
+              alignItems="center"
+            >
+              <LoadingIcon />
+            </Box>
           ) : results && results.length > 0 ? (
             <Box p={3}>
               <Box display="flex" alignContent="flex-start" flexWrap="wrap">

@@ -2,7 +2,6 @@ import React, { FC, useEffect } from 'react'
 import { useParams } from 'react-router-dom'
 import { connect } from 'react-redux'
 import Box from '@material-ui/core/Box'
-import CircularProgress from '@material-ui/core/CircularProgress'
 
 import { State } from 'common/store/rootReducer'
 import { videosSelectors, getVideoById, resetVideo } from 'common/store/videos'
@@ -13,6 +12,8 @@ import {
 } from 'common/store/frames'
 import { Video } from 'common/types/video'
 import { Frame } from 'common/types/frame'
+
+import { LoadingIcon } from 'common/components/atoms/LoadingIcon'
 import { ScreenContainer } from 'common/components/templates/ScreenContainer'
 
 import { VideoDetails } from './VideoDetails'
@@ -57,26 +58,31 @@ const VideoDetailsPage: FC<VideoDetailsPageProps> = ({
 
   return (
     <ScreenContainer center maxWidth={1100}>
-      <Box my={6}>
-        {isVideoLoading ? (
-          <CircularProgress />
-        ) : (
-          currVideo && (
-            <>
-              <VideoDetails
-                video={currVideo}
-                frames={frames}
-                isFrameLoading={isFrameLoading}
-                resetFrame={resetFrame}
-                resetVideo={resetVideo}
-              />
-              <Box display="flex" justifyContent="flex-end" mt={5}>
-                <img height={200} width={320} src={img} alt="background" />
-              </Box>
-            </>
-          )
-        )}
-      </Box>
+      {isVideoLoading ? (
+        <Box
+          style={{ height: '100%' }}
+          display="flex"
+          justifyContent="center"
+          alignItems="center"
+        >
+          <LoadingIcon />
+        </Box>
+      ) : (
+        currVideo && (
+          <Box my={6}>
+            <VideoDetails
+              video={currVideo}
+              frames={frames}
+              isFrameLoading={isFrameLoading}
+              resetFrame={resetFrame}
+              resetVideo={resetVideo}
+            />
+            <Box display="flex" justifyContent="flex-end" mt={5}>
+              <img height={200} width={320} src={img} alt="background" />
+            </Box>
+          </Box>
+        )
+      )}
     </ScreenContainer>
   )
 }
