@@ -14,12 +14,16 @@ interface VideoDetailsProps {
   video: Video
   frames: Frame[]
   isFrameLoading: boolean
+  resetFrame: () => void
+  resetVideo: () => void
 }
 
 export const VideoDetails: FC<VideoDetailsProps> = ({
   video,
   frames,
   isFrameLoading,
+  resetFrame,
+  resetVideo,
 }) => {
   const history = useHistory()
   const frame = frames
@@ -60,6 +64,8 @@ export const VideoDetails: FC<VideoDetailsProps> = ({
               onClick={(e) => {
                 e.preventDefault()
                 history.goBack()
+                resetFrame()
+                resetVideo()
               }}
               variant="contained"
               color="primary"

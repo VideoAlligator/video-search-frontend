@@ -49,10 +49,6 @@ const ResultsPage: FC<ResultsPageProps> = ({
     }
   })
 
-  if (loading) {
-    return <CircularProgress />
-  }
-
   return (
     <Formik
       initialValues={initialValues}
@@ -73,7 +69,9 @@ const ResultsPage: FC<ResultsPageProps> = ({
               handleSubmit={handleSubmit}
             />
           </Box>
-          {results && results.length > 0 ? (
+          {loading ? (
+            <CircularProgress />
+          ) : results && results.length > 0 ? (
             <Box p={3}>
               <Box display="flex" alignContent="flex-start" flexWrap="wrap">
                 {results.map((video, index) => (

@@ -50,3 +50,11 @@ export const getVideoById = (videoId: string) => async (
     dispatch(videos.actions.setLoading(false))
   }
 }
+
+export const resetVideo = () => async (dispatch: Dispatch): Promise<void> => {
+  try {
+    dispatch(videos.actions.resetCurrVideo())
+  } catch (err) {
+    console.log(err)
+  }
+}

@@ -38,6 +38,9 @@ export const videos = createSlice({
       ...state,
       currVideo: action.payload,
     }),
+    resetCurrVideo: (state: VideosState) => {
+      state.currVideo = undefined
+    },
   },
 })
 

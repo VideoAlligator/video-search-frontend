@@ -26,6 +26,9 @@ export const frames = createSlice({
       ...state,
       currVideoFrames: action.payload,
     }),
+    resetCurrVideoFrames: (state: FramesState) => {
+      state.currVideoFrames = []
+    },
   },
 })
 
