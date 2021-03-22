@@ -5,7 +5,9 @@ import Fade from '@material-ui/core/Fade'
 import Modal from '@material-ui/core/Modal'
 import CloseIcon from '@material-ui/icons/Close'
 
+import { LoadingIcon } from 'common/components/atoms/LoadingIcon'
 import { Text, TypographyStyles } from 'common/components/atoms/Typography'
+
 import { Segment } from 'common/types/video'
 import { Frame } from 'common/types/frame'
 
@@ -17,6 +19,7 @@ interface SegmentModalProps {
   selectedKeyword: string
   segments: Segment[]
   frames: Frame[]
+  isFrameLoading: boolean
 }
 
 export const SegmentModal: FC<SegmentModalProps> = ({
@@ -25,8 +28,12 @@ export const SegmentModal: FC<SegmentModalProps> = ({
   selectedKeyword,
   segments,
   frames,
+  isFrameLoading,
 }) => {
   const showFrames = () => {
+    if (isFrameLoading) {
+      return <LoadingIcon />
+    }
     if (!frames || frames.length === 0) return
     const filteredFrames = frames.filter(
       (frame) => frame.keyword === selectedKeyword

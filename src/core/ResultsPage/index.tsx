@@ -10,6 +10,7 @@ import { State } from 'common/store/rootReducer'
 import { videosSelectors, queryVideos } from 'common/store/videos'
 import { Video } from 'common/types/video'
 
+import { LoadingIcon } from 'common/components/atoms/LoadingIcon'
 import { ScreenContainer } from 'common/components/templates/ScreenContainer'
 import { Text, TypographyStyles } from 'common/components/atoms/Typography'
 import { VideoInfoCard } from 'common/components/molecules/VideoInfoCard'
@@ -19,6 +20,7 @@ import { SearchForm } from './SearchForm'
 interface ResultsPageProps {
   results: Video[]
   queryVideos: (keyword: string) => void
+  loading: boolean
 }
 
 const validationSchema = yup.object().shape({
@@ -29,7 +31,11 @@ const initialValues = {
   keyword: '',
 }
 
-const ResultsPage: FC<ResultsPageProps> = ({ results, queryVideos }) => {
+const ResultsPage: FC<ResultsPageProps> = ({
+  results,
+  queryVideos,
+  loading,
+}) => {
   const history = useHistory()
   const location = useLocation()
 
@@ -38,7 +44,7 @@ const ResultsPage: FC<ResultsPageProps> = ({ results, queryVideos }) => {
     typeof queryString['keyword'] === 'string' ? queryString['keyword'] : ''
 
   useEffect(() => {
-    if (results.length === 0) {
+    if (results.length === 0 && !loading) {
       queryVideos(keyword)
     }
   })
@@ -57,13 +63,22 @@ const ResultsPage: FC<ResultsPageProps> = ({ results, queryVideos }) => {
     >
       {({ handleSubmit, setFieldValue }) => (
         <ScreenContainer center maxWidth={1200}>
-          <Box mt={3} ml={3}>
+          <Box mt={5} ml={3}>
             <SearchForm
               setFieldValue={setFieldValue}
               handleSubmit={handleSubmit}
             />
           </Box>
-          {results && results.length > 0 ? (
+          {loading ? (
+            <Box
+              style={{ height: '80%' }}
+              display="flex"
+              justifyContent="center"
+              alignItems="center"
+            >
+              <LoadingIcon />
+            </Box>
+          ) : results && results.length > 0 ? (
             <Box p={3}>
               <Box display="flex" alignContent="flex-start" flexWrap="wrap">
                 {results.map((video, index) => (
@@ -90,6 +105,7 @@ const ResultsPage: FC<ResultsPageProps> = ({ results, queryVideos }) => {
 
 const mapStateToProps = (state: State) => ({
   results: videosSelectors.getQueryResults(state),
+  loading: videosSelectors.isLoading(state),
 })
 
 export default connect(mapStateToProps, { queryVideos })(ResultsPage)
