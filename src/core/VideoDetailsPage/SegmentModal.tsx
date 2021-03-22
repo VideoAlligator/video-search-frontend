@@ -7,14 +7,16 @@ import CloseIcon from '@material-ui/icons/Close'
 
 import { Text, TypographyStyles } from 'common/components/atoms/Typography'
 import { Segment } from 'common/types/video'
+import { Frame } from 'common/types/frame'
 
-import { CloseButton } from './styled'
+import { CloseButton, FrameImg } from './styled'
 
 interface SegmentModalProps {
   isModalOpen: boolean
   onClose: () => void
   selectedKeyword: string
   segments: Segment[]
+  frames: Frame[]
 }
 
 export const SegmentModal: FC<SegmentModalProps> = ({
@@ -22,7 +24,25 @@ export const SegmentModal: FC<SegmentModalProps> = ({
   onClose,
   selectedKeyword,
   segments,
+  frames,
 }) => {
+  const showFrames = () => {
+    if (!frames || frames.length === 0) return
+    const filteredFrames = frames.filter(
+      (frame) => frame.keyword === selectedKeyword
+    )
+    if (filteredFrames.length === 0) return
+    const target = filteredFrames[0]
+    return (
+      <FrameImg
+        src={`data:${target.img.contentType};base64,${Buffer.from(
+          target.img.data
+        ).toString('base64')}`}
+        alt={target.keyword}
+      />
+    )
+  }
+
   return (
     <Modal
       aria-labelledby="title"
@@ -50,8 +70,7 @@ export const SegmentModal: FC<SegmentModalProps> = ({
       >
         <div
           style={{
-            width: 300,
-            height: 200,
+            width: 400,
             padding: 30,
           }}
         >
@@ -59,6 +78,7 @@ export const SegmentModal: FC<SegmentModalProps> = ({
             display="flex"
             justifyContent="space-between"
             alignItems="center"
+            mb={1}
           >
             <Text type={TypographyStyles.primaryHeadline}>
               {selectedKeyword.toUpperCase()}
@@ -67,6 +87,7 @@ export const SegmentModal: FC<SegmentModalProps> = ({
               <CloseIcon />
             </CloseButton>
           </Box>
+          {showFrames()}
           <Box pt={2} pb={2}>
             {segments.map(
               (segment, index) =>

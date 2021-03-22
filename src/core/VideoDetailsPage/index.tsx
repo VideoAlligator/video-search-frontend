@@ -13,6 +13,7 @@ import { ScreenContainer } from 'common/components/templates/ScreenContainer'
 import { Text, TypographyStyles } from 'common/components/atoms/Typography'
 
 import { VideoDetails } from './VideoDetails'
+import img from './assets/images.jpg'
 
 interface VideoDetailsPageProps {
   currVideo?: Video
@@ -53,6 +54,9 @@ const VideoDetailsPage: FC<VideoDetailsPageProps> = ({
             Cannot find such videos.
           </Text>
         )}
+      </Box>
+      <Box display="flex" justifyContent="flex-end" mt={5}>
+        <img height={200} width={320} src={img} alt="background" />
       </Box>
     </ScreenContainer>
   )

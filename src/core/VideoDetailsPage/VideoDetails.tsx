@@ -9,7 +9,6 @@ import { Video } from 'common/types/video'
 import { Frame } from 'common/types/frame'
 
 import { SegmentModal } from './SegmentModal'
-import { FrameImg } from './styled'
 
 interface VideoDetailsProps {
   video: Video
@@ -18,6 +17,7 @@ interface VideoDetailsProps {
 
 export const VideoDetails: FC<VideoDetailsProps> = ({ video, frames }) => {
   const history = useHistory()
+  const frame = frames
   const {
     title,
     runtime,
@@ -32,19 +32,6 @@ export const VideoDetails: FC<VideoDetailsProps> = ({ video, frames }) => {
   const [isModalOpen, setIsModalOpen] = useState(false)
   const [selectedKeyword, setSelectedKeyword] = useState('')
 
-  const showFrames = () => {
-    if (!frames || frames.length === 0) return
-    return frames.map((frame, index) => (
-      <FrameImg
-        src={`data:${frame.img.contentType};base64,${Buffer.from(
-          frame.img.data
-        ).toString('base64')}`}
-        alt={frame.keyword}
-        key={index}
-      />
-    ))
-  }
-
   return (
     <>
       <SegmentModal
@@ -52,9 +39,10 @@ export const VideoDetails: FC<VideoDetailsProps> = ({ video, frames }) => {
         onClose={() => setIsModalOpen(false)}
         selectedKeyword={selectedKeyword}
         segments={segments}
+        frames={frame}
       />
       <Box display="flex">
-        <img height={300} width={200} src={posterUrl} alt={title} />
+        <img height={375} width={250} src={posterUrl} alt={title} />
         <Box ml={5}>
           <Box
             display="flex"
@@ -92,6 +80,7 @@ export const VideoDetails: FC<VideoDetailsProps> = ({ video, frames }) => {
                     <Chip
                       style={{ marginLeft: 10 }}
                       label={annotation.keyword.toUpperCase()}
+                      color="secondary"
                     />
                   </div>
                 ))}
@@ -104,11 +93,7 @@ export const VideoDetails: FC<VideoDetailsProps> = ({ video, frames }) => {
                 <Text type={TypographyStyles.labelCopy}>Genres:</Text>
                 {genres.map((genre, index) => (
                   <div key={index}>
-                    <Chip
-                      style={{ marginLeft: 10 }}
-                      label={genre}
-                      color="secondary"
-                    />
+                    <Chip style={{ marginLeft: 10 }} label={genre} />
                   </div>
                 ))}
               </>
@@ -130,6 +115,7 @@ export const VideoDetails: FC<VideoDetailsProps> = ({ video, frames }) => {
                 <Chip
                   style={{ marginRight: 10 }}
                   label={annotation.keyword.toUpperCase()}
+                  color="secondary"
                   onClick={() => {
                     setIsModalOpen(true)
                     setSelectedKeyword(annotation.keyword)
@@ -138,7 +124,6 @@ export const VideoDetails: FC<VideoDetailsProps> = ({ video, frames }) => {
               </Box>
             ))}
           </Box>
-          {showFrames()}
         </Box>
       </Box>
     </>
