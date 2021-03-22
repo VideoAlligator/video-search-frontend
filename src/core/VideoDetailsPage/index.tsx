@@ -55,7 +55,7 @@ const VideoDetailsPage: FC<VideoDetailsPageProps> = ({
           </Text>
         )}
       </Box>
-      <Box display="flex" justifyContent="flex-end" mt={15}>
+      <Box display="flex" justifyContent="flex-end" mt={5}>
         <img height={200} width={320} src={img} alt="background" />
       </Box>
     </ScreenContainer>

@@ -7,10 +7,9 @@ import CloseIcon from '@material-ui/icons/Close'
 
 import { Text, TypographyStyles } from 'common/components/atoms/Typography'
 import { Segment } from 'common/types/video'
-
-import { CloseButton } from './styled'
-import { FrameImg } from './styled'
 import { Frame } from 'common/types/frame'
+
+import { CloseButton, FrameImg } from './styled'
 
 interface SegmentModalProps {
   isModalOpen: boolean
@@ -29,19 +28,21 @@ export const SegmentModal: FC<SegmentModalProps> = ({
 }) => {
   const showFrames = () => {
     if (!frames || frames.length === 0) return
-    return frames.map(
-      (frame, index) =>
-        frame.keyword === selectedKeyword && (
-          <FrameImg
-            src={`data:${frame.img.contentType};base64,${Buffer.from(
-              frame.img.data
-            ).toString('base64')}`}
-            alt={frame.keyword}
-            key={index}
-          />
-        )
+    const filteredFrames = frames.filter(
+      (frame) => frame.keyword === selectedKeyword
+    )
+    if (filteredFrames.length === 0) return
+    const target = filteredFrames[0]
+    return (
+      <FrameImg
+        src={`data:${target.img.contentType};base64,${Buffer.from(
+          target.img.data
+        ).toString('base64')}`}
+        alt={target.keyword}
+      />
     )
   }
+
   return (
     <Modal
       aria-labelledby="title"
@@ -69,7 +70,8 @@ export const SegmentModal: FC<SegmentModalProps> = ({
       >
         <div
           style={{
-            padding: 20,
+            width: 400,
+            padding: 30,
           }}
         >
           <Box
