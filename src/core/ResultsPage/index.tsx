@@ -5,6 +5,7 @@ import { useHistory, useLocation } from 'react-router-dom'
 import { Formik } from 'formik'
 import * as yup from 'yup'
 import Box from '@material-ui/core/Box'
+import CircularProgress from '@material-ui/core/CircularProgress'
 
 import { State } from 'common/store/rootReducer'
 import { videosSelectors, queryVideos } from 'common/store/videos'
@@ -19,6 +20,7 @@ import { SearchForm } from './SearchForm'
 interface ResultsPageProps {
   results: Video[]
   queryVideos: (keyword: string) => void
+  loading: boolean
 }
 
 const validationSchema = yup.object().shape({
@@ -29,7 +31,11 @@ const initialValues = {
   keyword: '',
 }
 
-const ResultsPage: FC<ResultsPageProps> = ({ results, queryVideos }) => {
+const ResultsPage: FC<ResultsPageProps> = ({
+  results,
+  queryVideos,
+  loading,
+}) => {
   const history = useHistory()
   const location = useLocation()
 
@@ -38,10 +44,14 @@ const ResultsPage: FC<ResultsPageProps> = ({ results, queryVideos }) => {
     typeof queryString['keyword'] === 'string' ? queryString['keyword'] : ''
 
   useEffect(() => {
-    if (results.length === 0) {
+    if (results.length === 0 && !loading) {
       queryVideos(keyword)
     }
   })
+
+  if (loading) {
+    return <CircularProgress />
+  }
 
   return (
     <Formik
@@ -90,6 +100,7 @@ const ResultsPage: FC<ResultsPageProps> = ({ results, queryVideos }) => {
 
 const mapStateToProps = (state: State) => ({
   results: videosSelectors.getQueryResults(state),
+  loading: videosSelectors.isLoading(state),
 })
 
 export default connect(mapStateToProps, { queryVideos })(ResultsPage)
