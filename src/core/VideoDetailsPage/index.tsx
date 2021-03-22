@@ -2,6 +2,7 @@ import React, { FC, useEffect } from 'react'
 import { useParams } from 'react-router-dom'
 import { connect } from 'react-redux'
 import Box from '@material-ui/core/Box'
+import CircularProgress from '@material-ui/core/CircularProgress'
 
 import { State } from 'common/store/rootReducer'
 import { videosSelectors, getVideoById } from 'common/store/videos'
@@ -20,6 +21,8 @@ interface VideoDetailsPageProps {
   getVideoById: (videoId: string) => void
   frames: Frame[]
   getFrameByVideoName: (videoName: string) => void
+  isVideoLoading: boolean
+  isFrameLoading: boolean
 }
 
 interface VideoParams {
@@ -31,6 +34,8 @@ const VideoDetailsPage: FC<VideoDetailsPageProps> = ({
   getVideoById,
   frames,
   getFrameByVideoName,
+  isVideoLoading,
+  isFrameLoading,
 }) => {
   const params = useParams<VideoParams>()
 
@@ -47,8 +52,14 @@ const VideoDetailsPage: FC<VideoDetailsPageProps> = ({
   return (
     <ScreenContainer center maxWidth={1100}>
       <Box my={6}>
-        {currVideo ? (
-          <VideoDetails video={currVideo} frames={frames} />
+        {isVideoLoading ? (
+          <CircularProgress />
+        ) : currVideo ? (
+          <VideoDetails
+            video={currVideo}
+            frames={frames}
+            isFrameLoading={isFrameLoading}
+          />
         ) : (
           <Text type={TypographyStyles.primaryHeadline}>
             Cannot find such videos.
@@ -65,6 +76,8 @@ const VideoDetailsPage: FC<VideoDetailsPageProps> = ({
 const mapStateToProps = (state: State) => ({
   currVideo: videosSelectors.getCurrVideo(state),
   frames: framesSelectors.getCurrVideoFrames(state),
+  isVideoLoading: videosSelectors.isLoading(state),
+  isFrameLoading: framesSelectors.isLoading(state),
 })
 
 export default connect(mapStateToProps, { getVideoById, getFrameByVideoName })(

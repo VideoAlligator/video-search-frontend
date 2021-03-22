@@ -13,9 +13,14 @@ import { SegmentModal } from './SegmentModal'
 interface VideoDetailsProps {
   video: Video
   frames: Frame[]
+  isFrameLoading: boolean
 }
 
-export const VideoDetails: FC<VideoDetailsProps> = ({ video, frames }) => {
+export const VideoDetails: FC<VideoDetailsProps> = ({
+  video,
+  frames,
+  isFrameLoading,
+}) => {
   const history = useHistory()
   const frame = frames
   const {
@@ -40,6 +45,7 @@ export const VideoDetails: FC<VideoDetailsProps> = ({ video, frames }) => {
         selectedKeyword={selectedKeyword}
         segments={segments}
         frames={frame}
+        isFrameLoading={isFrameLoading}
       />
       <Box display="flex">
         <img height={375} width={250} src={posterUrl} alt={title} />

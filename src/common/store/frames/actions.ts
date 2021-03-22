@@ -14,6 +14,7 @@ export const getFrameByVideoName = (videoName: string) => async (
   dispatch: Dispatch
 ): Promise<void> => {
   try {
+    dispatch(frames.actions.setLoading(true))
     const query = {
       videoName: videoName,
     }
@@ -25,5 +26,7 @@ export const getFrameByVideoName = (videoName: string) => async (
     dispatch(frames.actions.setCurrVideoFrames(res.data))
   } catch (err) {
     console.log(err)
+  } finally {
+    dispatch(frames.actions.setLoading(false))
   }
 }
