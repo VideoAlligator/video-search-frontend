@@ -5,7 +5,7 @@ import lightBlue from '@material-ui/core/colors/lightBlue'
 export const theme: any = {
   colors: {
     borderSeparator: '#ecebeb',
-    mainColor: '#7095be',
+    mainColor: '#5379a1',
     textPrimary: '#252525',
     lightBody: '#b7e0f5',
     iconDefault: '#DADADA',
@@ -61,7 +61,7 @@ export const muiTheme = createMuiTheme({
     subtitle2: {
       fontWeight: 'bold',
       fontSize: '34px',
-      color: '#748BBD',
+      color: '#4E6796',
     },
     body1: {
       fontWeight: 'normal',
