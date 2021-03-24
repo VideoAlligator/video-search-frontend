@@ -2,10 +2,12 @@ import React, { FC } from 'react'
 import { createStyles, makeStyles, Theme } from '@material-ui/core/styles'
 import AppBar from '@material-ui/core/AppBar'
 import Toolbar from '@material-ui/core/Toolbar'
+import { Box, Grid } from '@material-ui/core'
 
-import { StyledTextLink } from './styled'
-import img from 'common/components/molecules/TopBar/movieLogo.jpg'
-import { Box, Grid, Typography } from '@material-ui/core'
+import { Text } from 'common/components/atoms/Typography'
+
+import { MainTextLink, SideTextLink } from './styled'
+import img from './movieLogo.jpg'
 
 const useStyles = makeStyles((theme: Theme) =>
   createStyles({
@@ -34,7 +36,7 @@ const TopBar: FC = () => {
             alt="logo"
           />
           <Box style={{ width: 300 }}>
-            <StyledTextLink href="/">Video Search Tool</StyledTextLink>
+            <MainTextLink href="/">Video Search Tool</MainTextLink>
           </Box>
           <Grid
             container
@@ -42,17 +44,11 @@ const TopBar: FC = () => {
             justify="flex-end"
             alignItems="center"
           >
-            <Box m={1}>
-              <StyledTextLink href="/about">
-                <Typography variant="body1">About This Tool</Typography>
-              </StyledTextLink>
+            <SideTextLink href="/about">About This Tool</SideTextLink>
+            <Box p={2}>
+              <Text>|</Text>
             </Box>
-            <Typography variant="body1">|</Typography>
-            <Box m={1}>
-              <StyledTextLink href="/contact-us">
-                <Typography variant="body1">Contact Us</Typography>
-              </StyledTextLink>
-            </Box>
+            <SideTextLink href="/contact-us">Contact Us</SideTextLink>
           </Grid>
         </Toolbar>
       </AppBar>
