@@ -44,13 +44,13 @@ const TopBar: FC = () => {
           >
             <Box m={1}>
               <StyledTextLink href="/about">
-                <Typography variant="h5">About This Tool</Typography>
+                <Typography variant="body1">About This Tool</Typography>
               </StyledTextLink>
             </Box>
-            <Typography variant="h5">|</Typography>
+            <Typography variant="body1">|</Typography>
             <Box m={1}>
               <StyledTextLink href="/contact-us">
-                <Typography variant="h5">Contact Us</Typography>
+                <Typography variant="body1">Contact Us</Typography>
               </StyledTextLink>
             </Box>
           </Grid>

@@ -41,7 +41,7 @@ export const VideoInfoCard: FC<VideoInfoCardProps> = ({ video, keyword }) => {
           />
           <CardContent>
             <Box display="flex">
-              <Text type={TypographyStyles.primaryHeadline}>{title}</Text>
+              <Text type={TypographyStyles.sectionHeadline}>{title}</Text>
             </Box>
             <Box mt={1} display="flex">
               <Text type={TypographyStyles.labelCopy}>Runtime:</Text>

@@ -16,6 +16,7 @@ import { Text, TypographyStyles } from 'common/components/atoms/Typography'
 import { VideoInfoCard } from 'common/components/molecules/VideoInfoCard'
 
 import { SearchForm } from './SearchForm'
+import { Heading } from './styled'
 
 interface ResultsPageProps {
   results: Video[]
@@ -80,6 +81,7 @@ const ResultsPage: FC<ResultsPageProps> = ({
             </Box>
           ) : results && results.length > 0 ? (
             <Box p={3}>
+              <Heading>About {results.length} results</Heading>
               <Box display="flex" alignContent="flex-start" flexWrap="wrap">
                 {results.map((video, index) => (
                   <div key={index}>

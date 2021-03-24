@@ -1,5 +1,5 @@
 import { createMuiTheme } from '@material-ui/core/styles'
-import createBreakpoints from '@material-ui/core/styles/createBreakpoints'
+// import createBreakpoints from '@material-ui/core/styles/createBreakpoints'
 import lightBlue from '@material-ui/core/colors/lightBlue'
 
 export const theme: any = {
@@ -30,7 +30,7 @@ export const theme: any = {
   },
 }
 
-const breakpoints = createBreakpoints({})
+// const breakpoints = createBreakpoints({})
 
 export const muiTheme = createMuiTheme({
   palette: {
@@ -51,18 +51,6 @@ export const muiTheme = createMuiTheme({
   },
   typography: {
     fontFamily: 'Inter',
-    subtitle1: {
-      fontWeight: 'bold',
-      fontSize: '22px',
-      [breakpoints.down('sm')]: {
-        fontSize: '16px',
-      },
-    },
-    subtitle2: {
-      fontWeight: 'bold',
-      fontSize: '34px',
-      color: '#4E6796',
-    },
     body1: {
       fontWeight: 'normal',
       fontSize: '16px',
@@ -73,26 +61,14 @@ export const muiTheme = createMuiTheme({
     },
     h1: {
       fontWeight: 'bold',
-      fontSize: '70px',
-      color: '#3d80b3',
-      [breakpoints.down('sm')]: {
-        fontSize: '28px',
-      },
+      fontSize: '34px',
+      color: '#4E6796',
+      lineHeight: '1.7',
     },
     h2: {
-      fontSize: '50px',
       fontWeight: 'bold',
-    },
-    h3: {
-      fontWeight: 'bold',
-      fontSize: '28px',
-      lineHeight: '1.36',
-    },
-    h4: {
-      fontSize: '20px',
-    },
-    h5: {
-      fontSize: '15px',
+      fontSize: '22px',
+      lineHeight: '1.67',
     },
   },
 })

@@ -7,10 +7,9 @@ import Box from '@material-ui/core/Box'
 
 import { queryVideos } from 'common/store/videos'
 import { ScreenContainer } from 'common/components/templates/ScreenContainer'
-// import { Text, TypographyStyles } from 'common/components/atoms/Typography'
 
 import { SearchForm } from './SearchForm'
-import { FullHeightGrid } from './styled'
+import { FullHeightGrid, HiddenHeading } from './styled'
 import img from './name.jpg'
 
 const validationSchema = yup.object().shape({
@@ -50,7 +49,7 @@ const LandingPage: FC<LandingPageProps> = ({ queryVideos }) => {
           >
             <Box mb={2}>
               <img height={100} width={700} src={img} alt="Contact Us" />
-              {/* <Text type={TypographyStyles.title}>Video Search Tool</Text> */}
+              <HiddenHeading>Video Search Tool</HiddenHeading>
             </Box>
             <SearchForm
               setFieldValue={setFieldValue}

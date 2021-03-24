@@ -29,7 +29,7 @@ const IntroPage: FC = () => {
       >
         <img height={290} width={220} src={img1} alt="motivation" />
         <Box p={3}>
-          <Text type={TypographyStyles.sectionHeadline}>1. Motivation</Text>
+          <Text type={TypographyStyles.primaryHeadline}>1. Motivation</Text>
           <Text>
             This project is about a video segment searching website. The idea
             comes from one of our friends, who loves to edit videos. Usually,
@@ -57,7 +57,7 @@ const IntroPage: FC = () => {
         }}
       >
         <Box p={3}>
-          <Text type={TypographyStyles.sectionHeadline}>2. Our Goal</Text>
+          <Text type={TypographyStyles.primaryHeadline}>2. Our Goal</Text>
           <Text>
             After searching on the current solutions to video search engines, we
             noticed that existing tools, such as YOLOV3, are lacking functions
@@ -96,7 +96,7 @@ const IntroPage: FC = () => {
       >
         <img height={290} width={220} src={img3} alt="user manual" />
         <Box p={3}>
-          <Text type={TypographyStyles.sectionHeadline}>3. User Manual</Text>
+          <Text type={TypographyStyles.primaryHeadline}>3. User Manual</Text>
           <Text>
             This website provides two search methods: keywords and video names.
             When the user needs to find a frame with a specific object or scene,
@@ -122,7 +122,7 @@ const IntroPage: FC = () => {
         }}
       >
         <Box p={3}>
-          <Text type={TypographyStyles.sectionHeadline}>
+          <Text type={TypographyStyles.primaryHeadline}>
             4. Background Techonology
           </Text>
           <Text>

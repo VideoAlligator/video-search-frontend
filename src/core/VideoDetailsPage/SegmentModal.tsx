@@ -87,7 +87,7 @@ export const SegmentModal: FC<SegmentModalProps> = ({
             alignItems="center"
             mb={1}
           >
-            <Text type={TypographyStyles.primaryHeadline}>
+            <Text type={TypographyStyles.sectionHeadline}>
               {selectedKeyword.toUpperCase()}
             </Text>
             <CloseButton onClick={onClose}>

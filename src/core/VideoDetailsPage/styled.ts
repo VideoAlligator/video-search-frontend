@@ -13,3 +13,10 @@ export const FrameImg = styled.img`
   height: auto;
   width: auto;
 `
+
+export const Heading = styled.h1`
+  font-family: ${({ theme }) => theme.fontFamily};
+  font-weight: bold;
+  font-size: 34px;
+  margin: 0;
+`

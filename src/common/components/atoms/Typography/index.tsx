@@ -9,7 +9,6 @@ export enum TypographyStyles {
   bodyCopy = 'BODY_COPY',
   bodyCopyLarge = 'BODY_COPY_LARGE',
   labelCopy = 'LABEL_COPY',
-  title = 'TITLE',
   textLink = 'TEXT_LINK',
 }
 
@@ -23,19 +22,13 @@ export const Text: FC<TextProps> = ({ type, href, className, children }) => {
   switch (type) {
     case TypographyStyles.primaryHeadline:
       return (
-        <Typography className={className} variant="subtitle1">
+        <Typography className={className} variant="h1">
           {children}
         </Typography>
       )
     case TypographyStyles.sectionHeadline:
       return (
-        <Typography className={className} variant="subtitle2">
-          {children}
-        </Typography>
-      )
-    case TypographyStyles.title:
-      return (
-        <Typography className={className} variant="h1">
+        <Typography className={className} variant="h2">
           {children}
         </Typography>
       )

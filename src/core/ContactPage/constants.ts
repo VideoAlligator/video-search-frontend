@@ -8,7 +8,7 @@ export const contactInfo = [
     phone: '6476738537',
   },
   {
-    email: 'Aislingliu107@gmail.com',
+    email: 'aislingliu107@gmail.com',
     phone: '6479718969',
   },
   {
