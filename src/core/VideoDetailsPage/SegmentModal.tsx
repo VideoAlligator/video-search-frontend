@@ -54,8 +54,8 @@ export const SegmentModal: FC<SegmentModalProps> = ({
 
   return (
     <Modal
-      aria-labelledby="title"
-      aria-describedby="timestamp"
+      aria-labelledby="modal-title"
+      aria-describedby="modal-description"
       open={isModalOpen}
       onClose={onClose}
       closeAfterTransition
@@ -77,25 +77,22 @@ export const SegmentModal: FC<SegmentModalProps> = ({
           boxShadow: 'none',
         }}
       >
-        <div
-          style={{
-            width: 400,
-            padding: 30,
-          }}
-        >
+        <Box p={4} style={{ width: 400 }}>
           <Box
             display="flex"
             justifyContent="space-between"
             alignItems="center"
             mb={1}
           >
-            <ModalHeading>{selectedKeyword.toUpperCase()}</ModalHeading>
-            <CloseButton onClick={onClose}>
+            <ModalHeading id="modal-title">
+              {selectedKeyword.toUpperCase()}
+            </ModalHeading>
+            <CloseButton onClick={onClose} aria-label="Close button">
               <CloseIcon />
             </CloseButton>
           </Box>
           {showFrames()}
-          <Box pt={2} pb={2}>
+          <Box pt={2} pb={2} id="modal-description">
             {segments.map(
               (segment, index) =>
                 segment.keyword === selectedKeyword && (
@@ -105,7 +102,7 @@ export const SegmentModal: FC<SegmentModalProps> = ({
                 )
             )}
           </Box>
-        </div>
+        </Box>
       </Fade>
     </Modal>
   )
