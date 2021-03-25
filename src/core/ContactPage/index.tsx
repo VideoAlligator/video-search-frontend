@@ -39,7 +39,11 @@ const ContactPage: FC = () => {
         <img height={600} width={600} src={img} alt="Contact Us" />
         <Box ml={8}>
           <Box width={280}>
-            <ListItem button onClick={() => setExpandEmail(!expandEmail)}>
+            <ListItem
+              key="email"
+              button
+              onClick={() => setExpandEmail(!expandEmail)}
+            >
               <ListItemIcon>
                 <EmailIcon color="primary" fontSize="large" />
               </ListItemIcon>
@@ -49,9 +53,9 @@ const ContactPage: FC = () => {
             <Collapse in={expandEmail} timeout="auto" unmountOnExit>
               <List disablePadding>
                 {contactInfo.map((contactinfo, index) => (
-                  <ListItem>
+                  <ListItem key={index}>
                     <ListItemText>
-                      <Text key={index}>{contactinfo.email}</Text>
+                      <Text>{contactinfo.email}</Text>
                     </ListItemText>
                   </ListItem>
                 ))}
@@ -59,7 +63,11 @@ const ContactPage: FC = () => {
             </Collapse>
           </Box>
           <Box mt={5}>
-            <ListItem button onClick={() => setExpandPhone(!expandPhone)}>
+            <ListItem
+              key="phone"
+              button
+              onClick={() => setExpandPhone(!expandPhone)}
+            >
               <ListItemIcon>
                 <PhoneIcon color="primary" fontSize="large" />
               </ListItemIcon>
@@ -69,9 +77,9 @@ const ContactPage: FC = () => {
             <Collapse in={expandPhone} timeout="auto" unmountOnExit>
               <List disablePadding>
                 {contactInfo.map((contactinfo, index) => (
-                  <ListItem>
+                  <ListItem key={index}>
                     <ListItemText>
-                      <Text key={index}>{contactinfo.phone}</Text>
+                      <Text>{contactinfo.phone}</Text>
                     </ListItemText>
                   </ListItem>
                 ))}
