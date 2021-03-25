@@ -18,6 +18,7 @@ import { ScreenContainer } from 'common/components/templates/ScreenContainer'
 
 import { VideoDetails } from './VideoDetails'
 import img from './assets/images.jpg'
+import { Heading } from './styled'
 
 interface VideoDetailsPageProps {
   currVideo?: Video
@@ -67,21 +68,23 @@ const VideoDetailsPage: FC<VideoDetailsPageProps> = ({
         >
           <LoadingIcon />
         </Box>
-      ) : (
-        currVideo && (
-          <Box my={6}>
-            <VideoDetails
-              video={currVideo}
-              frames={frames}
-              isFrameLoading={isFrameLoading}
-              resetFrame={resetFrame}
-              resetVideo={resetVideo}
-            />
-            <Box display="flex" justifyContent="flex-end" mt={5}>
-              <img height={200} width={320} src={img} alt="background" />
-            </Box>
+      ) : currVideo ? (
+        <Box my={6}>
+          <VideoDetails
+            video={currVideo}
+            frames={frames}
+            isFrameLoading={isFrameLoading}
+            resetFrame={resetFrame}
+            resetVideo={resetVideo}
+          />
+          <Box display="flex" justifyContent="flex-end" mt={5}>
+            <img height={200} width={320} src={img} alt="background" />
           </Box>
-        )
+        </Box>
+      ) : (
+        <Box p={5}>
+          <Heading>Cannot find such a video.</Heading>
+        </Box>
       )}
     </ScreenContainer>
   )

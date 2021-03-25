@@ -20,3 +20,10 @@ export const Heading = styled.h1`
   font-size: 34px;
   margin: 0;
 `
+
+export const ModalHeading = styled.h1`
+  font-family: ${({ theme }) => theme.fontFamily};
+  font-weight: 600;
+  font-size: 22px;
+  margin: 0;
+`

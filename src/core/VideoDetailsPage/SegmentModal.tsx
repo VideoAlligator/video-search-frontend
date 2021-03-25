@@ -6,12 +6,12 @@ import Modal from '@material-ui/core/Modal'
 import CloseIcon from '@material-ui/icons/Close'
 
 import { LoadingIcon } from 'common/components/atoms/LoadingIcon'
-import { Text, TypographyStyles } from 'common/components/atoms/Typography'
+import { Text } from 'common/components/atoms/Typography'
 
 import { Segment } from 'common/types/video'
 import { Frame } from 'common/types/frame'
 
-import { CloseButton, FrameImg } from './styled'
+import { CloseButton, FrameImg, ModalHeading } from './styled'
 
 interface SegmentModalProps {
   isModalOpen: boolean
@@ -41,12 +41,14 @@ export const SegmentModal: FC<SegmentModalProps> = ({
     if (filteredFrames.length === 0) return
     const target = filteredFrames[0]
     return (
-      <FrameImg
-        src={`data:${target.img.contentType};base64,${Buffer.from(
-          target.img.data
-        ).toString('base64')}`}
-        alt={target.keyword}
-      />
+      <Box py={2} display="flex" justifyContent="center">
+        <FrameImg
+          src={`data:${target.img.contentType};base64,${Buffer.from(
+            target.img.data
+          ).toString('base64')}`}
+          alt={target.keyword}
+        />
+      </Box>
     )
   }
 
@@ -87,9 +89,7 @@ export const SegmentModal: FC<SegmentModalProps> = ({
             alignItems="center"
             mb={1}
           >
-            <Text type={TypographyStyles.sectionHeadline}>
-              {selectedKeyword.toUpperCase()}
-            </Text>
+            <ModalHeading>{selectedKeyword.toUpperCase()}</ModalHeading>
             <CloseButton onClick={onClose}>
               <CloseIcon />
             </CloseButton>
