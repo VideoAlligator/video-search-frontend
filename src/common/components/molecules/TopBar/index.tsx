@@ -36,7 +36,7 @@ const TopBar: FC = () => {
             alt="logo"
           />
           <Box style={{ width: 300 }}>
-            <MainTextLink href="/">Video Search Tool</MainTextLink>
+            <MainTextLink href="/">Video Alligator</MainTextLink>
           </Box>
           <Grid
             container
