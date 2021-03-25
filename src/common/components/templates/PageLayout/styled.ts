@@ -12,6 +12,7 @@ export const StyledGridContainer = styled(Grid)`
 
 export const PageGridItem = styled(Grid).attrs({
   item: true,
+  role: 'main',
 })`
   flex-grow: 1;
   display: flex;

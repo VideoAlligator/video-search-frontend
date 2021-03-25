@@ -9,6 +9,7 @@ import { Video } from 'common/types/video'
 import { Frame } from 'common/types/frame'
 
 import { SegmentModal } from './SegmentModal'
+import { Heading } from './styled'
 
 interface VideoDetailsProps {
   video: Video
@@ -58,8 +59,9 @@ export const VideoDetails: FC<VideoDetailsProps> = ({
             display="flex"
             justifyContent="space-between"
             alignItems="center"
+            mb={2}
           >
-            <Text type={TypographyStyles.primaryHeadline}>{title}</Text>
+            <Heading>{title}</Heading>
             <Button
               onClick={(e) => {
                 e.preventDefault()
@@ -117,7 +119,7 @@ export const VideoDetails: FC<VideoDetailsProps> = ({
             <Text>{overview}</Text>
           </Box>
           <Box mt={3} mb={1}>
-            <Text type={TypographyStyles.primaryHeadline}>
+            <Text type={TypographyStyles.sectionHeadline}>
               Timestamps (click for details)
             </Text>
           </Box>

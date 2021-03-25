@@ -12,10 +12,10 @@ import { Video } from 'common/types/video'
 
 import { LoadingIcon } from 'common/components/atoms/LoadingIcon'
 import { ScreenContainer } from 'common/components/templates/ScreenContainer'
-import { Text, TypographyStyles } from 'common/components/atoms/Typography'
 import { VideoInfoCard } from 'common/components/molecules/VideoInfoCard'
 
 import { SearchForm } from './SearchForm'
+import { Heading } from './styled'
 
 interface ResultsPageProps {
   results: Video[]
@@ -44,10 +44,8 @@ const ResultsPage: FC<ResultsPageProps> = ({
     typeof queryString['keyword'] === 'string' ? queryString['keyword'] : ''
 
   useEffect(() => {
-    if (results.length === 0 && !loading) {
-      queryVideos(keyword)
-    }
-  })
+    queryVideos(keyword)
+  }, [queryVideos, keyword])
 
   return (
     <Formik
@@ -80,6 +78,7 @@ const ResultsPage: FC<ResultsPageProps> = ({
             </Box>
           ) : results && results.length > 0 ? (
             <Box p={3}>
+              <Heading>About {results.length} results</Heading>
               <Box display="flex" alignContent="flex-start" flexWrap="wrap">
                 {results.map((video, index) => (
                   <div key={index}>
@@ -92,9 +91,7 @@ const ResultsPage: FC<ResultsPageProps> = ({
             </Box>
           ) : (
             <Box p={3}>
-              <Text type={TypographyStyles.primaryHeadline}>
-                Cannot find such videos.
-              </Text>
+              <Heading>Cannot find such videos.</Heading>
             </Box>
           )}
         </ScreenContainer>

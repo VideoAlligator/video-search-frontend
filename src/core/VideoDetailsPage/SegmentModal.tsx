@@ -6,12 +6,12 @@ import Modal from '@material-ui/core/Modal'
 import CloseIcon from '@material-ui/icons/Close'
 
 import { LoadingIcon } from 'common/components/atoms/LoadingIcon'
-import { Text, TypographyStyles } from 'common/components/atoms/Typography'
+import { Text } from 'common/components/atoms/Typography'
 
 import { Segment } from 'common/types/video'
 import { Frame } from 'common/types/frame'
 
-import { CloseButton, FrameImg } from './styled'
+import { CloseButton, FrameImg, ModalHeading } from './styled'
 
 interface SegmentModalProps {
   isModalOpen: boolean
@@ -41,19 +41,21 @@ export const SegmentModal: FC<SegmentModalProps> = ({
     if (filteredFrames.length === 0) return
     const target = filteredFrames[0]
     return (
-      <FrameImg
-        src={`data:${target.img.contentType};base64,${Buffer.from(
-          target.img.data
-        ).toString('base64')}`}
-        alt={target.keyword}
-      />
+      <Box py={2} display="flex" justifyContent="center">
+        <FrameImg
+          src={`data:${target.img.contentType};base64,${Buffer.from(
+            target.img.data
+          ).toString('base64')}`}
+          alt={target.keyword}
+        />
+      </Box>
     )
   }
 
   return (
     <Modal
-      aria-labelledby="title"
-      aria-describedby="timestamp"
+      aria-labelledby="modal-title"
+      aria-describedby="modal-description"
       open={isModalOpen}
       onClose={onClose}
       closeAfterTransition
@@ -75,27 +77,22 @@ export const SegmentModal: FC<SegmentModalProps> = ({
           boxShadow: 'none',
         }}
       >
-        <div
-          style={{
-            width: 400,
-            padding: 30,
-          }}
-        >
+        <Box p={4} style={{ width: 400 }}>
           <Box
             display="flex"
             justifyContent="space-between"
             alignItems="center"
             mb={1}
           >
-            <Text type={TypographyStyles.primaryHeadline}>
+            <ModalHeading id="modal-title">
               {selectedKeyword.toUpperCase()}
-            </Text>
-            <CloseButton onClick={onClose}>
+            </ModalHeading>
+            <CloseButton onClick={onClose} aria-label="Close button">
               <CloseIcon />
             </CloseButton>
           </Box>
           {showFrames()}
-          <Box pt={2} pb={2}>
+          <Box pt={2} pb={2} id="modal-description">
             {segments.map(
               (segment, index) =>
                 segment.keyword === selectedKeyword && (
@@ -105,7 +102,7 @@ export const SegmentModal: FC<SegmentModalProps> = ({
                 )
             )}
           </Box>
-        </div>
+        </Box>
       </Fade>
     </Modal>
   )
