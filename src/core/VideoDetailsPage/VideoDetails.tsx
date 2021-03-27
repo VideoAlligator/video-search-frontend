@@ -10,7 +10,7 @@ import { Video } from 'common/types/video'
 import { Frame } from 'common/types/frame'
 
 import { SegmentModal } from './SegmentModal'
-import { Heading } from './styled'
+import { Heading, StyledText } from './styled'
 
 interface VideoDetailsProps {
   video: Video
@@ -91,29 +91,18 @@ export const VideoDetails: FC<VideoDetailsProps> = ({
             <Box mt={2} display="flex">
               <Text type={TypographyStyles.labelCopy}>Trailer URL:</Text>
               <Box p={1} />
-              <Text>
-                <Link href={trailerUrl} target="_blank" rel="noopener">
+              <StyledText>
+                <Link
+                  href={trailerUrl}
+                  target="_blank"
+                  rel="noopener"
+                  color="inherit"
+                >
                   {trailerUrl}
                 </Link>
-              </Text>
+              </StyledText>
             </Box>
           )}
-          {/* {annotations.length > 0 && (
-            <Box mt={2} display="flex" alignItems="center">
-              <Text type={TypographyStyles.labelCopy}>Keywords:</Text>
-              <Box display="flex" maxWidth="750px" flexWrap="wrap">
-                {annotations.map((annotation, index) => (
-                  <div key={index}>
-                    <Chip
-                      style={{ marginLeft: 10, marginBottom: 10 }}
-                      label={annotation.keyword.toUpperCase()}
-                      color="secondary"
-                    />
-                  </div>
-                ))}
-              </Box>
-            </Box>
-          )} */}
           {genres.length > 0 && (
             <Box mt={2} display="flex" alignItems="center">
               <Text type={TypographyStyles.labelCopy}>Genres:</Text>
