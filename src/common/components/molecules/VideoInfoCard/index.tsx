@@ -16,7 +16,7 @@ interface VideoInfoCardProps {
 
 export const VideoInfoCard: FC<VideoInfoCardProps> = ({ video, keyword }) => {
   const history = useHistory()
-  const { _id, title, runtime, posterUrl, segments } = video
+  const { _id, title, releaseDate, posterUrl, segments } = video
 
   const relatedSegments = segments.filter(
     (segment) => segment.keyword === keyword
@@ -53,9 +53,9 @@ export const VideoInfoCard: FC<VideoInfoCardProps> = ({ video, keyword }) => {
               <Text type={TypographyStyles.sectionHeadline}>{title}</Text>
             </Box>
             <Box mt={1} display="flex">
-              <Text type={TypographyStyles.labelCopy}>Runtime:</Text>
+              <Text type={TypographyStyles.labelCopy}>Release Date:</Text>
               <Box p={1} />
-              <Text>{runtime} minutes</Text>
+              <Text>{releaseDate}</Text>
             </Box>
             <Box mt={1} display="flex" alignItems="center">
               <Text type={TypographyStyles.labelCopy}>Timestamps:</Text>

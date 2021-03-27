@@ -5,6 +5,7 @@ export const LabelText = styled.label`
   font-weight: bold;
   font-size: 16px;
   line-height: 1.5;
+  min-width: 110px;
 `
 
 export const TextLink = styled.a`
