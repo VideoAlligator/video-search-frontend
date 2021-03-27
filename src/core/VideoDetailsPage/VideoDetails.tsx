@@ -3,6 +3,7 @@ import { useHistory } from 'react-router-dom'
 import Box from '@material-ui/core/Box'
 import Button from '@material-ui/core/Button'
 import Chip from '@material-ui/core/Chip'
+import Link from '@material-ui/core/Link'
 
 import { Text, TypographyStyles } from 'common/components/atoms/Typography'
 import { Video } from 'common/types/video'
@@ -34,6 +35,7 @@ export const VideoDetails: FC<VideoDetailsProps> = ({
     genres,
     overview,
     posterUrl,
+    trailerUrl,
     releaseDate,
     annotations,
     segments,
@@ -75,55 +77,66 @@ export const VideoDetails: FC<VideoDetailsProps> = ({
               Back
             </Button>
           </Box>
-          <Box mt={1} display="flex">
+          <Box mt={2} display="flex">
             <Text type={TypographyStyles.labelCopy}>Runtime:</Text>
             <Box p={1} />
             <Text>{runtime} minutes</Text>
           </Box>
-          <Box mt={1} display="flex">
+          <Box mt={2} display="flex">
             <Text type={TypographyStyles.labelCopy}>Release Date:</Text>
             <Box p={1} />
             <Text>{releaseDate}</Text>
           </Box>
-          {annotations.length > 0 && (
-            <Box mt={1} display="flex" alignItems="center">
-              <>
-                <Text type={TypographyStyles.labelCopy}>Keywords:</Text>
+          {trailerUrl && (
+            <Box mt={2} display="flex">
+              <Text type={TypographyStyles.labelCopy}>Trailer URL:</Text>
+              <Box p={1} />
+              <Text>
+                <Link href={trailerUrl} target="_blank" rel="noopener">
+                  {trailerUrl}
+                </Link>
+              </Text>
+            </Box>
+          )}
+          {/* {annotations.length > 0 && (
+            <Box mt={2} display="flex" alignItems="center">
+              <Text type={TypographyStyles.labelCopy}>Keywords:</Text>
+              <Box display="flex" maxWidth="750px" flexWrap="wrap">
                 {annotations.map((annotation, index) => (
                   <div key={index}>
                     <Chip
-                      style={{ marginLeft: 10 }}
+                      style={{ marginLeft: 10, marginBottom: 10 }}
                       label={annotation.keyword.toUpperCase()}
                       color="secondary"
                     />
                   </div>
                 ))}
-              </>
+              </Box>
             </Box>
-          )}
+          )} */}
           {genres.length > 0 && (
-            <Box mt={1} display="flex" alignItems="center">
-              <>
-                <Text type={TypographyStyles.labelCopy}>Genres:</Text>
+            <Box mt={2} display="flex" alignItems="center">
+              <Text type={TypographyStyles.labelCopy}>Genres:</Text>
+              <Box display="flex" maxWidth="750px" flexWrap="wrap">
                 {genres.map((genre, index) => (
                   <div key={index}>
                     <Chip style={{ marginLeft: 10 }} label={genre} />
                   </div>
                 ))}
-              </>
+              </Box>
             </Box>
           )}
-          <Box mt={1} display="flex">
+          <Box mt={2} display="flex">
             <Text type={TypographyStyles.labelCopy}>Overview:</Text>
             <Box p={1} />
             <Text>{overview}</Text>
           </Box>
-          <Box mt={3} mb={1}>
+          <Box mt={4} mb={1}>
             <Text type={TypographyStyles.sectionHeadline}>
               Timestamps (click for details)
             </Text>
           </Box>
-          <Box display="flex">
+          <Box display="flex" maxWidth="750px" flexWrap="wrap">
             {annotations.map((annotation, index) => (
               <Box key={index} mr={2} mb={2} display="flex" alignItems="center">
                 <Chip
