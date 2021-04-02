@@ -5,13 +5,7 @@ import Box from '@material-ui/core/Box'
 
 import { State } from 'common/store/rootReducer'
 import { videosSelectors, getVideoById, resetVideo } from 'common/store/videos'
-import {
-  framesSelectors,
-  resetFrame,
-  getFrameByTitleAndKeyword,
-} from 'common/store/frames'
 import { Video } from 'common/types/video'
-import { Frame } from 'common/types/frame'
 
 import { LoadingIcon } from 'common/components/atoms/LoadingIcon'
 import { ScreenContainer } from 'common/components/templates/ScreenContainer'
@@ -24,11 +18,7 @@ interface VideoDetailsPageProps {
   currVideo?: Video
   getVideoById: (videoId: string) => void
   isVideoLoading: boolean
-  isFrameLoading: boolean
-  resetFrame: () => void
   resetVideo: () => void
-  currFrame: Frame | undefined
-  getFrameByTitleAndKeyword: (videoName: string, keyword: string) => void
 }
 
 interface VideoParams {
@@ -39,11 +29,7 @@ const VideoDetailsPage: FC<VideoDetailsPageProps> = ({
   currVideo,
   getVideoById,
   isVideoLoading,
-  isFrameLoading,
-  resetFrame,
   resetVideo,
-  currFrame,
-  getFrameByTitleAndKeyword,
 }) => {
   const params = useParams<VideoParams>()
 
@@ -64,14 +50,7 @@ const VideoDetailsPage: FC<VideoDetailsPageProps> = ({
         </Box>
       ) : currVideo ? (
         <Box my={6}>
-          <VideoDetails
-            video={currVideo}
-            isFrameLoading={isFrameLoading}
-            resetFrame={resetFrame}
-            resetVideo={resetVideo}
-            currFrame={currFrame}
-            getCurrFrame={getFrameByTitleAndKeyword}
-          />
+          <VideoDetails video={currVideo} resetVideo={resetVideo} />
           <Box display="flex" justifyContent="flex-end" mt={5}>
             <img height={200} width={320} src={img} alt="background" />
           </Box>
@@ -88,13 +67,9 @@ const VideoDetailsPage: FC<VideoDetailsPageProps> = ({
 const mapStateToProps = (state: State) => ({
   currVideo: videosSelectors.getCurrVideo(state),
   isVideoLoading: videosSelectors.isLoading(state),
-  isFrameLoading: framesSelectors.isLoading(state),
-  currFrame: framesSelectors.getCurrFrame(state),
 })
 
 export default connect(mapStateToProps, {
   getVideoById,
-  resetFrame,
   resetVideo,
-  getFrameByTitleAndKeyword,
 })(VideoDetailsPage)
