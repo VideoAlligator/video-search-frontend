@@ -3,12 +3,12 @@ import { State } from '../rootReducer'
 import { createSlice, PayloadAction } from '@reduxjs/toolkit'
 
 interface FramesState {
-  currVideoFrames: Frame[]
+  currFrame: Frame | undefined
   loading: boolean
 }
 
 const initialState: FramesState = {
-  currVideoFrames: [],
+  currFrame: undefined,
   loading: false,
 }
 
@@ -19,20 +19,20 @@ export const frames = createSlice({
     setLoading: (state: FramesState, action: PayloadAction<boolean>) => {
       state.loading = action.payload
     },
-    setCurrVideoFrames: (
+    setCurrFrame: (
       state: FramesState,
       action: PayloadAction<Array<Frame>>
     ) => ({
       ...state,
-      currVideoFrames: action.payload,
+      currFrame: action.payload[0],
     }),
     resetCurrVideoFrames: (state: FramesState) => {
-      state.currVideoFrames = []
+      state.currFrame = undefined
     },
   },
 })
 
 export const framesSelectors = {
   isLoading: (state: State): boolean => state.frames.loading,
-  getCurrVideoFrames: (state: State): Frame[] => state.frames.currVideoFrames,
+  getCurrFrame: (state: State): Frame | undefined => state.frames.currFrame,
 }

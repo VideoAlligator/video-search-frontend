@@ -18,7 +18,7 @@ interface SegmentModalProps {
   onClose: () => void
   selectedKeyword: string
   segments: Segment[]
-  frames: Frame[]
+  currFrame?: Frame
   isFrameLoading: boolean
 }
 
@@ -27,26 +27,21 @@ export const SegmentModal: FC<SegmentModalProps> = ({
   onClose,
   selectedKeyword,
   segments,
-  frames,
+  currFrame,
   isFrameLoading,
 }) => {
   const showFrames = () => {
     if (isFrameLoading) {
       return <LoadingIcon />
     }
-    if (!frames || frames.length === 0) return
-    const filteredFrames = frames.filter(
-      (frame) => frame.keyword === selectedKeyword
-    )
-    if (filteredFrames.length === 0) return
-    const target = filteredFrames[0]
+    if (!currFrame) return
     return (
       <Box py={2} display="flex" justifyContent="center">
         <FrameImg
-          src={`data:${target.img.contentType};base64,${Buffer.from(
-            target.img.data
+          src={`data:${currFrame.img.contentType};base64,${Buffer.from(
+            currFrame.img.data
           ).toString('base64')}`}
-          alt={target.keyword}
+          alt={currFrame.keyword}
         />
       </Box>
     )

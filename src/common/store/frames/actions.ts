@@ -10,31 +10,33 @@ interface FrameResponse extends AxiosResponse {
   frames?: Frame[]
 }
 
-export const getFrameByVideoName = (videoName: string) => async (
-  dispatch: Dispatch
-): Promise<void> => {
+export const resetFrame = () => async (dispatch: Dispatch): Promise<void> => {
+  try {
+    dispatch(frames.actions.resetCurrVideoFrames())
+  } catch (err) {
+    console.log(err)
+  }
+}
+
+export const getFrameByTitleAndKeyword = (
+  videoName: string,
+  keyword: string
+) => async (dispatch: Dispatch): Promise<void> => {
   try {
     dispatch(frames.actions.setLoading(true))
     const query = {
       videoName: videoName,
+      keyword: keyword,
     }
     const res: FrameResponse = await api.client.get(
       `${api.paths.URL_FRAME}?${qs.stringify(query, {
         arrayFormat: 'bracket',
       })}`
     )
-    dispatch(frames.actions.setCurrVideoFrames(res.data))
+    dispatch(frames.actions.setCurrFrame(res.data))
   } catch (err) {
     console.log(err)
   } finally {
     dispatch(frames.actions.setLoading(false))
-  }
-}
-
-export const resetFrame = () => async (dispatch: Dispatch): Promise<void> => {
-  try {
-    dispatch(frames.actions.resetCurrVideoFrames())
-  } catch (err) {
-    console.log(err)
   }
 }

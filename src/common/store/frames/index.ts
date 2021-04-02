@@ -1,3 +1,3 @@
 export { frames, framesSelectors } from './slice'
 
-export { getFrameByVideoName, resetFrame } from './actions'
+export { resetFrame, getFrameByTitleAndKeyword } from './actions'
