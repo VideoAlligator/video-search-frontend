@@ -9,8 +9,7 @@ export const CloseButton = styled.button.attrs({ type: 'button' })`
 `
 
 export const FrameImg = styled.img`
-  max-height: 200px;
-  max-width: 300px;
+  max-width: 400px;
   height: auto;
   width: auto;
 `
