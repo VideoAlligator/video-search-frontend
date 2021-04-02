@@ -5,48 +5,28 @@ import Fade from '@material-ui/core/Fade'
 import Modal from '@material-ui/core/Modal'
 import CloseIcon from '@material-ui/icons/Close'
 
-import { LoadingIcon } from 'common/components/atoms/LoadingIcon'
 import { Text } from 'common/components/atoms/Typography'
-
 import { Segment } from 'common/types/video'
-import { Frame } from 'common/types/frame'
 
 import { CloseButton, FrameImg, ModalHeading } from './styled'
 
 interface SegmentModalProps {
   isModalOpen: boolean
   onClose: () => void
+  title: string
   selectedKeyword: string
   segments: Segment[]
-  currFrame?: Frame
-  isFrameLoading: boolean
 }
+
+const baseURL = process.env.REACT_APP_API_BASE
 
 export const SegmentModal: FC<SegmentModalProps> = ({
   isModalOpen,
   onClose,
+  title,
   selectedKeyword,
   segments,
-  currFrame,
-  isFrameLoading,
 }) => {
-  const showFrames = () => {
-    if (isFrameLoading) {
-      return <LoadingIcon />
-    }
-    if (!currFrame) return
-    return (
-      <Box py={2} display="flex" justifyContent="center">
-        <FrameImg
-          src={`data:${currFrame.img.contentType};base64,${Buffer.from(
-            currFrame.img.data
-          ).toString('base64')}`}
-          alt={currFrame.keyword}
-        />
-      </Box>
-    )
-  }
-
   const showTimestamp = (segment: Segment, index: number) => {
     if (segment.keyword !== selectedKeyword) return
     if (segment.start === segment.end)
@@ -97,7 +77,12 @@ export const SegmentModal: FC<SegmentModalProps> = ({
               <CloseIcon />
             </CloseButton>
           </Box>
-          {showFrames()}
+          <Box py={2} display="flex" justifyContent="center">
+            <FrameImg
+              src={`${baseURL}/frames/${title}/${selectedKeyword}`}
+              alt={selectedKeyword}
+            />
+          </Box>
           <Box pt={2} pb={2} id="modal-description">
             {segments.map((segment, index) => showTimestamp(segment, index))}
           </Box>

@@ -32,7 +32,12 @@ export const SearchField: FC<SearchFieldProps> = ({
       onChange={(_event, value) => setFieldValue(name, value || '')}
       style={{ width }}
       renderInput={(params) => (
-        <TextField {...params} label={label} variant="outlined" />
+        <TextField
+          {...params}
+          label={label}
+          variant="outlined"
+          onChange={(event) => setFieldValue(name, event.target.value)}
+        />
       )}
     />
   )

@@ -7,28 +7,16 @@ import Link from '@material-ui/core/Link'
 
 import { Text, TypographyStyles } from 'common/components/atoms/Typography'
 import { Video } from 'common/types/video'
-import { Frame } from 'common/types/frame'
 
 import { SegmentModal } from './SegmentModal'
 import { Heading, StyledText } from './styled'
 
 interface VideoDetailsProps {
   video: Video
-  isFrameLoading: boolean
-  resetFrame: () => void
   resetVideo: () => void
-  currFrame: Frame | undefined
-  getCurrFrame: (videoName: string, keyword: string) => void
 }
 
-export const VideoDetails: FC<VideoDetailsProps> = ({
-  video,
-  isFrameLoading,
-  resetFrame,
-  resetVideo,
-  currFrame,
-  getCurrFrame,
-}) => {
+export const VideoDetails: FC<VideoDetailsProps> = ({ video, resetVideo }) => {
   const history = useHistory()
   const {
     title,
@@ -50,10 +38,9 @@ export const VideoDetails: FC<VideoDetailsProps> = ({
       <SegmentModal
         isModalOpen={isModalOpen}
         onClose={() => setIsModalOpen(false)}
+        title={title}
         selectedKeyword={selectedKeyword}
         segments={segments}
-        currFrame={currFrame}
-        isFrameLoading={isFrameLoading}
       />
       <Box display="flex">
         <img height={375} width={250} src={posterUrl} alt={title} />
@@ -69,7 +56,6 @@ export const VideoDetails: FC<VideoDetailsProps> = ({
               onClick={(e) => {
                 e.preventDefault()
                 history.goBack()
-                resetFrame()
                 resetVideo()
               }}
               variant="contained"
@@ -136,7 +122,6 @@ export const VideoDetails: FC<VideoDetailsProps> = ({
                   onClick={() => {
                     setIsModalOpen(true)
                     setSelectedKeyword(annotation.keyword)
-                    getCurrFrame(title, annotation.keyword)
                   }}
                 ></Chip>
               </Box>
