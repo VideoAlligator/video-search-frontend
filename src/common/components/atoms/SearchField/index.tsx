@@ -15,6 +15,8 @@ interface SearchFieldProps {
   ) => void
 }
 
+const sortedKeywords = sampleKeywords.sort()
+
 export const SearchField: FC<SearchFieldProps> = ({
   name,
   label,
@@ -25,7 +27,7 @@ export const SearchField: FC<SearchFieldProps> = ({
     <Autocomplete
       id={name}
       freeSolo
-      options={sampleKeywords}
+      options={sortedKeywords}
       getOptionLabel={(option) => option}
       onChange={(_event, value) => setFieldValue(name, value || '')}
       style={{ width }}

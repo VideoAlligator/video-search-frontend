@@ -52,6 +52,17 @@ export const SegmentModal: FC<SegmentModalProps> = ({
     )
   }
 
+  const showTimestamp = (segment: Segment, index: number) => {
+    if (segment.keyword !== selectedKeyword) return
+    if (segment.start === segment.end)
+      return <Text key={index}>Second: {segment.start}</Text>
+    return (
+      <Text key={index}>
+        Second: {segment.start} - {segment.end}
+      </Text>
+    )
+  }
+
   return (
     <Modal
       aria-labelledby="modal-title"
@@ -93,14 +104,7 @@ export const SegmentModal: FC<SegmentModalProps> = ({
           </Box>
           {showFrames()}
           <Box pt={2} pb={2} id="modal-description">
-            {segments.map(
-              (segment, index) =>
-                segment.keyword === selectedKeyword && (
-                  <Text key={index}>
-                    {segment.start} - {segment.end} seconds
-                  </Text>
-                )
-            )}
+            {segments.map((segment, index) => showTimestamp(segment, index))}
           </Box>
         </Box>
       </Fade>

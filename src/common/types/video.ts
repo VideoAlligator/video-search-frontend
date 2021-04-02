@@ -16,6 +16,7 @@ export interface Video {
   genres: string[]
   overview: string
   posterUrl: string
+  trailerUrl: string
   releaseDate: string
   annotations: Annotation[]
   segments: Segment[]
