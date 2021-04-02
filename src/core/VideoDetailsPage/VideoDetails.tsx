@@ -14,21 +14,22 @@ import { Heading, StyledText } from './styled'
 
 interface VideoDetailsProps {
   video: Video
-  frames: Frame[]
   isFrameLoading: boolean
   resetFrame: () => void
   resetVideo: () => void
+  currFrame: Frame | undefined
+  getCurrFrame: (videoName: string, keyword: string) => void
 }
 
 export const VideoDetails: FC<VideoDetailsProps> = ({
   video,
-  frames,
   isFrameLoading,
   resetFrame,
   resetVideo,
+  currFrame,
+  getCurrFrame,
 }) => {
   const history = useHistory()
-  const frame = frames
   const {
     title,
     runtime,
@@ -51,7 +52,7 @@ export const VideoDetails: FC<VideoDetailsProps> = ({
         onClose={() => setIsModalOpen(false)}
         selectedKeyword={selectedKeyword}
         segments={segments}
-        frames={frame}
+        currFrame={currFrame}
         isFrameLoading={isFrameLoading}
       />
       <Box display="flex">
@@ -135,6 +136,7 @@ export const VideoDetails: FC<VideoDetailsProps> = ({
                   onClick={() => {
                     setIsModalOpen(true)
                     setSelectedKeyword(annotation.keyword)
+                    getCurrFrame(title, annotation.keyword)
                   }}
                 ></Chip>
               </Box>
