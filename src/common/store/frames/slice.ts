@@ -19,12 +19,9 @@ export const frames = createSlice({
     setLoading: (state: FramesState, action: PayloadAction<boolean>) => {
       state.loading = action.payload
     },
-    setCurrFrame: (
-      state: FramesState,
-      action: PayloadAction<Array<Frame>>
-    ) => ({
+    setCurrFrame: (state: FramesState, action: PayloadAction<Frame>) => ({
       ...state,
-      currFrame: action.payload[0],
+      currFrame: action.payload,
     }),
     resetCurrVideoFrames: (state: FramesState) => {
       state.currFrame = undefined
