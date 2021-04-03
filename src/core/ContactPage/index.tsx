@@ -67,7 +67,7 @@ const ContactPage: FC = () => {
               <ListItemIcon>
                 <LocationOnIcon color="primary" fontSize="large" />
               </ListItemIcon>
-              <ListItemText primary="Adress" />
+              <ListItemText primary="Address" />
               {expandAddress ? <ExpandLess /> : <ExpandMore />}
             </ListItem>
             <Collapse in={expandAddress} timeout="auto" unmountOnExit>
