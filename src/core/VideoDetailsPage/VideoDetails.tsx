@@ -49,6 +49,7 @@ export const VideoDetails: FC<VideoDetailsProps> = ({ video, resetVideo }) => {
             display="flex"
             justifyContent="space-between"
             alignItems="center"
+            minWidth="800px"
             mb={2}
           >
             <Heading>{title}</Heading>
