@@ -35,4 +35,9 @@ export const sampleKeywords = [
   'giraffe',
   'stop sign',
   'fire hydrant',
+  'umbrella',
+  'bus',
+  'keyboard',
+  'chair',
+  'book',
 ]
