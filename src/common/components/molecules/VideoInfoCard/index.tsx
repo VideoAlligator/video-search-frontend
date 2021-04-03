@@ -71,8 +71,13 @@ export const VideoInfoCard: FC<VideoInfoCardProps> = ({ video, keyword }) => {
                 {relatedSegments.map(
                   (segment, index) =>
                     index < 3 && (
-                      <Box key={index} mr={2}>
+                      <Box key={index} display="flex">
                         {showTimestamp(segment, index)}
+                        {index !== relatedSegments.length - 1 && (
+                          <Box ml={2} mr={2}>
+                            <Text>|</Text>
+                          </Box>
+                        )}
                       </Box>
                     )
                 )}

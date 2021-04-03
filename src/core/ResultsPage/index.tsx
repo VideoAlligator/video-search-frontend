@@ -78,7 +78,9 @@ const ResultsPage: FC<ResultsPageProps> = ({
             </Box>
           ) : results && results.length > 0 ? (
             <Box p={3}>
-              <Heading>About {results.length} results</Heading>
+              <Heading>
+                {results.length} results for "{keyword}"
+              </Heading>
               <Box display="flex" alignContent="flex-start" flexWrap="wrap">
                 {results.map((video, index) => (
                   <div key={index}>

@@ -1,7 +1,7 @@
 import React, { FC, useState } from 'react'
 import Box from '@material-ui/core/Box'
 import EmailIcon from '@material-ui/icons/Email'
-import PhoneIcon from '@material-ui/icons/Phone'
+import LocationOnIcon from '@material-ui/icons/LocationOn'
 import { ExpandLess, ExpandMore } from '@material-ui/icons'
 import {
   Collapse,
@@ -16,11 +16,10 @@ import { ScreenContainer } from 'common/components/templates/ScreenContainer'
 import { Text, TypographyStyles } from 'common/components/atoms/Typography'
 
 import img from './assets/contact.jpg'
-import { contactInfo } from './constants'
 
 const ContactPage: FC = () => {
   const [expandEmail, setExpandEmail] = useState(false)
-  const [expandPhone, setExpandPhone] = useState(false)
+  const [expandAddress, setExpandAddress] = useState(false)
 
   return (
     <ScreenContainer center maxWidth={1100}>
@@ -52,37 +51,45 @@ const ContactPage: FC = () => {
             </ListItem>
             <Collapse in={expandEmail} timeout="auto" unmountOnExit>
               <List disablePadding>
-                {contactInfo.map((contactinfo, index) => (
-                  <ListItem key={index}>
-                    <ListItemText>
-                      <Text>{contactinfo.email}</Text>
-                    </ListItemText>
-                  </ListItem>
-                ))}
+                <ListItem>
+                  <ListItemText>
+                    <Text>info.video.alligator@gmail.com</Text>
+                  </ListItemText>
+                </ListItem>
               </List>
             </Collapse>
-          </Box>
-          <Box mt={5}>
+            <Box m={2} />
             <ListItem
-              key="phone"
+              key="address"
               button
-              onClick={() => setExpandPhone(!expandPhone)}
+              onClick={() => setExpandAddress(!expandAddress)}
             >
               <ListItemIcon>
-                <PhoneIcon color="primary" fontSize="large" />
+                <LocationOnIcon color="primary" fontSize="large" />
               </ListItemIcon>
-              <ListItemText primary="Phone" />
-              {expandPhone ? <ExpandLess /> : <ExpandMore />}
+              <ListItemText primary="Address" />
+              {expandAddress ? <ExpandLess /> : <ExpandMore />}
             </ListItem>
-            <Collapse in={expandPhone} timeout="auto" unmountOnExit>
+            <Collapse in={expandAddress} timeout="auto" unmountOnExit>
               <List disablePadding>
-                {contactInfo.map((contactinfo, index) => (
-                  <ListItem key={index}>
-                    <ListItemText>
-                      <Text>{contactinfo.phone}</Text>
-                    </ListItemText>
-                  </ListItem>
-                ))}
+                <ListItem>
+                  <ListItemText>
+                    <Text>
+                      The Edward S. Rogers Sr. Department of Electrical &
+                      Computer Engineering
+                    </Text>
+                  </ListItemText>
+                </ListItem>
+                <ListItem>
+                  <ListItemText>
+                    <Text>10 King’s College Road</Text>
+                  </ListItemText>
+                </ListItem>
+                <ListItem>
+                  <ListItemText>
+                    <Text>Toronto, Ontario • M5S 3G4 • Canada</Text>
+                  </ListItemText>
+                </ListItem>
               </List>
             </Collapse>
           </Box>
