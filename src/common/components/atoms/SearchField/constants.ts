@@ -28,4 +28,8 @@ export const sampleKeywords = [
   'keyboard',
   'chair',
   'book',
+  'bear',
+  'zebra',
+  'giraffe',
+  'elephant',
 ]
